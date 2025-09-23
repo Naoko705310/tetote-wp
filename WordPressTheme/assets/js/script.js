@@ -4,7 +4,6 @@ jQuery(function ($) {
   /* --------------------------------------------
   /* 共通機能（全ページで使用）
   /* -------------------------------------------- */
-
   /* --------------------------------------------
   /* ハンバーガーメニュー(topページ)
   /* -------------------------------------------- */
@@ -19,9 +18,9 @@ jQuery(function ($) {
       // ロゴ差し替え（SP・PC共通）
       var $logoImg = $('.header__logo img');
       if ($('.js-header').hasClass('is-active')) {
-        $logoImg.attr('src', themeUrl + '/assets/images/common/tetote-logo.svg'); // 黒ロゴ
+        $logoImg.attr('src', './assets/images/common/tetote-logo.svg'); // 黒ロゴ
       } else {
-        $logoImg.attr('src', themeUrl + '/assets/images/common/tetote-logo-white.svg'); // 白ロゴ
+        $logoImg.attr('src', './assets/images/common/tetote-logo-white.svg'); // 白ロゴ
       }
     });
 
@@ -33,15 +32,12 @@ jQuery(function ($) {
       $('body').removeClass('is-fixed'); // スクロール制御解除
 
       // ロゴを白に戻す（SP・PC共通）
-      $('.header__logo img').attr('src', themeUrl + '/assets/images/common/tetote-logo-white.svg');
+      $('.header__logo img').attr('src', './assets/images/common/tetote-logo-white.svg');
     });
   });
-
-
-  /* --------------------------------------------
-  /* ハンバーガーメニュー(topページ) 
-  // 静的サイト用のコードをコメントアウト
-  /* -------------------------------------------- */
+  // /* --------------------------------------------
+  // /* ハンバーガーメニュー(topページ)
+  // /* -------------------------------------------- */
   // $(function () {
   //   // ハンバーガーメニューのクリック
   //   $('.js-hamburger').on('click', function () {
@@ -75,62 +71,32 @@ jQuery(function ($) {
   /* headerをFVの下までスクロールした時に、page-headerと同じデザインに変える
   /* -------------------------------------------- */
   $(function () {
-    // トップページのみで実行（FVセクションが存在する場合のみ）
+    // トップページのみで実行
     if ($('#top-fv').length) {
-      // 必要な要素を取得
       var $header = $('.js-header');
+      var $topFv = $('#top-fv');
+      var $logoImg = $('.header__logo img');
 
       // FVセクションの高さを取得
-      var fvHeight = $('#top-fv').outerHeight();
+      var fvHeight = $topFv.outerHeight();
 
       // スクロールイベント
       $(window).on('scroll', function () {
-        // 現在のスクロール位置を取得
         var scrollTop = $(window).scrollTop();
-        
-        // FVセクションを過ぎたかどうかを判定
         if (scrollTop > fvHeight) {
-          // FVを過ぎたらヘッダーにスクロール済みクラスを追加
+          // FVを過ぎたらヘッダーにクラスを追加
           $header.addClass('is-scrolled');
+          // ロゴを黒に変更
+          $logoImg.attr('src', './assets/images/common/tetote-logo.svg');
         } else {
-          // FV内にいる場合はスクロール済みクラスを削除
+          // FV内にいる場合はクラスを削除
           $header.removeClass('is-scrolled');
+          // ロゴを白に戻す
+          $logoImg.attr('src', './assets/images/common/tetote-logo-white.svg');
         }
       });
     }
   });
-
-  /* --------------------------------------------
-  /* headerをFVの下までスクロールした時に、page-headerと同じデザインに変える
-  // 静的サイトのコードをコメントアウト
-  /* -------------------------------------------- */
-  // $(function () {
-  //   // トップページのみで実行
-  //   if ($('#top-fv').length) {
-  //     var $header = $('.js-header');
-  //     var $topFv = $('#top-fv');
-  //     var $logoImg = $('.header__logo img');
-
-  //     // FVセクションの高さを取得
-  //     var fvHeight = $topFv.outerHeight();
-
-  //     // スクロールイベント
-  //     $(window).on('scroll', function () {
-  //       var scrollTop = $(window).scrollTop();
-  //       if (scrollTop > fvHeight) {
-  //         // FVを過ぎたらヘッダーにクラスを追加
-  //         $header.addClass('is-scrolled');
-  //         // ロゴを黒に変更
-  //         $logoImg.attr('src', './assets/images/common/tetote-logo.svg');
-  //       } else {
-  //         // FV内にいる場合はクラスを削除
-  //         $header.removeClass('is-scrolled');
-  //         // ロゴを白に戻す
-  //         $logoImg.attr('src', './assets/images/common/tetote-logo-white.svg');
-  //       }
-  //     });
-  //   }
-  // });
 
   /* --------------------------------------------
   /* index.html(topページ)専用機能
