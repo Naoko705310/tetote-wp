@@ -105,7 +105,7 @@
               </li>
             </ul>
             <figure class="users-voice__image">
-              <img src="./assets/images/benefits/benefits-user-voices.jpg" alt="男女の社員" width="980" height="560" loading="lazy">
+              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/benefits/benefits-user-voices.jpg" alt="男女の社員" width="980" height="560" loading="lazy">
             </figure>
           </div>
         </section>
