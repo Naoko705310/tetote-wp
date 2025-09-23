@@ -110,7 +110,7 @@
         <div class="ceo-message__contents">
           <!-- 左カラム：画像 -->
           <div class="ceo-message__image">
-            <img src="./assets/images/about/ceo-photo.jpg" alt="代表取締役 田中浩二郎" width="484" height="629">
+            <img src="<?php echo get_theme_file_uri(); ?>/assets/images/about/ceo-photo.jpg" alt="代表取締役 田中浩二郎" width="484" height="629">
           </div>
 
           <!-- 右カラム：本文 -->
@@ -133,7 +133,7 @@
               私たちと共に、未来を創造していきましょう。
             </p>
             <div class="ceo-message__sign">
-              <img src="./assets/images/about/ceo-sign.svg" alt="代表取締役 田中浩二郎" width="185" height="35">
+              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/about/ceo-sign.svg" alt="代表取締役 田中浩二郎" width="185" height="35">
             </div>
           </div>
         </div>
@@ -150,7 +150,7 @@
         <ul class="business-info__items business-info-cards">
           <li class="business-info__item business-info-card">
             <figure class="business-info-card__image">
-              <img src="./assets/images/about/about-business-01.jpg" alt="コンサルティング事業" width="400" height="300">
+              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/about/about-business-01.jpg" alt="コンサルティング事業" width="400" height="300">
             </figure>
             <div class="business-info-card__body">
               <h3>コンサルティング事業</h3>
@@ -163,7 +163,7 @@
           </li>
           <li class="business-info__item business-info-card">
             <figure class="business-info-card__image">
-              <img src="./assets/images/about/about-business-02.jpg" alt="ソリューション営業事業" width="400" height="300">
+              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/about/about-business-02.jpg" alt="ソリューション営業事業" width="400" height="300">
             </figure>
             <div class="business-info-card__body">
               <h3>ソリューション営業事業</h3>
@@ -176,7 +176,7 @@
           </li>
           <li class="business-info__item business-info-card">
             <figure class="business-info-card__image">
-              <img src="./assets/images/about/about-business-03.jpg" alt="業務系システム開発事業" width="400" height="300">
+              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/about/about-business-03.jpg" alt="業務系システム開発事業" width="400" height="300">
             </figure>
             <div class="business-info-card__body">
               <h3>業務系システム開発事業</h3>
