@@ -1,0 +1,86 @@
+@use "global" as *;
+
+.top-message {
+  margin-top: rem(41);
+  @include mq(md) {
+    margin-top: rem(101);
+  }
+}
+
+.top-message__inner {
+  position: relative;
+  z-index: 0;
+}
+
+.swiper.top-message__swiper {
+  width: 100%;
+  height: 100%;
+  padding-bottom: rem(31);
+  @include mq(md) {
+    padding-bottom: 0;
+  }
+}
+
+.swiper-slide.top-message__slide {
+  width: rem(271);
+  aspect-ratio: 271/210;
+  border-radius: rem(60);
+  @include mq(md) {
+    width: rem(506);
+  }
+}
+
+.swiper-slide.top-message__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: rem(60);
+}
+
+// swiper-wrapper配下の奇数・偶数スライドをずらす
+.top-message__swiper .swiper-slide:nth-child(odd) {
+  margin-top: rem(27);
+}
+
+.top-message__swiper .swiper-slide:nth-child(even) {
+  margin-bottom: rem(27);
+}
+
+.top-message__text-wrapper {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  z-index: 3;
+  @include mq(md) {
+    bottom: rem(9);
+  }
+}
+
+.top-message__text {
+  max-width: rem(542);
+  margin: 0 auto;
+}
+
+// blog-swiperに重なっているテキスト
+.top-message__text p {
+  display: inline-block;
+  font-family: $base-font-family;
+  font-size: rem(24);
+  color: $black;
+  font-weight: $bold;
+  line-height: 1.5;
+  padding: rem(7) rem(11);
+  background-color: $white;
+  @include mq(md) {
+    font-size: rem(40);
+  }
+}
+
+// 2行目だけ margin-top を追加
+.top-message__text p:nth-child(2) {
+  margin-top: rem(8);
+  @include mq(md) {
+    margin-top: rem(7);
+  }
+}

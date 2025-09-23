@@ -1,0 +1,39 @@
+@use "global" as *;
+
+.section-title {
+  position: relative;
+  display: inline-block;     // 英語の幅に合わせる
+  font-family: $third-font-family;
+  font-size: rem(80);
+  font-weight: $normal;
+  line-height: 1;
+  color: rgba(151, 151, 151, 0.1);
+  white-space: nowrap;       // 改行させない
+  @include mq(md) {
+    font-size: rem(136);
+  }
+}
+
+.section-title--jp {
+  font-family: $base-font-family;
+  font-size: rem(32);
+  font-weight: $bold;
+  color: $black;
+  line-height: 1;
+  position: absolute;
+  top: 50%;
+  left: 0;                   // デフォルトは左寄せ
+  transform: translateY(-50%); // 上下中央揃え
+  z-index: 1;
+  @include mq(md) {
+    left: 50%;                 // PCでは左右中央
+    transform: translate(-50%, -50%);
+    font-size: rem(52);
+  }
+}
+
+.section-title--jp-first {
+  display: inline-block;
+  border-bottom: 2px solid $black;
+  padding-bottom: 0.1em;
+}

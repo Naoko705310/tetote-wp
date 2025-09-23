@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="robots" content="noindex" />
+  <!-- meta情報 -->
+  <title>採用特設サイト | 株式会社TETOTE</title>
+  <meta name="description" content="テクノロジーで社会課題を解決する。AIやビッグデータ分析などの技術を活用した社会課題解決サービスを提供するTETOTEの採用サイト。" />
+  <meta name="keywords" content="TETOTE,採用,テクノロジー,AI,ビッグデータ,社会課題解決" />
+  <!-- ogp -->
+  <meta property="og:title" content="採用特設サイト | 株式会社TETOTE" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tetote.co.jp/" />
+  <meta property="og:image" content="https://tetote.co.jp/assets/images/ogp.jpg" />
+  <meta property="og:site_name" content="株式会社TETOTE" />
+  <meta property="og:description" content="テクノロジーで社会課題を解決する。AIやビッグデータ分析などの技術を活用した社会課題解決サービスを提供するTETOTEの採用サイト。" />
+  <!-- ファビコン -->
+  <link rel="icon" href="./assets/images/common/tetote-favicon.ico" />
+  <!-- Google フォント -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Noto Sans JP -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+  <!-- Viga -->
+  <link href="https://fonts.googleapis.com/css2?family=Viga&display=swap" rel="stylesheet">
+  <!-- Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css?v=250923_1253" />
+  <!-- JavaScript -->
+  <script defer src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <script defer src="./assets/js/script.js?v=250923_1253"></script>
+</head>
+<body>
+  <header class="header top-header js-header">
+    <div class="header__inner">
+      <!-- ロゴ -->
+      <h1 class="header__logo header-logo">
+        <a href="index.html">
+          <img src="./assets/images/common/tetote-logo-white.svg" alt="TETOTEロゴ" width="250" height="61">
+        </a>
+      </h1>
+      <!-- ヘッダーボタン群 -->
+      <nav class="header__buttons header-buttons js-header-buttons">
+        <ul>
+          <li><a href="details.html" class="button button--entry button--entry-black">募集要項</a></li>
+          <li><a href="entry.html" class="button button--entry button--entry-accent">ENTRY</a></li>
+        </ul>
+      </nav>
+      <!-- ハンバーガーメニュー -->
+      <button id="hamburger-menu" class="header__hamburger hamburger js-hamburger" aria-label="メニューを開く" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span class="hamburger-text">MENU</span>
+      </button>
+    </div>
+    <!-- overlayなので、innerの外に出す -->
+    <!-- header-nav -->
+    <div class="header__nav header-nav js-header-nav" aria-hidden="true">
+      <div class="header-nav__inner">
+        <div class="header-nav__contents-wrapper">
+          <!-- ロゴ -->
+          <div class="header-nav__logo-wrapper">
+            <div class="header-nav__logo">
+              <a href="index.html">
+                <img src="./assets/images/common/tetote-logo.svg" alt="TETOTEロゴ" width="250" height="61">
+              </a>
+            </div>
+          </div>
+          <!-- navとボタンのブロック -->
+          <div class="header-nav__nav-wrapper">
+            <!-- navigation -->
+            <ul class="header-nav__items">
+              <li class="header-nav__item">
+                <a href="about.html" class="js-header-link">ABOUT US<span>TETOTEについて</span></a>
+              </li>
+              <li class="header-nav__item">
+                <a href="staff.html" class="js-header-link">STAFF<span>社員について</span></a>
+              </li>
+              <li class="header-nav__item">
+                <a href="blog.html" class="js-header-link">BLOG<span>採用ブログ</span></a>
+              </li>
+              <li class="header-nav__item">
+                <a href="benefits.html" class="js-header-link">BENEFITS<span>福利厚生について</span></a>
+              </li>
+              <li class="header-nav__item">
+                <a href="career.html" class="js-header-link">CARRER<span>研修制度とキャリアパス</span></a>
+              </li>
+              <li class="header-nav__item">
+                <a href="faq.html" class="js-header-link">FAQ<span>よくある質問</span></a>
+              </li>
+            </ul>
+            <!-- ボタン群 -->
+            <ul class="header-nav__buttons">
+              <li class="header-nav__button">
+                <a href="details.html" class="button button--entry button--entry-black js-header-link">募集要項</a>
+              </li>
+              <li class="header-nav__button">
+                <a href="entry.html" class="button button--entry button--entry-accent js-header-link">ENTRY</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <!-- トップFV -->
+    <section class="top-fv" id="top-fv">
+      <div class="top-fv__inner">
+        <!-- Swiperスライダー -->
+        <div class="swiper top-fv__swiper js-top-fv-swiper">
+          <div class="swiper-wrapper">
+            <!-- 1枚目 -->
+            <div class="swiper-slide top-fv__slide">
+              <img src="./assets/images/top/fv01.jpg" alt="メインビジュアル1" width="1280" height="720">
+            </div>
+            <!-- 2枚目 -->
+            <div class="swiper-slide top-fv__slide">
+              <img src="./assets/images/top/fv02.jpg" alt="メインビジュアル2" width="1280" height="720">
+            </div>
+          </div>
+        </div>
+
+        <!-- トップFV テキスト -->
+        <div class="top-fv__content">
+          <h2 class="top-fv__title">BECOME A<br>CHALLENGER.</h2>
+          <p class="top-fv__subtitle">君の挑戦が、意思が、未来を変える</p>
+          <!-- news-bar -->
+          <div class="top-fv__news-bar news-bar">
+            <div class="news-bar__label">
+              <p>NEWS</p>
+            </div>
+            <div class="news-bar__body">
+              <p>新入社員向けに、入社前研修を行いました。</p>
+              <a href="blog.html" class="news-bar__link">VIEW MORE</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- トップページのメッセージスライダー -->
+    <section class="top-message">
+      <div class="top-message__inner">
+        <!-- Swiperスライダー（背景画像用） -->
+        <div class="swiper top-message__swiper js-top-message-swiper">
+          <div class="swiper-wrapper top-message__swiper-wrapper">
+            <!-- 1枚目 -->
+            <div class="swiper-slide top-message__slide">
+              <img src="./assets/images/top/blog-slide-01.jpg" alt="ブログ記事1" width="1280" height="720">
+            </div>
+            <!-- 2枚目 -->
+            <div class="swiper-slide top-message__slide">
+              <img src="./assets/images/top/blog-slide-02.jpg" alt="ブログ記事2" width="1280" height="720">
+            </div>
+            <!-- 3枚目 -->
+            <div class="swiper-slide top-message__slide">
+              <img src="./assets/images/top/blog-slide-03.jpg" alt="ブログ記事3" width="1280" height="720">
+            </div>
+          </div>
+
+          <!-- ページネーション（必要なら） -->
+          <div class="swiper-pagination top-message__pagination"></div>
+        </div>
+        <!-- 中央テキスト（Swiperの上に重ねる） -->
+        <div class="top-message__text-wrapper">
+          <div class="top-message__text">
+            <p>後悔しないキャリアを作る、</p>
+            <p>それこそが、我々の使命だ</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- トップABOUT  人手不足〜 -->
+    <section class="top-about js-fade-in fade-in">
+      <div class="top-about__inner inner">
+        <div class="top-about__contents-wrapper">
+          <!-- メッセージ -->
+          <div class="top-about__message">
+            <div class="top-about__message--first">
+              <p>「人手不足」</p>
+              <p>今の日本が抱えるこの社会課題に挑み、</p>
+              <p>企業と個人の可能性を最大限に引き出す。</p>
+              <p>それが私達の役目。。</p>
+            </div>
+            <div class="top-about__message--second">
+              <p>単につなぐだけじゃない。</p>
+              <p>「手と手」を取り合っていけるような、</p>
+              <p>持続可能な社会を、一緒に作りませんか？</p>
+            </div>
+          </div>
+          <!-- ボタン -->
+          <div class="top-about__button">
+            <a href="about.html" class="button">VIEW MORE</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- トップ MEMBER -->
+    <section class="top-member js-fade-in fade-in">
+      <div class="top-member__inner inner">
+        <!-- セクションタイトル -->
+        <h2 class="top-member__section-title section-title">
+          MEMBER
+          <span class="section-title--jp">
+            <span class="section-title--jp-first">人</span>を知る
+          </span>
+        </h2>
+        <div class="top-member__description">
+          <p>
+            TETOTEの社員がどういった信念を持って働いているのか、<br>
+            一日のスケジュールや仕事内容などを紹介します。
+          </p>
+        </div>
+        <!-- Swiperスライダー（top-about__swiper） -->
+        <div class="swiper top-member__swiper js-top-member-swiper">
+          <div class="swiper-wrapper top-member__swiper-wrapper">
+            <!-- 1枚目 -->
+            <div class="swiper-slide top-member__slide staff-card">
+              <!-- 写真 -->
+              <div class="staff-card__image">
+                <img src="./assets/images/common/syain01-1.jpg"  alt="コンサルタント 西村優" width="300" height="379">
+                <div class="staff-card__message">
+                  <p class="staff-card__message-line1">「あなたが担当で良かった」</p>
+                  <p class="staff-card__message-line2">この一言が、最高のやりがい</p>
+                </div>
+              </div>
+              <!-- 本文 -->
+              <div class="staff-card__body">
+                <div class="staff-card__meta">
+                  <p class="staff-card__job">コンサルタント</p>
+                  <p class="staff-card__year">2011年入社</p>
+                </div>
+                <h3 class="staff-card__name">西村 優</h3>
+              </div>
+            </div>
+            <!-- 2枚目 -->
+            <div class="swiper-slide top-member__slide staff-card">
+              <!-- 写真 -->
+              <div class="staff-card__image">
+                <img src="./assets/images/common/syain01-1.jpg"  alt="コンサルタント 西村優" width="300" height="379">
+                <div class="staff-card__message">
+                  <p class="staff-card__message-line1">「あなたが担当で良かった」</p>
+                  <p class="staff-card__message-line2">この一言が、最高のやりがい</p>
+                </div>
+              </div>
+              <!-- 本文 -->
+              <div class="staff-card__body">
+                <div class="staff-card__meta">
+                  <p class="staff-card__job">コンサルタント</p>
+                  <p class="staff-card__year">2011年入社</p>
+                </div>
+                <h3 class="staff-card__name">西村 優</h3>
+              </div>
+            </div>
+            <!-- 3枚目 -->
+            <div class="swiper-slide top-member__slide staff-card">
+              <!-- 写真 -->
+              <div class="staff-card__image">
+                <img src="./assets/images/common/syain01-1.jpg"  alt="コンサルタント 西村優" width="300" height="379">
+                <div class="staff-card__message">
+                  <p class="staff-card__message-line1">「あなたが担当で良かった」</p>
+                  <p class="staff-card__message-line2">この一言が、最高のやりがい</p>
+                </div>
+              </div>
+              <!-- 本文 -->
+              <div class="staff-card__body">
+                <div class="staff-card__meta">
+                  <p class="staff-card__job">コンサルタント</p>
+                  <p class="staff-card__year">2011年入社</p>
+                </div>
+                <h3 class="staff-card__name">西村 優</h3>
+              </div>
+            </div>
+            <!-- 4枚目 -->
+            <div class="swiper-slide top-member__slide staff-card">
+              <!-- 写真 -->
+              <div class="staff-card__image">
+                <img src="./assets/images/common/syain01-1.jpg"  alt="コンサルタント 西村優" width="300" height="379">
+                <div class="staff-card__message">
+                  <p class="staff-card__message-line1">「あなたが担当で良かった」</p>
+                  <p class="staff-card__message-line2">この一言が、最高のやりがい</p>
+                </div>
+              </div>
+              <!-- 本文 -->
+              <div class="staff-card__body">
+                <div class="staff-card__meta">
+                  <p class="staff-card__job">コンサルタント</p>
+                  <p class="staff-card__year">2011年入社</p>
+                </div>
+                <h3 class="staff-card__name">西村 優</h3>
+              </div>
+            </div>
+            <!-- 5枚目 -->
+            <div class="swiper-slide top-member__slide staff-card">
+              <!-- 写真 -->
+              <div class="staff-card__image">
+                <img src="./assets/images/common/syain01-1.jpg"  alt="コンサルタント 西村優" width="300" height="379">
+                <div class="staff-card__message">
+                  <p class="staff-card__message-line1">「あなたが担当で良かった」</p>
+                  <p class="staff-card__message-line2">この一言が、最高のやりがい</p>
+                </div>
+              </div>
+              <!-- 本文 -->
+              <div class="staff-card__body">
+                <div class="staff-card__meta">
+                  <p class="staff-card__job">コンサルタント</p>
+                  <p class="staff-card__year">2011年入社</p>
+                </div>
+                <h3 class="staff-card__name">西村 優</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- VIEW MORE ボタンとナビをまとめる -->
+        <div class="top-member__button-wrapper">
+          <!-- VIEW MORE ボタン -->
+          <a href="staff.html" class="top-member__button button">VIEW MORE</a>
+          <!-- Swiper ナビゲーション -->
+          <div class="top-member__navigation swiper-navigation">
+            <!-- 前へ -->
+            <a href="#" class="circle-button circle-button--white top-member__prev" aria-label="前へ"></a>
+            <!-- 次へ -->
+            <a href="#" class="circle-button circle-button--white top-member__next" aria-label="次へ"></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- トップページBENEFITS -->
+    <section class="top-benefits js-fade-in fade-in">
+      <div class="top-benefits__inner inner">
+        <!-- セクションタイトル -->
+        <div class="top-benefits__section-title-wrapper">
+          <h2 class="top-benefits__section-title section-title">
+            BENEFITS
+            <span class="section-title--jp">
+              <span class="section-title--jp-first">制度・環境</span>を知る
+            </span>
+          </h2>
+        </div>
+        <div class="top-benefits__description">
+          <p>当社では働く従業員とそのご家族が健やかに過ごせるよう、多様な研修、福利厚生を提供しています。</p>
+        </div>
+        <!-- benefitsカード2枚 -->
+        <ul class="top-benefits__items benefits-cards">
+          <li class="top-benefits__item">
+            <!-- benefits-card -->
+            <a href="career.html" class="benefits-card" aria-label="研修制度とキャリアパスの詳細を見る">
+              <div class="benefits-card__heading">
+                <div class="benefits-card__contents-wrapper">
+                  <h3 class="benefits-card__titile benefits-card__title--en">
+                    Training And Career
+                  </h3>
+                  <figure class="benefits-card__image">
+                    <img src="./assets/images/top/benefits-card-01.svg" alt="Training And Career" width="327" height="277">
+                  </figure>
+                  <!-- 円形ボタン（黒） -->
+                  <span class="benefits-card__circle-button circle-button circle-button--black"></span>
+                </div>
+                <h3 class="benefits-card__title benefits-card__title--ja">
+                  研修制度とキャリアパス
+                </h3>
+              </div>
+              <div class="benefits-card__body">
+                <p>
+                  個々の目標に合わせたキャリアパスを支える、豊富な研修メニューで、あなた自身の成長を強力にサポートします。
+                </p>
+              </div>
+            </a> 
+          </li>
+          <li class="top-benefits__item">
+            <!-- benefits-card -->
+            <a href="benefits.html" class="benefits-card" aria-label="研修制度とキャリアパスの詳細を見る">
+              <div class="benefits-card__heading">
+                <div class="benefits-card__contents-wrapper">
+                  <h3 class="benefits-card__titile benefits-card__title--en">
+                    Employee Benefits
+                  </h3>
+                  <figure class="benefits-card__image">
+                    <img src="./assets/images/top/benefits-card-02.svg" alt="Employee Benefits" width="327" height="277">
+                  </figure>
+                  <!-- 円形ボタン（黒） -->
+                  <span class="benefits-card__circle-button circle-button circle-button--black"></span>
+                </div>
+                <h3 class="benefits-card__title benefits-card__title--ja">
+                  福利厚生
+                </h3>
+              </div>
+              <div class="benefits-card__body">
+                <p>
+                  TETOTEの福利厚生制度は、従業員の健康と幸福を重視し、働きやすい環境を提供することを目的としています。
+                </p>
+              </div>
+            </a> 
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!-- トップBLOG -->
+    <section class="top-blog js-fade-in fade-in">
+      <div class="top-blog__inner inner">
+        <!-- セクションタイトルとボタン -->
+        <div class="top-blog__section-title-wrapper">
+          <!-- セクションタイトル -->
+          <h2 class="top-blog__section-title section-title">
+            BLOG
+            <span class="section-title--jp">
+              採用ブログ
+            </span>
+          </h2>
+          <!-- ボタン群 PCだけ表示 -->
+          <div class="top-blog__button-wrapper top-blog__button-wrapper--pc">
+            <a href="blog.html" class="circle-button circle-button--white" aria-label="次へ"></a>
+            <a href="blog.html" class="top-blog__view-more">VIEW MORE</a>
+          </div>
+        </div>
+        <div class="top-blog__contents-wrapper">
+          <div class="top-blog__description">
+            <p>採用情報やイベント情報、社員の紹介など、<br>
+              日々の現場の様子をご紹介します。</p>
+          </div>
+          <!-- blog-cards ブログカード群 -->
+          <ul class="top-blog__items blog-cards">
+            <li class="top-blog__item">
+              <!-- blog-card -->
+              <article class="blog-card">
+                <figure class="blog-card__image">
+                  <img src="./assets/images/common/blog-card-01.jpg" alt="新入社員向けに、入社前研修を行いました。" width="300" height="200">
+                </figure>
+                <div class="blog-card__body">
+                  <div class="blog-card__category">
+                    <img src="./assets/images/common/icon-note.png" alt="" class="blog-card__icon" width="121" height="121" >
+                    <span>社内研修</span>
+                  </div>
+                  <!-- タイトルだけリンク -->
+                  <h3 class="blog-card__title">
+                    <a href="blog-details.html">新入社員向けに、入社前研修を行いました。</a>
+                  </h3>
+                  <time class="blog-card__date" datetime="2025-03-25">2025.03.25</time>
+                </div>
+              </article>
+            </li>
+            <li class="top-blog__item">
+              <!-- blog-card -->
+              <article class="blog-card">
+                <figure class="blog-card__image">
+                  <img src="./assets/images/common/blog-card-01.jpg" alt="新入社員向けに、入社前研修を行いました。" width="300" height="200">
+                </figure>
+                <div class="blog-card__body">
+                  <div class="blog-card__category">
+                    <img src="./assets/images/common/icon-note.png" alt="" class="blog-card__icon" width="121" height="121" >
+                    <span>社内研修</span>
+                  </div>
+                  <!-- タイトルだけリンク -->
+                  <h3 class="blog-card__title">
+                    <a href="blog-details.html">新入社員向けに、入社前研修を行いました。</a>
+                  </h3>
+                  <time class="blog-card__date" datetime="2025-03-25">2025.03.25</time>
+                </div>
+              </article>
+            </li>
+            <li class="top-blog__item">
+              <!-- blog-card -->
+              <article class="blog-card">
+                <figure class="blog-card__image">
+                  <img src="./assets/images/common/blog-card-01.jpg" alt="新入社員向けに、入社前研修を行いました。" width="300" height="200">
+                </figure>
+                <div class="blog-card__body">
+                  <div class="blog-card__category">
+                    <img src="./assets/images/common/icon-note.png" alt="" class="blog-card__icon" width="121" height="121" >
+                    <span>社内研修</span>
+                  </div>
+                  <!-- タイトルだけリンク -->
+                  <h3 class="blog-card__title">
+                    <a href="blog-details.html">新入社員向けに、入社前研修を行いました。</a>
+                  </h3>
+                  <time class="blog-card__date" datetime="2025-03-25">2025.03.25</time>
+                </div>
+              </article>
+            </li>
+            <li class="top-blog__item">
+              <!-- blog-card -->
+              <article class="blog-card">
+                <figure class="blog-card__image">
+                  <img src="./assets/images/common/blog-card-01.jpg" alt="新入社員向けに、入社前研修を行いました。" width="300" height="200">
+                </figure>
+                <div class="blog-card__body">
+                  <div class="blog-card__category">
+                    <img src="./assets/images/common/icon-note.png" alt="" class="blog-card__icon" width="121" height="121" >
+                    <span>社内研修</span>
+                  </div>
+                  <!-- タイトルだけリンク -->
+                  <h3 class="blog-card__title">
+                    <a href="blog-details.html">新入社員向けに、入社前研修を行いました。</a>
+                  </h3>
+                  <time class="blog-card__date" datetime="2025-03-25">2025.03.25</time>
+                </div>
+              </article>
+            </li>
+          </ul>
+          <!-- ボタン群 SPだけ表示 -->
+          <div class="top-blog__button-wrapper top-blog__button-wrapper--sp">
+            <a href="blog.html" class="circle-button circle-button--white" aria-label="次へ"></a>
+            <a href="blog.html" class="top-blog__view-more">VIEW MORE</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- トップ RECRUITMENT -->
+    <section class="top-recruitment js-fade-in fade-in">
+      <div class="top-recruitment__inner">
+        <!-- セクションタイトル -->
+        <h2 class="top-recruitment__section-title section-title">
+          RECRUITMENT
+          <span class="section-title--jp">
+            採用情報
+          </span>
+        </h2>
+        <div class="top-recruitment__description">
+          <p>募集要項（職種、業務内容、応募条件、選考フロー）とよくある質問・会社概要などをまとめています。</p>
+        </div>
+        <!-- リクルート関連リンク -->
+        <ul class="top-recruitment__items recruitment-links">
+          <li class="top-recruitment__item">
+            <a href="details.html" class="recruitment-link">
+              募集要項
+            </a>
+          </li>
+          <li class="top-recruitment__item">
+            <a href="faq.html" class="recruitment-link">
+              よくある質問
+            </a>
+          </li>
+          <li class="top-recruitment__item">
+            <a href="about.html" class="recruitment-link">
+              会社概要
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!-- 全ページ共通CTA -->
+    <section class="cta top-cta">
+      <div class="cta__inner">
+        <picture class="cta__image">
+          <source media="(min-width: 768px)" srcset="./assets/images/common/cta-pc.jpg">
+          <img src="./assets/images/common/cta-sp.jpg" alt="ビルを上ビジネスマンたち" width="375" height="250">
+        </picture>
+        <!-- entry-box -->
+        <div class="cta__box entry-box">
+          <p>
+            わたしたちと一緒に働く仲間を募集中です。<br>
+            少数精鋭のチームで、<br>
+            あなたも会社も一緒に成長していきましょう。
+          </p>
+          <a href="entry.html" class="entry-box__button button button--entry cta__button">ENTRY</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer id="footer" class="footer top-footer">
+    <div class="footer__inner">
+      <!-- contents-wrapper *PC時の背景色エリア -->
+      <div class="footer__contents-wrapper">
+        <!-- ナビとSNS -->
+        <div class="footer__nav-wrapper">
+          <!-- footer-nav -->
+          <nav class="footer__nav footer-nav">
+            <ul class="footer-nav__items">
+              <li class="footer-nav__item"><a href="index.html">ホーム</a></li>
+              <li class="footer-nav__item"><a href="about.html">TETOTEについて</a></li>
+              <li class="footer-nav__item"><a href="staff.html">人を知る</a></li>
+              <li class="footer-nav__item"><a href="career.html">研修制度とキャリアパス</a></li>
+              <li class="footer-nav__item"><a href="benefits.html">福利厚生</a></li>
+              <li class="footer-nav__item"><a href="blog.html">採用ブログ</a></li>
+              <li class="footer-nav__item"><a href="details.html">募集要項</a></li>
+              <li class="footer-nav__item"><a href="faq.html">よくある質問</a></li>
+              <li class="footer-nav__item"><a href="about.html">会社概要</a></li>
+            </ul>
+          </nav>
+          <!-- footer__sns -->
+          <ul class="footer__sns footer-sns__items">
+            <li class="footer-sns__item">
+              <a href="#" target="_blank">
+                <img src="./assets/images/common/icon-facebook.png" alt="Facebook" class="footer-sns__icon" width="24" height="24" loading="lazy">
+              </a>
+            </li>
+            <li class="footer-sns__item">
+              <a href="#" target="_blank">
+                <img src="./assets/images/common/icon-twitter.png" alt="Twitter" class="footer-sns__icon" width="24" height="24" loading="lazy">
+              </a>
+            </li>
+            <li class="footer-sns__item">
+              <a href="#" target="_blank">
+                <img src="./assets/images/common/icon-youtube.png" alt="YouTube" class="footer-sns__icon" width="24" height="24" loading="lazy">
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- ロゴとcopyright -->
+        <div class="footer__logo-wrapper">
+          <!-- footer ロゴ -->
+          <div class="footer__logo footer-logo">
+            <a href="index.html">
+              <img src="./assets/images/common/footer-logo.png" alt="TETOTEロゴ" width="250" height="61">
+            </a>
+          </div>
+          <!-- footer コピーライト -->
+          <div class="footer__copyright copyright">
+            <p>&copy;2024 TETOTE All Right Reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+@use "global" as *;
+
+.page-benefits {
+
+}
+
+.page-benefits__inner {
+  padding-top: rem(66);
+  @include mq(md) {
+    padding-top: rem(140);
+  }
+}
+
+.page-benefits__users-voice {
+  margin-top: rem(70);
+  @include mq(md) {
+    margin-top: rem(126);
+  }
+}
+
+.page-benefits__cta.cta {
+  margin-top: rem(70);
+  @include mq(md) {
+    margin-top: rem(139);
+  }
+}

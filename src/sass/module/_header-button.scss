@@ -1,0 +1,8 @@
+@use "global" as *;
+
+.header-buttons ul {
+  @include mq(md) {
+    display: flex;
+    gap: rem(22);
+  }
+}

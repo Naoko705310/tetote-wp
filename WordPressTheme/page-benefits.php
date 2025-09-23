@@ -1,7 +1,7 @@
+<!-- 福利厚生ページ -->
 <?php get_header(); ?>
-
-<main id="main" class="site-main">
-  <!-- 福利厚生ページのコンテンツ -->
+<main>
+  <h1><?php the_title(); ?></h1>
+  <?php the_content(); ?>
 </main>
-
 <?php get_footer(); ?>

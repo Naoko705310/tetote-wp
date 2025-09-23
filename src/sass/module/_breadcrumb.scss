@@ -1,0 +1,18 @@
+@use "global" as *;
+
+.breadcrumb {
+  background-color: #f0f0f0;
+  font-family: $base-font-family;
+  font-size: rem(14);
+  color: $black;
+  font-weight: $normal;
+  line-height: 1;
+  padding: rem(20) rem(24);
+}
+
+.breadcrumb__inner {
+  @include mq(md) {
+    max-width: rem(986);
+    margin: 0 auto;
+  }
+}

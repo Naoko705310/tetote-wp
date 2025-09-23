@@ -1,0 +1,80 @@
+@use "global" as *;
+
+.ceo-message {
+
+}
+
+// 代表メッセージ
+.ceo-message__title {
+  font-family: $base-font-family;
+  font-size: rem(20);
+  color: $black;
+  font-weight: $bold;
+  line-height: 1;
+  text-align: center;
+  @include mq(md) {
+    font-size: rem(32);
+  }
+}
+
+// 画像とbody横並び
+.ceo-message__contents {
+  margin-top: rem(40);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: rem(20);
+  @include mq(md) {
+    grid-template-columns: rem(484) 1fr;
+    gap: rem(17);
+    margin-top: rem(109);
+    padding: 0 rem(22);
+  }
+}
+
+// 社長の写真
+.ceo-message__image {
+  aspect-ratio: 484/629;
+}
+
+.ceo-message__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+// あなたがやりたいこと
+.ceo-message__catch {
+  font-family: $base-font-family;
+  font-size: rem(20);
+  color: $black;
+  font-weight: $bold;
+  line-height: 1.5;
+  margin-top: rem(26);
+  @include mq(md) {
+    font-size: rem(32);
+    margin-left: rem(-80);//484-421=63+17=80
+  }
+}
+
+.ceo-message__text {
+  font-family: $base-font-family;
+  font-size: rem(16);
+  color: $black;
+  font-weight: $normal;
+  line-height: 1.5;
+  margin-top: rem(31);
+  @include mq(md) {
+    line-height: 2;
+  }
+}
+
+.ceo-message__sign {
+  width: rem(130);
+  aspect-ratio: 130/25;
+  margin-top: rem(21);
+  @include mq(md) {
+    width: rem(185);
+    aspect-ratio: 185/35;
+  }
+}
+

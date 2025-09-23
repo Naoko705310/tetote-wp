@@ -1,0 +1,51 @@
+@use "global" as *;
+
+// 募集カテゴリータグのul
+.category-tag__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: rem(20);
+  @include mq(md) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: rem(49);
+  }
+}
+
+.category-tag__link {
+  display: block;
+  font-family: $base-font-family;
+  font-size: rem(16);
+  color: $black;
+  font-weight: $bold;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: $color-accent-sub;
+  border: 1px solid $black;
+  border-radius: rem(40);
+  padding: rem(18) 0;
+  text-align: center;
+  transition: all 0.3s ease;
+  @include mq(md) {
+    font-size: rem(20);
+  }
+}
+
+.category-tag__link:hover {
+  background-color: $color-accent;
+  color: $white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.category-tag__text {
+  position: relative;
+}
+
+.category-tag__text::after {
+  content: "↓";
+  position: absolute;
+  top: 50%;
+  right: rem(-30);
+  transform: translateY(-50%);
+}

@@ -1,0 +1,83 @@
+@use "global" as *;
+
+// headerの分下に下げる
+// 背景はCSSで指定（WordPress化時にアイキャッチに差し替え予定） 
+.page-fv {
+  margin-top: rem(61);
+  background-color: lightgray;
+  background-image: url('../images/about/about-fv-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  aspect-ratio: 1440 / 339; // ← 比率で指定
+  @include mq(md) {
+    margin-top: rem(118);
+  }
+}
+
+.page-fv__inner.inner {
+  @include mq(md) {
+    max-width: rem(980 + 44);//コンテンツが980でpaddingが22*2
+    padding: 0 rem(22);
+  }
+}
+
+.page-fv__contents {
+  padding-top: rem(75);
+  padding-bottom: rem(98);
+  @include mq(md) {
+    padding-top: rem(75);
+    padding-bottom: rem(98);
+  }
+}
+
+// タイトル＋サブタイトル＋desc共通スタイル
+.page-fv__text {
+  display: inline-block; // ← 背景がテキスト幅にフィット
+  background-color: $white; 
+}
+
+// タイトル＋サブタイトル＋descを縦並び
+.page-fv__texts {
+  display: flex;
+  flex-direction: column;
+  gap: rem(18);
+  align-items: flex-start; // ← 子要素の幅を中身に合わせる
+}
+
+.page-fv__title-en {
+  font-family: $second-font-family;
+  font-size: rem(32);
+  color: $black;
+  font-weight: $normal;
+  line-height: 1;
+  padding: rem(3) rem(10);
+  @include mq(md) {
+    font-size: rem(64);
+  }
+}
+
+.page-fv__title-jp {
+  font-family: $base-font-family;
+  font-size: rem(18);
+  color: $black;
+  font-weight: $bold;
+  line-height: 1;
+  padding: rem(3) rem(10);
+  @include mq(md) {
+    font-size: rem(24);
+  }
+}
+
+.page-fv__description {
+  font-family: $base-font-family;
+  font-size: rem(16);
+  color: $color-accent;
+  font-weight: $bold;
+  line-height: 1;
+  padding: rem(7) rem(10);
+}
+
+.page-fv__breadcrumb {
+
+}

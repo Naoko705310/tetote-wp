@@ -1,0 +1,61 @@
+@use "global" as *;
+
+.top-recruitment {
+  padding-top: rem(66);
+  padding-bottom: rem(88);
+  background-color: $color-accent-sub;
+  @include mq(md) {
+    padding-top: rem(125);
+    padding-bottom: rem(139);
+  }
+}
+
+// section-titleが見切れるように
+.top-recruitment__inner {
+  padding: 0 rem(17);
+  overflow: hidden;
+  @include mq(md) {
+    max-width: rem(1024);
+    margin: 0 auto;
+    padding: 0 rem(34);
+  }
+}
+
+.inner {
+
+}
+
+.top-recruitment__section-title.section-title {
+@include mq(md) {
+  display: block;
+  text-align: center;
+}
+
+}
+
+.section-title--jp {
+
+}
+
+.top-recruitment__description {
+  margin-top: rem(19);
+  @include mq(md) {
+    margin-top: rem(10);
+    text-align: center;
+  }
+}
+
+.top-recruitment__description p {
+  font-family: $base-font-family;
+  font-size: rem(16);
+  color: $black;
+  font-weight: $normal;
+  line-height: 1.5;
+}
+
+.top-recruitment__items {
+  margin-top: rem(28);
+  @include mq(md) {
+    margin-top: rem(64);
+  }
+}

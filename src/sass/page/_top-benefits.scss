@@ -1,0 +1,41 @@
+@use "global" as *;
+
+.top-benefits {
+  margin-top: rem(71);
+  @include mq(md) {
+    margin-top: rem(108);
+  }
+}
+
+// PCの時はセンターに（wrapper追加）
+.top-benefits__section-title-wrapper {
+  @include mq(md) {
+    text-align: center;
+  }
+}
+
+.top-benefits__description {
+  margin-top: rem(19);
+  @include mq(md) {
+    margin-top: rem(10);
+    text-align: center;
+  }
+}
+
+.top-benefits__description p {
+  font-family: $base-font-family;
+  font-size: rem(16);
+  color: $black;
+  font-weight: $normal;
+  line-height: 1.5;
+  @include mq(md) {
+    line-height: 1;
+  }
+}
+
+.top-benefits__items {
+  margin-top: rem(51);
+  @include mq(md) {
+    margin-top: rem(114);
+  }
+}

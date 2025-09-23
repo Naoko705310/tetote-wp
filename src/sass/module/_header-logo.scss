@@ -1,0 +1,97 @@
+@use "global" as *;
+
+// .header-logo {
+//   width: rem(154);
+//   height: rem(38);
+//   position: relative;
+//   z-index: 9999;
+//   @include mq(md) {
+//     width: rem(250);
+//     height: rem(61);
+//   }
+// }
+
+// .header-logo img {
+//   width: 100%;
+//   height: 100%;
+//   object-fit: contain;
+//   vertical-align: baseline;
+// }
+
+@use "global" as *;
+
+.header-logo {
+  width: rem(154);
+  height: rem(38);
+  position: relative;
+  z-index: 9999;
+  @include mq(md) {
+    width: rem(250);
+    height: rem(61);
+  }
+}
+
+.header-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  vertical-align: baseline;
+}
+
+/* ========================================
+   ヘッダーロゴの表示制御
+   ======================================== */
+
+/* ロゴ画像の基本スタイル */
+.header-logo__img {
+  transition: opacity 0.3s ease;
+}
+
+/* 通常時は白いロゴを表示 */
+.header-logo__img--white {
+  display: block;
+}
+
+/* 通常時は黒いロゴを非表示 */
+.header-logo__img--black {
+  display: none;
+}
+
+/* メニューが開いている時は黒いロゴを表示 */
+.js-header.is-active .header-logo__img--white {
+  display: none;
+}
+
+.js-header.is-active .header-logo__img--black {
+  display: block;
+}
+
+/* スクロール時は黒いロゴを表示 */
+.js-header.is-scrolled .header-logo__img--white {
+  display: none;
+}
+
+.js-header.is-scrolled .header-logo__img--black {
+  display: block;
+}
+
+/* メニューが開いている時かつスクロール時は黒いロゴを表示 */
+.js-header.is-active.is-scrolled .header-logo__img--white {
+  display: none;
+}
+
+.js-header.is-active.is-scrolled .header-logo__img--black {
+  display: block;
+}
+
+/* ========================================
+   レスポンシブ対応
+   ======================================== */
+
+/* PC時のロゴサイズ調整 */
+@include mq(md) {
+  .header-logo__img {
+    width: rem(250);
+    height: rem(61);
+  }
+}

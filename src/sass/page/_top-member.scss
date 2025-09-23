@@ -1,0 +1,133 @@
+@use "global" as *;
+
+.top-member {
+  margin-top: rem(71);
+  @include mq(md) {
+    margin-top: rem(121);
+  }
+}
+
+.top-member__inner {
+  position: relative;
+  z-index: 0;
+  // overflow: hidden; // はみ出し防止
+}
+
+.top-member__section-title {
+  @include mq(md) {
+    margin-left: rem(-132);
+    // margin-left: rem(76 - 24);
+  }
+}
+
+.top-member__description {
+  margin-top: rem(19);
+  @include mq(md) {
+    margin-top: rem(10);
+    padding-left: rem(34);
+  }
+}
+
+.top-member__description p {
+  font-family: $base-font-family;
+  font-size: rem(16);
+  color: $black;
+  font-weight: $normal;
+  line-height: 1.5;
+}
+
+// Swiper 本体
+.swiper.top-member__swiper {
+  width: 100%;
+  position: relative; // blog は absolute だけど、member は通常フローに載せてOK
+  z-index: 1;
+  margin-top: rem(50);
+  @include mq(md) {
+    // 左側はinnerのpaddingを維持
+    padding-left: rem(34);
+    // 右側は画面端まで伸ばす
+    width: calc(100% + 50vw - 50%);
+    margin-right: calc(50% - 50vw);
+    margin-top: rem(52);
+  }
+}
+
+// スライド
+// 画像とテキストボックスをずらしたデザインなので、
+//スライドのaspect-ratioは指定せず、高さをautoにした
+.swiper-slide.top-member__slide {
+  width: rem(246);
+  height: auto;
+  @include mq(md) {
+    width: rem(300);
+  }
+}
+
+// swiper-wrapper配下の奇数・偶数スライドをずらす
+.top-member__swiper .swiper-slide:nth-child(odd) {
+  // margin-bottom: rem(27);
+}
+
+.top-member__swiper .swiper-slide:nth-child(even) {
+  margin-top: rem(25);
+  @include mq(md) {
+    margin-top: rem(36);
+  }
+}
+
+// ナビゲーション
+.top-member__button-wrapper {
+  margin-top: rem(64);
+  position: relative;
+  display: flex;
+  justify-content: center; // VIEW MORE を中央に
+  align-items: center;
+  @include mq(md) {
+    margin-top: rem(80);
+  }
+}
+
+//top-memberのボタン（サイズ違い）
+.button.top-member__button {
+  width: rem(277);
+  font-family: $base-font-family;
+  font-size: rem(16);
+  color: $black;
+  font-weight: $normal;
+  line-height: 1;
+  padding: rem(23) 0;
+  @include mq(md) {
+    width: rem(355);
+    padding: rem(30) 0;
+  }
+}
+
+// 矢印のサイズ
+.button.top-member__button::after {
+  width: rem(16);
+  height: rem(16);
+  @include mq(md) {
+    width: rem(20);
+    height: rem(20);
+  }
+}
+
+.top-member__navigation {
+  display: none;
+  @include mq(md) {
+    position: absolute;
+    right: 0; // 右端に固定
+    display: flex;
+    gap: rem(16); // ボタン同士の間隔
+    margin-right: rem(19);
+  }
+}
+
+.top-member__prev,
+.top-member__next {
+  // circle-button のスタイルは共通クラスに任せる
+}
+
+.top-member__prev {
+  transform: rotate(180deg); /* 左向きに反転 */
+}

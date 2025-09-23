@@ -1,0 +1,169 @@
+@use "global" as *;
+
+.header-nav {
+  position: fixed;     // 画面全体を覆う
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  overflow-y: auto;     // ナビ内でスクロール可能
+  // height: 100%;
+  // min-height: 100vh; // ページの高さが狭いときも背景で覆う
+  background-color: $color-accent-sub;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.header-nav__inner {
+  padding: rem(91) rem(12);
+  @include mq(md) {
+    padding: rem(208) rem(131);
+  }
+}
+
+// ロゴとナビとボタン
+.header-nav__contents-wrapper {
+  width: 100%;
+  max-width: rem(1024);     // ← 最大幅を決める
+  box-sizing: border-box;
+  @include mq(md) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: rem(63);
+    margin-left: auto;
+  }
+}
+
+.header-nav__logo-wrapper {
+  max-width: 100%;
+  @include mq(md) {
+    padding-top: rem(173);
+  }
+}
+
+.header-nav__logo {
+  display: none;
+  @include mq(md) {
+    display: block;
+    width: rem(250);
+    height: rem(61);
+    flex-shrink: 0; // ← これでflexの中でも縮まない
+  }
+}
+
+.header-nav__logo a img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+// ナビとボタン
+.header-nav__nav-wrapper {
+  max-width: 100%;
+  @include mq(md) {
+    border-left: 1px solid $color-accent;
+    padding-left: rem(63);
+  }
+}
+
+.header-nav__items {
+  @include mq(md) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto); // 3行を作る
+    margin-top: 0;
+    gap: 0 rem(30);
+  }
+}
+
+// itemsのgridの並びを指定（左に1~3, 右に4~6)
+@include mq(md) {
+  // 左列
+  .header-nav__item:nth-child(1) { grid-column: 1; grid-row: 1; }
+  .header-nav__item:nth-child(2) { grid-column: 1; grid-row: 2; }
+  .header-nav__item:nth-child(3) { grid-column: 1; grid-row: 3; }
+
+  // 右列
+  .header-nav__item:nth-child(4) { grid-column: 2; grid-row: 1; }
+  .header-nav__item:nth-child(5) { grid-column: 2; grid-row: 2; }
+  .header-nav__item:nth-child(6) { grid-column: 2; grid-row: 3; }
+}
+
+.header-nav__item {
+  border-bottom: 1px solid $color-accent;
+  padding: rem(10) 0;
+  @include mq(md) {
+    padding: rem(23) 0;
+  }
+}
+
+.header-nav__item:first-child {
+  border-top: 1px solid $color-accent; // 最初の項目に上線を付ける
+}
+
+// PC のときは 4番目にも上線を付ける
+.header-nav__item:nth-child(4) {
+  @include mq(md) {
+    border-top: 1px solid $color-accent;
+  }
+}
+
+// ナビのテキスト英語
+.header-nav__item a {
+  font-family: $second-font-family;
+  font-size: rem(18);
+  color: $black;
+  font-weight: $normal;
+  line-height: 1;
+  @include mq(md) {
+    font-size: rem(32);
+  }
+}
+
+// ナビのテキスト日本語
+.header-nav__item a span {
+  display: block;
+  font-family: $base-font-family;
+  font-size: rem(12);
+  color: $black;
+  font-weight: $bold;
+  line-height: 1;
+  margin-top: rem(9);
+  @include mq(md) {
+    font-size: rem(16);
+  }
+}
+
+.header-nav__buttons {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: rem(13);
+  margin-top: rem(53);
+  @include mq(md) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: rem(30);
+  }
+}
+
+.header-nav__button .button.button--entry.button--entry-black,
+.header-nav__button .button.button--entry.button--entry-accent {
+  width: rem(248);
+  height: rem(42);
+}
+
+
+.header-nav.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+
+/* ハンバーガーメニュー開閉時のスクロール制御 */
+body.is-fixed {
+  overflow-y: visible;  // スクロールを完全に許可
+}

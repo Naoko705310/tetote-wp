@@ -1,0 +1,86 @@
+@use "global" as *;
+
+
+  //前後記事ナビゲーション
+
+.page-blog-details__page-navigation {
+  background-color: #f0f0f0;
+  padding: rem(24) 0;
+}
+
+// prevとnexを内包するwrapper
+.blog-page-nav__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: rem(20);
+  @include mq(md) {
+    padding: 0 rem(50);
+  }
+}
+
+
+.blog-page-nav__prev,
+.blog-page-nav__next {
+  flex: 1;
+  max-width: calc(50% - rem(20)); // dividerの幅を考慮
+}
+
+.blog-page-nav__next .blog-page-nav__link {
+  justify-content: flex-end; // リンク内の要素を右寄せ
+}
+
+.blog-page-nav__link {
+  display: flex;
+  align-items: center;
+  gap: rem(16);
+  text-decoration: none;
+  color: #333;
+  transition: opacity 0.3s ease;
+}
+
+// ホバーした時に色を変える
+.blog-page-nav__link:hover {
+  color: $color-accent;
+}
+
+.blog-page-nav__link:hover .blog-page-nav__date {
+  color: $color-accent;
+}
+
+.blog-page-nav__icon {
+  display: block;
+  width: rem(24);
+  height: rem(24);
+}
+
+// タイトルと日付
+.blog-page-nav__meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-page-nav__title {
+  font-size: rem(14);
+  font-weight: 500;
+  margin-bottom: rem(4);
+  line-height: 1.4;
+}
+
+.blog-page-nav__date {
+  font-family: $base-font-family;
+  font-size: rem(12);
+  color: $black;
+  font-weight: $normal;
+  line-height: 1;
+  margin-top: rem(6);
+}
+
+// 中央を区切る線
+.blog-page-nav__divider {
+  width: 1px;
+  height: rem(56);
+  background-color: #ddd;
+  flex-shrink: 0; // 縮まないように固定
+}
+

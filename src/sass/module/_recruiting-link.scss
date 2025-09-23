@@ -1,0 +1,46 @@
+@use "global" as *;
+
+.recruitment-link {
+  width: 100%;
+  display: inline-block;
+  background-color: $white;
+  width: 100%;
+  font-family: $base-font-family;
+  font-size: rem(20);
+  color: $black;
+  font-weight: $bold;
+  line-height: 1;
+  position: relative;
+  padding: rem(33) 0;
+  text-align: center;
+  @include mq(md) {
+    font-size: rem(18);
+    padding: rem(50) 0;
+  }
+}
+
+.recruitment-link:after {
+  content: "";
+  display: inline-block;
+  width: rem(20);
+  height: rem(20);
+  background-image: url("../../assets/images/common/arrow-right-black.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  right: rem(20);
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s, background-image 0.3s;
+}
+
+/* hover 時 */
+.recruitment-link:hover {
+  background-color: $black;
+  color: $white;
+}
+
+.recruitment-link:hover:after {
+  background-image: url("../../assets/images/common/arrow-right-white.svg");
+}

@@ -1,0 +1,220 @@
+/* ========================================
+   リセットCSS + アクセシビリティ対応
+   ======================================== */
+
+/* 全要素にボックスサイジングを適用 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* リストのデフォルトパディングを削除 */
+ul,
+ol {
+  padding: 0;
+  list-style: none; /* 必要な場合は個別に list-style を戻す */
+}
+
+/* デフォルトマージンを削除 */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul,
+ol,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* HTMLの基本設定 */
+html {
+  scroll-behavior: smooth; /* スムーススクロール */
+}
+
+/* bodyの基本設定 */
+body {
+  min-height: 100vh; /* 最小高さをビューポートの高さに */
+  text-rendering: optimizeLegibility; /* テキストの描画を最適化 */
+  line-height: 1.5; /* 行間を1.5倍に */
+  font-family: system-ui, sans-serif; /* システムフォントを使用 */
+}
+
+/* クラスを持たないaタグのデフォルトスタイル */
+a:not([class]) {
+  text-decoration-skip-ink: auto; /* 下線を文字の下に避ける */
+}
+
+/* 画像の扱いを簡単にする */
+img {
+  max-width: 100%; /* 最大幅を100%に */
+  display: block; /* ブロック要素にする */
+  height: auto; /* 高さを自動調整 */
+}
+
+/* article要素自体のmarginを削除 */
+article {
+  margin: 0;
+}
+
+/* フォーム要素のフォントを継承 */
+input,
+button,
+textarea,
+select {
+  font: inherit; /* 親要素のフォントを継承 */
+}
+
+/* alt属性がない画像をぼかす */
+img:not([alt]) {
+  filter: blur(10px);
+}
+
+/* ========================================
+   フォームリセット + アクセシビリティ対応
+   ======================================== */
+input,
+button,
+select,
+textarea {
+  -webkit-appearance: none; /* Webkit系ブラウザのデフォルトスタイルを削除 */
+  -moz-appearance: none; /* Firefoxのデフォルトスタイルを削除 */
+  appearance: none; /* 標準のデフォルトスタイルを削除 */
+  background: transparent; /* 背景を透明に */
+  border: none; /* ボーダーを削除 */
+  border-radius: 0; /* 角丸を削除 */
+  font: inherit; /* フォントを継承 */
+  padding: 0.5em; /* 最小限のクリック領域を確保 */
+  margin: 0; /* マージンを削除 */
+}
+
+/* フォーカスリングは必ず残す（アクセシビリティ対応） */
+:focus-visible {
+  outline: 2px solid #3498db; /* キーボード操作用の青枠 */
+  outline-offset: 2px;
+}
+
+/* テキストエリアのリサイズ方向を縦のみに制限 */
+textarea {
+  resize: vertical;
+}
+
+/* チェックボックスとラジオボタンは視覚的に隠し、label側でデザインする
+   - スクリーンリーダーで読み上げ可能
+   - フォーカスも個別に当たる
+   - 今後のカスタムUI（擬似要素で○や✓を描く）に流用可能 */
+   input[type="checkbox"],
+   input[type="radio"] {
+     position: absolute;
+     opacity: 0;
+     pointer-events: none; /* input自体はクリック不可にしてlabelに委譲 */
+   }
+   
+
+/* クリック可能な要素にカーソルをポインターに */
+input[type="submit"],
+input[type="button"],
+label,
+button,
+select {
+  cursor: pointer;
+}
+
+/* 無効状態をわかりやすく */
+input[disabled],
+button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* 代替UI（label側）にフォーカスリングを表示 */
+input[type="radio"]:focus + label,
+input[type="checkbox"]:focus + label {
+  outline: 2px solid #3498db;
+  outline-offset: 2px;
+}
+
+/* IEのselectの矢印を非表示 */
+select::-ms-expand {
+  display: none;
+}
+
+/* ========================================
+   リンクとボタンのスタイル
+   ======================================== */
+
+/* リンクのスタイル */
+a {
+  text-decoration: none; /* 下線を削除 */
+  color: inherit; /* 色を継承 */
+  transition: opacity 0.3s; /* ホバー時の透明度変化 */
+}
+
+/* ボタンのパディングを削除 */
+button {
+  padding: 0;
+}
+
+/* ========================================
+   フォーム関連のリセット
+   ======================================== */
+
+/* fieldsetのスタイルをリセット */
+fieldset {
+  border: 0; /* 枠線を削除 */
+  margin: 0; /* マージンを削除 */
+  padding: 0; /* パディングを削除 */
+  min-width: 0; /* IEのバグ回避用 */
+}
+
+/* legendのスタイルをリセット */
+legend {
+  display: block; /* デフォルトの位置をリセット */
+  width: 100%; /* 幅を100%に */
+  margin: 0; /* マージンを削除 */
+  padding: 0; /* パディングを削除 */
+}
+
+/* ========================================
+   アクセシビリティ対応（追加）
+   ======================================== */
+
+/* スキップリンク（キーボードユーザー用） */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 1000;
+}
+.skip-link:focus {
+  top: 6px;
+}
+
+/* 必須フィールドをラベルにマーク表示 */
+label.required::after {
+  content: " *";
+  color: #e74c3c;
+}
+
+/* エラーメッセージのスタイル */
+.error-message {
+  color: #e74c3c;
+  font-size: 0.9em;
+}
+
+/* エラー状態は入力中にだけ強調 */
+input:invalid:focus,
+textarea:invalid:focus,
+select:invalid:focus {
+  border: 2px solid #e74c3c;
+}

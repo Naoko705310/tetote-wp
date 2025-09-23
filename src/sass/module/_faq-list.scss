@@ -1,0 +1,100 @@
+@use "global" as *;
+
+// QとAを内包するアイテム
+.faq-list__item {
+  border-bottom: 1px solid $color-accent;
+  padding: rem(36) 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.faq-list__item:hover {
+  background-color: $color-accent-sub;
+}
+
+.faq-list__item:first-child {
+  border-top: 1px solid $color-accent;
+}
+
+// buttonタグに対して
+.faq-list__question {
+  width: 100%;
+  font-family: $base-font-family;
+  font-size: rem(16);
+  color: $black;
+  font-weight: $normal;
+  line-height: 1;
+  text-align: left;
+  position: relative;
+  padding-left: rem(36);
+}
+
+// Qマーク
+.faq-list__question::before {
+  content: "Q";
+  display: inline-block;
+  width: rem(16);
+  height: rem(24);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%); /* 上下中央に配置 */
+  font-family: $second-font-family;
+  font-size: rem(24);
+  color: $color-accent;
+  font-weight: $normal;
+  line-height: 1;
+}
+
+// プラスマイナスアイコン（2本の線）
+.faq-list__icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: rem(16);
+  height: rem(16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.faq-list__icon span {
+  position: absolute;
+  width: rem(16);
+  height: 2px;
+  background-color: $color-accent;
+  transition: transform 0.3s ease;
+}
+
+.faq-list__icon span:first-child {
+  transform: rotate(0deg); /* 横線（固定） */
+}
+
+.faq-list__icon span:last-child {
+  transform: rotate(90deg); /* 縦線（90度回転） */
+}
+
+/* 開いているとき（aria-expanded=trueのとき） */
+.faq-list__question[aria-expanded="true"] .faq-list__icon span:last-child {
+  transform: rotate(0deg); /* 縦線を横線に回転（マイナス状態） */
+}
+
+.faq-list__answer {
+  display: none; //デフォルトで非表示
+  font-family: $base-font-family;
+  font-size: rem(16);
+  color: $black;
+  font-weight: $normal;
+  line-height: 1;
+  text-align: left;
+  margin-top: rem(22);
+  padding-left: rem(36); // Qマークの位置に合わせる
+  padding-right: rem(20); // 右側の余白
+}
+
+/* 開いているとき（aria-expanded=trueのとき） */
+.faq-list__question[aria-expanded="true"] + .faq-list__answer {
+  display: block; // 回答を表示
+}
+

@@ -1,0 +1,34 @@
+@use "global" as *;
+
+
+
+// スタッフインタビューの本文と目次横並び
+.page-staff-details__contents-wrapper {
+  max-width: rem(1024);
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0 rem(16);
+  margin-top: rem(80);
+  padding-bottom: rem(23);
+  @include mq(md) {
+    padding: 0 rem(24) rem(23) rem(24);
+    display: grid;
+    grid-template-columns: 73.335% 1fr; //710/1024→ピクパ調整
+    gap: rem(56);
+    margin-top: rem(101);
+    // stickyを確実に動作させるため
+    align-items: start; // グリッドアイテムを上揃えに
+  }
+}
+
+// スタッフインタビューの目次
+.page-staff-details__sidebar {
+  display: none;
+  @include mq(md) {
+    display: block;
+  }
+}
+
+.page-staff-details__other-members {
+  margin-top: rem(18);
+}
