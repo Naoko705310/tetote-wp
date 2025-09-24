@@ -181,3 +181,39 @@ function my_breadcrumb() {
 }
 
 
+/* --------------------------------------------
+/* // パンくずのラベルを英語に変換
+/* -------------------------------------------- */
+
+add_filter('bcn_breadcrumb_title', function($title, $type, $id){
+    $replace = [
+        'TETOTEについて' => 'ABOUT US',
+        'TOPページ' => 'TOP',
+        'エントリー' => 'ENTRY',
+        'エントリー完了' => 'ENTRY',
+        'よくある質問' => 'FAQ',
+        '募集要項' => 'RECRUIT',
+        '採用ブログ' => 'BLOG',
+        '研修制度とキャリアパス' => 'CAREER',
+        '福利厚生について' => 'BENEFITS',
+        'スタッフ' => 'STAFF',
+    ];
+
+    if(array_key_exists($title, $replace)){
+        return $replace[$title];
+    }
+
+    return $title;
+}, 10, 3);
+
+/* --------------------------------------------
+/* パンくずの先頭（ホームリンク）だけ TOP にする
+/* -------------------------------------------- */
+add_filter('bcn_breadcrumb_title', function($title, $type, $id){
+    // パンくずの "home" タイプを判定
+    if (in_array('home', (array) $type, true)) {
+        return 'TOP'; // 強制的に TOP に置き換え
+    }
+    return $title;
+}, 10, 3);
+
