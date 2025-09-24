@@ -43,37 +43,37 @@ add_action('wp_enqueue_scripts', 'add_custom_scripts');
 /* --------------------------------------------
 /* 管理画面の黒いバーが邪魔なので消す
 /* -------------------------------------------- */
-function remove_admin_bar() {
-    return false;
-}
-add_filter('show_admin_bar', 'remove_admin_bar');
+// function remove_admin_bar() {
+//     return false;
+// }
+// add_filter('show_admin_bar', 'remove_admin_bar');
 
-// 投稿を「ブログ」に変更
-function change_post_menu_label() {
-    global $menu, $submenu;
-    $menu[5][0] = 'ブログ'; // 投稿のメニュー名
-    $submenu['edit.php'][5][0] = 'ブログ一覧'; // 投稿一覧
-    $submenu['edit.php'][10][0] = '新規追加'; // 新規追加
-    $submenu['edit.php'][15][0] = 'カテゴリー'; // カテゴリー
-    $submenu['edit.php'][16][0] = 'タグ'; // タグ
-}
-add_action( 'admin_menu', 'change_post_menu_label' );
+// // 投稿を「ブログ」に変更
+// function change_post_menu_label() {
+//     global $menu, $submenu;
+//     $menu[5][0] = 'ブログ'; // 投稿のメニュー名
+//     $submenu['edit.php'][5][0] = 'ブログ一覧'; // 投稿一覧
+//     $submenu['edit.php'][10][0] = '新規追加'; // 新規追加
+//     $submenu['edit.php'][15][0] = 'カテゴリー'; // カテゴリー
+//     $submenu['edit.php'][16][0] = 'タグ'; // タグ
+// }
+// add_action( 'admin_menu', 'change_post_menu_label' );
 
-function change_post_object_label() {
-    global $wp_post_types;
-    $labels = &$wp_post_types['post']->labels;
-    $labels->name = 'ブログ';
-    $labels->singular_name = 'ブログ';
-    $labels->add_new = '新規追加';
-    $labels->add_new_item = '新規ブログを追加';
-    $labels->edit_item = 'ブログを編集';
-    $labels->new_item = '新規ブログ';
-    $labels->view_item = 'ブログを表示';
-    $labels->search_items = 'ブログを検索';
-    $labels->not_found = 'ブログが見つかりません';
-    $labels->not_found_in_trash = 'ゴミ箱にブログはありません';
-}
-add_action( 'init', 'change_post_object_label' );
+// function change_post_object_label() {
+//     global $wp_post_types;
+//     $labels = &$wp_post_types['post']->labels;
+//     $labels->name = 'ブログ';
+//     $labels->singular_name = 'ブログ';
+//     $labels->add_new = '新規追加';
+//     $labels->add_new_item = '新規ブログを追加';
+//     $labels->edit_item = 'ブログを編集';
+//     $labels->new_item = '新規ブログ';
+//     $labels->view_item = 'ブログを表示';
+//     $labels->search_items = 'ブログを検索';
+//     $labels->not_found = 'ブログが見つかりません';
+//     $labels->not_found_in_trash = 'ゴミ箱にブログはありません';
+// }
+// add_action( 'init', 'change_post_object_label' );
 
 /* --------------------------------------------
 /* ブログ投稿画面に「アイキャッチ画像」を追加
