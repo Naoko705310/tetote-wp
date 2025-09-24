@@ -2,7 +2,9 @@
 <?php get_header(); ?>
 <main>
     <!-- パンくずリスト -->
-    <nav class="page-fv__breadcrumb page-blog-details__breadcrumb breadcrumb" aria-label="パンくずリスト">
+    <?php get_template_part('parts/breadcrumb'); ?>
+
+    <!-- <nav class="page-fv__breadcrumb page-blog-details__breadcrumb breadcrumb" aria-label="パンくずリスト">
       <div class="breadcrumb__inner">
         <a href="./index.html">TOP</a>
         <span class="page-fv__breadcrumb-separator">&gt;</span>
@@ -10,7 +12,7 @@
         <span class="page-fv__breadcrumb-separator">&gt;</span>
         <span class="page-fv__breadcrumb-current">新入社員向けに、入社前研修を行いました。</span>
       </div>
-    </nav>
+    </nav> -->
     <!-- ブログ記事詳細 -->
     <section class="page-blog-details__blog-article blog-article">
       <div class="blog-article__inner inner">

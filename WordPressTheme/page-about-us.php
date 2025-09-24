@@ -15,13 +15,15 @@
     </section>
 
     <!-- パンくずリスト -->
-    <nav class="page-fv__breadcrumb breadcrumb" aria-label="パンくずリスト">
+    <?php get_template_part('parts/breadcrumb'); ?>
+
+    <!-- <nav class="page-fv__breadcrumb breadcrumb" aria-label="パンくずリスト">
       <div class="breadcrumb__inner">
         <a href="./index.html">TOP</a>
         <span class="page-fv__breadcrumb-separator">&gt;</span>
         <span class="page-fv__breadcrumb-current">ABOUT US</span>
       </div>
-    </nav>
+    </nav> -->
     <!-- 私達が大切にしていること -->
     <section class="page-about__our-value our-value">
       <div class="our-value__inner inner">

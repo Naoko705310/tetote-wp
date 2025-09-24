@@ -2,11 +2,13 @@
 <?php get_header(); ?>
 <main>
     <!-- パンくずリスト -->
-    <nav class="page-fv__breadcrumb breadcrumb page-entry-thanks__breadcrumb" aria-label="パンくずリスト">
+    <?php get_template_part('parts/breadcrumb'); ?>
+
+    <!-- <nav class="page-fv__breadcrumb breadcrumb page-entry-thanks__breadcrumb" aria-label="パンくずリスト">
       <a href="./index.html">TOP</a>
       <span class="page-fv__breadcrumb-separator">&gt;</span>
       <span class="page-fv__breadcrumb-current">ENTRY</span>
-    </nav>
+    </nav> -->
     <!-- 送信ありがとうございました -->
     <div class="page-entry-thanks">
       <div class="page-entry-thanks__inner inner">

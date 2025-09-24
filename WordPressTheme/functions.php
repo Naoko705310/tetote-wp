@@ -156,3 +156,28 @@ function duplicate_post_as_draft() {
     }
 }
 add_action( 'admin_action_duplicate_post_as_draft', 'duplicate_post_as_draft' );
+
+/* --------------------------------------------
+/* カスタムパンくずリスト
+/* -------------------------------------------- */
+function my_breadcrumb() {
+    echo '<a href="' . home_url() . '">TOP</a>';
+
+    if (is_page() && !is_front_page()) {
+        echo ' &gt; ';
+        echo get_the_title();
+    } elseif (is_single()) {
+        echo ' &gt; ';
+        $category = get_the_category();
+        if ($category) {
+        echo esc_html($category[0]->name);
+        echo ' &gt; ';
+        }
+        echo get_the_title();
+    } elseif (is_archive()) {
+        echo ' &gt; ';
+        echo post_type_archive_title();
+    }
+}
+
+

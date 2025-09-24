@@ -14,13 +14,15 @@
   </section>
 
   <!-- パンくずリスト -->
-  <nav class="page-fv__breadcrumb breadcrumb" aria-label="パンくずリスト">
+  <?php get_template_part('parts/breadcrumb'); ?>
+
+  <!-- <nav class="page-fv__breadcrumb breadcrumb" aria-label="パンくずリスト">
     <div class="breadcrumb__inner">
       <a href="<?php echo home_url(); ?>">TOP</a>
       <span class="page-fv__breadcrumb-separator">&gt;</span>
       <span class="page-fv__breadcrumb-current">BLOG</span>
     </div>
-  </nav>
+  </nav> -->
 
   <!-- ブログ一覧 -->
   <section class="page-blog">

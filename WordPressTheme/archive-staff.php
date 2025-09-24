@@ -17,6 +17,9 @@
       </div>
     </div>
   </section>
+  <!-- パンくずリスト -->
+  <?php get_template_part('parts/breadcrumb'); ?>
+
 
   <!-- ▼ スタッフ一覧カード（ループで表示される部分） -->
   <section class="page-staff__staff-list staff-list">
