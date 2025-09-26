@@ -20,6 +20,11 @@
   justify-content: center;
   width: rem(24);
   height: rem(24);
+  transition: all 0.3s ease; // スムーズなトランジション
+}
+.footer-sns__item a:hover {
+  transform: scale(1.1); // 10%拡大
+  opacity: 0.7; // 30%透過
 }
 
 .footer-sns__icon {

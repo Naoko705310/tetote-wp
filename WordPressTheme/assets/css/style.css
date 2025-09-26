@@ -2508,7 +2508,13 @@ select:invalid:focus {
 .footer-logo a {
 	display: inline-block;
 	height: 100%;
+	transition: all 0.3s ease;
 	width: 100%;
+}
+
+.footer-logo a:hover {
+	opacity: 0.7;
+	transform: scale(1.1);
 }
 
 .footer-logo img {
@@ -2562,7 +2568,13 @@ select:invalid:focus {
 	display: inline-flex;
 	height: 1.5rem;
 	justify-content: center;
+	transition: all 0.3s ease;
 	width: 1.5rem;
+}
+
+.footer-sns__item a:hover {
+	opacity: 0.7;
+	transform: scale(1.1);
 }
 
 .footer-sns__icon {
