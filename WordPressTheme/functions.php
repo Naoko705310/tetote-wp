@@ -3,7 +3,8 @@
 /* --------------------------------------------
 /* スクリプトとCSSを読み込む
 /* -------------------------------------------- */
-function add_custom_scripts() {
+function add_custom_scripts()
+{
     // ファビコン
     echo '<link rel="icon" href="' . get_theme_file_uri('/assets/images/common/tetote-favicon.ico') . '">';
 
@@ -80,45 +81,47 @@ add_action('wp_enqueue_scripts', 'add_custom_scripts');
 /* -------------------------------------------- */
 
 // アイキャッチ画像（投稿サムネイル）を有効化
-add_theme_support( 'post-thumbnails' );
+add_theme_support('post-thumbnails');
 
 // デフォルトのアイキャッチサイズ（ブログ詳細用）
-set_post_thumbnail_size( 800, 500, true ); // 幅800px, 高さ500px, トリミングあり
+set_post_thumbnail_size(800, 500, true); // 幅800px, 高さ500px, トリミングあり
 
 // ブログカード用のサムネイルサイズを追加
-add_image_size( 'blog-card-thumb', 400, 250, true ); // 幅400px, 高さ250px, トリミングあり
+add_image_size('blog-card-thumb', 400, 250, true); // 幅400px, 高さ250px, トリミングあり
 
 /* --------------------------------------------
 /* 投稿記事を複製する
 /* -------------------------------------------- */
 // 投稿を複製するリンクを投稿一覧に追加
-function add_duplicate_post_link( $actions, $post ) {
-    if ( current_user_can( 'edit_posts' ) ) {
+function add_duplicate_post_link($actions, $post)
+{
+    if (current_user_can('edit_posts')) {
         $actions['duplicate'] = '<a href="' . wp_nonce_url(
-            admin_url( 'admin.php?action=duplicate_post_as_draft&post=' . $post->ID ),
+            admin_url('admin.php?action=duplicate_post_as_draft&post=' . $post->ID),
             basename(__FILE__),
             'duplicate_nonce'
         ) . '" title="この投稿を複製" rel="permalink">複製</a>';
     }
     return $actions;
 }
-add_filter( 'post_row_actions', 'add_duplicate_post_link', 10, 2 );
+add_filter('post_row_actions', 'add_duplicate_post_link', 10, 2);
 
 // 複製処理本体
-function duplicate_post_as_draft() {
+function duplicate_post_as_draft()
+{
     global $wpdb;
 
     // IDが存在しない場合は終了
-    if ( ! ( isset( $_GET['post'] ) || isset( $_POST['post'] ) ) ) {
-        wp_die( '複製する投稿が指定されていません。' );
+    if (! (isset($_GET['post']) || isset($_POST['post']))) {
+        wp_die('複製する投稿が指定されていません。');
     }
 
     // 投稿ID取得
-    $post_id = ( isset( $_GET['post'] ) ? intval( $_GET['post'] ) : intval( $_POST['post'] ) );
-    $post = get_post( $post_id );
+    $post_id = (isset($_GET['post']) ? intval($_GET['post']) : intval($_POST['post']));
+    $post = get_post($post_id);
 
     // 投稿が存在する場合
-    if ( $post ) {
+    if ($post) {
         $new_post = array(
             'post_title'    => $post->post_title . '（複製）',
             'post_content'  => $post->post_content,
@@ -126,41 +129,42 @@ function duplicate_post_as_draft() {
             'post_author'   => get_current_user_id(),
             'post_type'     => $post->post_type,
             'post_excerpt'  => $post->post_excerpt,
-            'post_category' => wp_get_post_categories( $post_id ),
+            'post_category' => wp_get_post_categories($post_id),
         );
 
         // 新しい投稿を挿入
-        $new_post_id = wp_insert_post( $new_post );
+        $new_post_id = wp_insert_post($new_post);
 
         // タクソノミーをコピー
-        $taxonomies = get_object_taxonomies( $post->post_type );
-        foreach ( $taxonomies as $taxonomy ) {
-            $terms = wp_get_object_terms( $post_id, $taxonomy, array( 'fields' => 'slugs' ) );
-            wp_set_object_terms( $new_post_id, $terms, $taxonomy, false );
+        $taxonomies = get_object_taxonomies($post->post_type);
+        foreach ($taxonomies as $taxonomy) {
+            $terms = wp_get_object_terms($post_id, $taxonomy, array('fields' => 'slugs'));
+            wp_set_object_terms($new_post_id, $terms, $taxonomy, false);
         }
 
         // メタ情報をコピー
-        $post_meta = $wpdb->get_results( $wpdb->prepare("SELECT meta_key, meta_value FROM $wpdb->postmeta WHERE post_id=%d", $post_id ) );
-        if ( $post_meta ) {
-            foreach ( $post_meta as $meta ) {
-                if ( $meta->meta_key == '_wp_old_slug' ) continue;
-                add_post_meta( $new_post_id, $meta->meta_key, maybe_unserialize( $meta->meta_value ) );
+        $post_meta = $wpdb->get_results($wpdb->prepare("SELECT meta_key, meta_value FROM $wpdb->postmeta WHERE post_id=%d", $post_id));
+        if ($post_meta) {
+            foreach ($post_meta as $meta) {
+                if ($meta->meta_key == '_wp_old_slug') continue;
+                add_post_meta($new_post_id, $meta->meta_key, maybe_unserialize($meta->meta_value));
             }
         }
 
         // 編集画面にリダイレクト
-        wp_redirect( admin_url( 'post.php?action=edit&post=' . $new_post_id ) );
+        wp_redirect(admin_url('post.php?action=edit&post=' . $new_post_id));
         exit;
     } else {
-        wp_die( '投稿の複製に失敗しました。' );
+        wp_die('投稿の複製に失敗しました。');
     }
 }
-add_action( 'admin_action_duplicate_post_as_draft', 'duplicate_post_as_draft' );
+add_action('admin_action_duplicate_post_as_draft', 'duplicate_post_as_draft');
 
 /* --------------------------------------------
 /* カスタムパンくずリスト
 /* -------------------------------------------- */
-function my_breadcrumb() {
+function my_breadcrumb()
+{
     echo '<a href="' . home_url() . '">TOP</a>';
 
     if (is_page() && !is_front_page()) {
@@ -170,8 +174,8 @@ function my_breadcrumb() {
         echo ' &gt; ';
         $category = get_the_category();
         if ($category) {
-        echo esc_html($category[0]->name);
-        echo ' &gt; ';
+            echo esc_html($category[0]->name);
+            echo ' &gt; ';
         }
         echo get_the_title();
     } elseif (is_archive()) {
@@ -185,7 +189,7 @@ function my_breadcrumb() {
 /* // パンくずのラベルを英語に変換
 /* -------------------------------------------- */
 
-add_filter('bcn_breadcrumb_title', function($title, $type, $id){
+add_filter('bcn_breadcrumb_title', function ($title, $type, $id) {
     $replace = [
         'TETOTEについて' => 'ABOUT US',
         'TOPページ' => 'TOP',
@@ -199,7 +203,7 @@ add_filter('bcn_breadcrumb_title', function($title, $type, $id){
         'スタッフ' => 'STAFF',
     ];
 
-    if(array_key_exists($title, $replace)){
+    if (array_key_exists($title, $replace)) {
         return $replace[$title];
     }
 
@@ -209,7 +213,7 @@ add_filter('bcn_breadcrumb_title', function($title, $type, $id){
 /* --------------------------------------------
 /* パンくずの先頭（ホームリンク）だけ TOP にする
 /* -------------------------------------------- */
-add_filter('bcn_breadcrumb_title', function($title, $type, $id){
+add_filter('bcn_breadcrumb_title', function ($title, $type, $id) {
     // パンくずの "home" タイプを判定
     if (in_array('home', (array) $type, true)) {
         return 'TOP'; // 強制的に TOP に置き換え
@@ -221,6 +225,7 @@ add_filter('bcn_breadcrumb_title', function($title, $type, $id){
 /* // Contact Form 7で自動挿入されるPタグ、brタグを削除
 /* -------------------------------------------- */
 add_filter('wpcf7_autop_or_not', 'wpcf7_autop_return_false');
-function wpcf7_autop_return_false() {
+function wpcf7_autop_return_false()
+{
     return false;
 }
