@@ -2050,6 +2050,24 @@ select:invalid:focus {
 }
 
 /* --------------------------------------------
+/* 生年月日の、Contact Form 7 で崩れたスタイルの修正
+/* -------------------------------------------- */
+
+/* Contact Form 7 のラッパーを横幅いっぱいにする */
+
+.entry-form__birth-item .wpcf7-form-control-wrap {
+	display: block;
+	width: 100%;
+}
+
+/* 内側のinputにも念のため100%を指定 */
+
+.entry-form__birth-item .entry-form__input--year {
+	box-sizing: border-box;
+	width: 100%;
+}
+
+/* --------------------------------------------
 /* 希望職種（ラジオボタン）
 /* -------------------------------------------- */
 
@@ -2065,8 +2083,29 @@ select:invalid:focus {
 	line-height: 1;
 }
 
-.entry-form__radio-group label:not(:first-child) {
+/* --------------------------------------------
+/* 希望職種の、Contact Form 7 で崩れたスタイルの修正
+/* -------------------------------------------- */
+
+/* ラジオボタンの外枠調整 */
+
+.entry-form__radio-group .wpcf7-list-item {
+	display: block; /* 縦積み */
 	margin-top: 1rem;
+}
+
+/* 最初の要素にはmargin-topなし */
+
+.entry-form__radio-group .wpcf7-list-item:first-child {
+	margin-top: 0;
+}
+
+/* 各labelの横並びスタイルはそのまま */
+
+.entry-form__radio-group .wpcf7-list-item label {
+	align-items: center;
+	display: flex;
+	gap: 0.75rem;
 }
 
 .entry-form__radio-group input[type=radio] {
@@ -2230,6 +2269,63 @@ select:invalid:focus {
 }
 
 .entry-form__field--consent input[type=checkbox]:checked::after {
+	background-color: #222222;
+	content: "";
+	height: 0.625rem;
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 0.625rem;
+}
+
+/* --------------------------------------------
+/* 個人情報保護方針の、Contact Form 7 で崩れたスタイルの修正
+/* -------------------------------------------- */
+
+/* 全体の配置（元のdivに効かせる） */
+
+.entry-form__field--consent {
+	align-items: center;
+	display: flex;
+	gap: 0.625rem;
+	justify-content: center;
+}
+
+/* 内側のラベルに適用 */
+
+.entry-form__field--consent .wpcf7-form-control.wpcf7-acceptance label {
+	align-items: center;
+	color: #222222;
+	cursor: pointer;
+	display: flex;
+	font-family: "Noto Sans JP", sans-serif;
+	font-size: 0.875rem;
+	font-weight: 400;
+	gap: 0.375rem;
+	line-height: 1;
+}
+
+/* チェックボックス本体 */
+
+.entry-form__field--consent .wpcf7-form-control.wpcf7-acceptance input[type=checkbox] {
+	clip: auto;
+	background-color: #FAF7F1;
+	border: 1px solid #AFA86F;
+	cursor: pointer;
+	height: 1rem;
+	margin: 0;
+	opacity: 1;
+	overflow: visible;
+	padding: 0;
+	position: relative;
+	white-space: normal;
+	width: 1rem;
+}
+
+/* チェック済み時の疑似要素 */
+
+.entry-form__field--consent .wpcf7-form-control.wpcf7-acceptance input[type=checkbox]:checked::after {
 	background-color: #222222;
 	content: "";
 	height: 0.625rem;
@@ -4128,6 +4224,10 @@ html {
 .entry-form__birth-item:nth-child(3) {
 	grid-column: 2;
 	grid-row: 2;
+}
+
+.entry-form__field--consent {
+	margin-top: 6.125rem;
 }
 
 .entry-form__field--consent {

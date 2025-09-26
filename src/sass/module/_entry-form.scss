@@ -203,6 +203,21 @@
 }
 
 /* --------------------------------------------
+/* 生年月日の、Contact Form 7 で崩れたスタイルの修正
+/* -------------------------------------------- */
+/* Contact Form 7 のラッパーを横幅いっぱいにする */
+.entry-form__birth-item .wpcf7-form-control-wrap {
+  display: block;
+  width: 100%;
+}
+
+/* 内側のinputにも念のため100%を指定 */
+.entry-form__birth-item .entry-form__input--year {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------
 /* 希望職種（ラジオボタン）
 /* -------------------------------------------- */
 
@@ -223,8 +238,29 @@
 }
 
 // 最初のアイテム以外にmargin-topを追加
-.entry-form__radio-group label:not(:first-child) {
+// .entry-form__radio-group label:not(:first-child) {
+//   margin-top: rem(16);
+// }
+
+/* --------------------------------------------
+/* 希望職種の、Contact Form 7 で崩れたスタイルの修正
+/* -------------------------------------------- */
+/* ラジオボタンの外枠調整 */
+.entry-form__radio-group .wpcf7-list-item {
+  display: block; /* 縦積み */
   margin-top: rem(16);
+}
+
+/* 最初の要素にはmargin-topなし */
+.entry-form__radio-group .wpcf7-list-item:first-child {
+  margin-top: 0;
+}
+
+/* 各labelの横並びスタイルはそのまま */
+.entry-form__radio-group .wpcf7-list-item label {
+  display: flex;
+  align-items: center;
+  gap: rem(12);
 }
 
 // リセットCSSの設定を上書きしてラジオボタンを表示
@@ -404,6 +440,62 @@
 }
 
 /* --------------------------------------------
+/* 個人情報保護方針の、Contact Form 7 で崩れたスタイルの修正
+/* -------------------------------------------- */
+/* 全体の配置（元のdivに効かせる） */
+.entry-form__field--consent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: rem(10);
+  @include mq(md) {
+    margin-top: rem(98);
+  }
+}
+
+/* 内側のラベルに適用 */
+.entry-form__field--consent .wpcf7-form-control.wpcf7-acceptance label {
+  display: flex;
+  align-items: center;
+  gap: rem(6);
+  font-family: $base-font-family;
+  font-size: rem(14);
+  color: $black;
+  font-weight: $normal;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* チェックボックス本体 */
+.entry-form__field--consent .wpcf7-form-control.wpcf7-acceptance input[type="checkbox"] {
+  position: relative;
+  opacity: 1;
+  width: rem(16);
+  height: rem(16);
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  border: 1px solid $color-accent;
+  background-color: $color-accent-sub;
+  cursor: pointer;
+}
+
+/* チェック済み時の疑似要素 */
+.entry-form__field--consent .wpcf7-form-control.wpcf7-acceptance input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: rem(10);
+  height: rem(10);
+  background-color: $black;
+}
+
+
+/* --------------------------------------------
 /* 送信ボタン
 /* -------------------------------------------- */
 
@@ -447,3 +539,5 @@
     outline-offset: 2px;
   }
 }
+
+
