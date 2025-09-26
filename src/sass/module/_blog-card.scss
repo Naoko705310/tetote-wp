@@ -4,9 +4,11 @@
 .blog-card {
   display: grid;
   grid-template-columns: calc(121 / 341 * 100%) calc(220 / 341 * 100%);
+  grid-template-rows: 1fr; // 高さを統一
   border-radius: rem(10);  // 角丸
   overflow: hidden;        // 内側の img も丸める
   background-color: $white;
+  height: 100%; // 親要素の高さに合わせる
   @include mq(md) {
     grid-template-columns: rem(156) 1fr;
   }
@@ -41,6 +43,7 @@
   display: flex;
   flex-direction: column;
   padding: rem(9) rem(7) rem(5) rem(18);
+  height: 100%; // 高さを100%に
   @include mq(md) {
     padding: rem(20) rem(23) rem(20) rem(21);
   }

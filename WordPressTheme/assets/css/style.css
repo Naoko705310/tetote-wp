@@ -1149,6 +1149,8 @@ select:invalid:focus {
 	border-radius: 0.625rem;
 	display: grid;
 	grid-template-columns: 35.4838709677% 64.5161290323%;
+	grid-template-rows: 1fr;
+	height: 100%;
 	overflow: hidden;
 }
 
@@ -1177,6 +1179,7 @@ select:invalid:focus {
 .blog-card__body {
 	display: flex;
 	flex-direction: column;
+	height: 100%;
 	padding: 0.5625rem 0.4375rem 0.3125rem 1.125rem;
 }
 
@@ -4028,6 +4031,7 @@ html {
 }
 
 .blog-cards {
+	align-items: stretch;
 	gap: 1.4375rem 3.25rem;
 	grid-template-columns: repeat(2, 1fr);
 }
