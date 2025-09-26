@@ -171,7 +171,6 @@
           ?>
         </div>
       </div>
-
       <!-- VIEW MORE ボタンとナビ -->
       <div class="top-member__button-wrapper">
         <a href="<?php echo esc_url( get_post_type_archive_link( 'staff' ) ); ?>" class="top-member__button button">VIEW MORE</a>
@@ -201,7 +200,7 @@
       <ul class="top-benefits__items benefits-cards">
         <li class="top-benefits__item">
           <!-- benefits-card -->
-          <a href="career.html" class="benefits-card" aria-label="研修制度とキャリアパスの詳細を見る">
+          <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'career' ) ) ); ?>" class="benefits-card" aria-label="研修制度とキャリアパスの詳細を見る">
             <div class="benefits-card__heading">
               <div class="benefits-card__contents-wrapper">
                 <h3 class="benefits-card__titile benefits-card__title--en">
@@ -226,7 +225,7 @@
         </li>
         <li class="top-benefits__item">
           <!-- benefits-card -->
-          <a href="benefits.html" class="benefits-card" aria-label="研修制度とキャリアパスの詳細を見る">
+          <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'benefits' ) ) ); ?>" class="benefits-card" aria-label="福利厚生の詳細を見る">
             <div class="benefits-card__heading">
               <div class="benefits-card__contents-wrapper">
                 <h3 class="benefits-card__titile benefits-card__title--en">
@@ -252,7 +251,7 @@
       </ul>
     </div>
   </section>
-  <!-- トップBLOG -->
+  <!-- トップ採用BLOG -->
   <section class="top-blog js-fade-in fade-in">
     <div class="top-blog__inner inner">
       <!-- セクションタイトルとボタン -->
@@ -266,9 +265,10 @@
         </h2>
         <!-- ボタン群 PCだけ表示 -->
         <div class="top-blog__button-wrapper top-blog__button-wrapper--pc">
-          <a href="blog.html" class="circle-button circle-button--white" aria-label="次へ"></a>
-          <a href="blog.html" class="top-blog__view-more">VIEW MORE</a>
+          <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'blog' ) ) ); ?>" class="circle-button circle-button--white" aria-label="次へ"></a>
+          <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'blog' ) ) ); ?>" class="top-blog__view-more">VIEW MORE</a>
         </div>
+
       </div>
       <div class="top-blog__contents-wrapper">
         <div class="top-blog__description">
@@ -277,83 +277,70 @@
         </div>
         <!-- blog-cards ブログカード群 -->
         <ul class="top-blog__items blog-cards">
+        <?php
+        // ▼ 最新の投稿を4件取得
+        $blog_query = new WP_Query( array(
+            'post_type'      => 'post',      // 投稿タイプ：通常の投稿
+            'posts_per_page' => 4,           // 最新4件
+            'orderby'        => 'date',      // 日付順
+            'order'          => 'DESC'       // 新しい順
+        ) );
+
+        // ▼ 投稿があればループ
+        if ( $blog_query->have_posts() ) :
+          while ( $blog_query->have_posts() ) : $blog_query->the_post();
+        ?>
           <li class="top-blog__item">
-            <!-- blog-card -->
             <article class="blog-card">
               <figure class="blog-card__image">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/blog-card-01.jpg" alt="新入社員向けに、入社前研修を行いました。" width="300" height="200">
+                <?php if ( has_post_thumbnail() ) : ?>
+                  <!-- 投稿のアイキャッチ画像 -->
+                  <?php the_post_thumbnail( 'medium', array(
+                    'alt'   => esc_attr( get_the_title() ),
+                    'class' => 'blog-card__thumb',
+                    'width' => 300,
+                    'height'=> 200
+                  ) ); ?>
+                <?php else: ?>
+                  <!-- アイキャッチがない場合の代替画像 -->
+                  <img src="<?php echo esc_url( get_theme_file_uri('/assets/images/common/no-image.png') ); ?>" alt="<?php the_title(); ?>" width="300" height="200">
+                <?php endif; ?>
               </figure>
+
               <div class="blog-card__body">
                 <div class="blog-card__category">
-                  <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/icon-note.png" alt="" class="blog-card__icon" width="121" height="121">
-                  <span>社内研修</span>
+                  <!-- カテゴリーの1つ目を表示 -->
+                  <?php
+                  $category = get_the_category();
+                  if ( $category ) :
+                    // カテゴリーに対応するアイコン画像を任意で設定
+                    // アイコン固定の場合は下記を編集
+                  ?>
+                    <img src="<?php echo esc_url( get_theme_file_uri('/assets/images/common/icon-note.png') ); ?>" alt="" class="blog-card__icon" width="121" height="121">
+                    <span><?php echo esc_html( $category[0]->name ); ?></span>
+                  <?php endif; ?>
                 </div>
-                <!-- タイトルだけリンク -->
+
+                <!-- タイトル -->
                 <h3 class="blog-card__title">
-                  <a href="blog-details.html">新入社員向けに、入社前研修を行いました。</a>
+                  <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                 </h3>
-                <time class="blog-card__date" datetime="2025-03-25">2025.03.25</time>
+
+                <!-- 日付 -->
+                <time class="blog-card__date" datetime="<?php echo get_the_date('c'); ?>">
+                  <?php echo get_the_date('Y.m.d'); ?>
+                </time>
               </div>
             </article>
           </li>
-          <li class="top-blog__item">
-            <!-- blog-card -->
-            <article class="blog-card">
-              <figure class="blog-card__image">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/blog-card-01.jpg" alt="新入社員向けに、入社前研修を行いました。" width="300" height="200">
-              </figure>
-              <div class="blog-card__body">
-                <div class="blog-card__category">
-                  <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/icon-note.png" alt="" class="blog-card__icon" width="121" height="121">
-                  <span>社内研修</span>
-                </div>
-                <!-- タイトルだけリンク -->
-                <h3 class="blog-card__title">
-                  <a href="blog-details.html">新入社員向けに、入社前研修を行いました。</a>
-                </h3>
-                <time class="blog-card__date" datetime="2025-03-25">2025.03.25</time>
-              </div>
-            </article>
-          </li>
-          <li class="top-blog__item">
-            <!-- blog-card -->
-            <article class="blog-card">
-              <figure class="blog-card__image">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/blog-card-01.jpg" alt="新入社員向けに、入社前研修を行いました。" width="300" height="200">
-              </figure>
-              <div class="blog-card__body">
-                <div class="blog-card__category">
-                  <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/icon-note.png" alt="" class="blog-card__icon" width="121" height="121">
-                  <span>社内研修</span>
-                </div>
-                <!-- タイトルだけリンク -->
-                <h3 class="blog-card__title">
-                  <a href="blog-details.html">新入社員向けに、入社前研修を行いました。</a>
-                </h3>
-                <time class="blog-card__date" datetime="2025-03-25">2025.03.25</time>
-              </div>
-            </article>
-          </li>
-          <li class="top-blog__item">
-            <!-- blog-card -->
-            <article class="blog-card">
-              <figure class="blog-card__image">
-                <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/blog-card-01.jpg" alt="新入社員向けに、入社前研修を行いました。" width="300" height="200">
-              </figure>
-              <div class="blog-card__body">
-                <div class="blog-card__category">
-                  <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/icon-note.png" alt="" class="blog-card__icon" width="121" height="121">
-                  <span>社内研修</span>
-                </div>
-                <!-- タイトルだけリンク -->
-                <h3 class="blog-card__title">
-                  <a href="blog-details.html">新入社員向けに、入社前研修を行いました。</a>
-                </h3>
-                <time class="blog-card__date" datetime="2025-03-25">2025.03.25</time>
-              </div>
-            </article>
-          </li>
+        <?php
+          endwhile;
+        endif;
+        // ▼ ループ後にクエリをリセット
+        wp_reset_postdata();
+        ?>
         </ul>
+
         <!-- ボタン群 SPだけ表示 -->
         <div class="top-blog__button-wrapper top-blog__button-wrapper--sp">
           <a href="blog.html" class="circle-button circle-button--white" aria-label="次へ"></a>
@@ -378,21 +365,22 @@
       <!-- リクルート関連リンク -->
       <ul class="top-recruitment__items recruitment-links">
         <li class="top-recruitment__item">
-          <a href="details.html" class="recruitment-link">
+          <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'details' ) ) ); ?>" class="recruitment-link">
             募集要項
           </a>
         </li>
         <li class="top-recruitment__item">
-          <a href="faq.html" class="recruitment-link">
+          <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'faq' ) ) ); ?>" class="recruitment-link">
             よくある質問
           </a>
         </li>
         <li class="top-recruitment__item">
-          <a href="about.html" class="recruitment-link">
+          <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'about-us' ) ) ); ?>" class="recruitment-link">
             会社概要
           </a>
         </li>
       </ul>
+
     </div>
   </section>
 

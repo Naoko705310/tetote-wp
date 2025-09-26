@@ -1,3 +1,5 @@
+<!-- ブログ一覧 -->
+
 <?php get_header(); ?>
 <main>
   <!-- 下層ページFV -->
@@ -15,15 +17,7 @@
 
   <!-- パンくずリスト -->
   <?php get_template_part('parts/breadcrumb'); ?>
-
-  <!-- <nav class="page-fv__breadcrumb breadcrumb" aria-label="パンくずリスト">
-    <div class="breadcrumb__inner">
-      <a href="<?php echo home_url(); ?>">TOP</a>
-      <span class="page-fv__breadcrumb-separator">&gt;</span>
-      <span class="page-fv__breadcrumb-current">BLOG</span>
-    </div>
-  </nav> -->
-
+  
   <!-- ブログ一覧 -->
   <section class="page-blog">
     <div class="page-blog__inner inner">
@@ -55,7 +49,6 @@
                   <?php endif; ?>
                 </a>
               </figure>
-
               <div class="blog-card__body">
                 <!-- カテゴリー -->
                 <div class="blog-card__category">
