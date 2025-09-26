@@ -2538,6 +2538,12 @@ select:invalid:focus {
 	font-weight: 700;
 	line-height: 1;
 	text-align: center;
+	transition: all 0.3s ease;
+}
+
+.footer-nav__item a:hover {
+	color: #AFA86F;
+	transform: scale(1.1);
 }
 
 .footer-sns__items {
