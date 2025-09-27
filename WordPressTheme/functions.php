@@ -209,6 +209,8 @@ add_filter('bcn_breadcrumb_title', function ($title, $type, $id) {
         '研修制度とキャリアパス' => 'CAREER',
         '福利厚生について' => 'BENEFITS',
         'スタッフ' => 'STAFF',
+        // 修正点: カスタム投稿タイプの現在の日本語ラベルを追加
+        'スタッフ情報' => 'STAFF', 
     ];
 
     if (array_key_exists($title, $replace)) {
@@ -228,6 +230,24 @@ add_filter('bcn_breadcrumb_title', function ($title, $type, $id) {
     }
     return $title;
 }, 10, 3);
+
+/* --------------------------------------------
+/* パンくずの最終項目をスラッグに変換
+/* -------------------------------------------- */
+add_filter('bcn_breadcrumb_title', 'convert_staff_title_to_slug', 9, 3);
+
+function convert_staff_title_to_slug($title, $type, $id) {
+    // カスタム投稿タイプ 'staff' の個別記事ページの場合のみ実行
+    if (get_post_type($id) === 'staff' && in_array('post', $type)) {
+        // 投稿スラッグを取得
+        $slug = get_post_field('post_name', $id);
+        
+        // 大文字に変換して返す (例: nishimura -> NISHIMURA)
+        return strtoupper($slug);
+    }
+    
+    return $title;
+}
 
 /* --------------------------------------------
 /* Contact Form 7で自動挿入されるPタグ、brタグを削除
@@ -274,3 +294,29 @@ function change_post_object_label() {
     $labels->not_found_in_trash = 'ゴミ箱に'.$singular_name.'は見つかりませんでした';
 }
 add_action( 'init', 'change_post_object_label' );
+
+/* --------------------------------------------
+/* Contact Form 7の管理メニュー名を変更
+/* -------------------------------------------- */
+add_action('admin_menu', 'rename_cf7_menu');
+
+function rename_cf7_menu() {
+    // Contact Form 7 のメニューをフックし、ラベル名を変更
+    global $menu;
+
+    foreach ($menu as $key => $value) {
+        // メニューのスラッグが 'wpcf7' で始まる項目を探す
+        if (strpos($value[2], 'wpcf7') !== false) {
+            // ラベル名を 'エントリーフォーム' に変更
+            $menu[$key][0] = 'エントリーフォーム'; 
+        }
+    }
+}
+
+/* --------------------------------------------
+/* All-in-One WP Migration のインポートサイズ制限を緩和
+/* -------------------------------------------- */
+@ini_set( 'upload_max_filesize', '128M' ); // 最大アップロードサイズを128MBに設定
+@ini_set( 'post_max_size', '128M' );     // POSTの最大サイズを128MBに設定
+@ini_set( 'memory_limit', '256M' );      // メモリ制限を256MBに設定
+@ini_set( 'max_execution_time', '300' ); // 実行時間を300秒に延長

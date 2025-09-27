@@ -1,5 +1,5 @@
     <!-- 全ページ共通CTA -->
-    <section class="cta top-cta page-cta">
+    <section class="cta <?php echo is_front_page() ? 'top-cta' : 'page-cta'; ?>">
       <div class="cta__inner">
         <picture class="cta__image">
           <source media="(min-width: 768px)" srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/cta-pc.jpg">

@@ -502,6 +502,10 @@ select:invalid:focus {
 	margin-top: 1.125rem;
 }
 
+.page-staff-details__cta.page-cta {
+	margin-top: 5rem;
+}
+
 .page-staff__staff-list {
 	margin-top: 5rem;
 }
@@ -3778,6 +3782,10 @@ html {
 
 .page-staff-details__sidebar {
 	display: block;
+}
+
+.page-staff-details__cta.page-cta {
+	margin-top: 8.6875rem;
 }
 
 .page-staff__staff-list {

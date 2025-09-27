@@ -32,3 +32,11 @@
 .page-staff-details__other-members {
   margin-top: rem(18);
 }
+
+// スタッフインタビューのCTA
+.page-staff-details__cta.page-cta {
+  margin-top: rem(80);
+  @include mq(md) {
+    margin-top: rem(139);
+  }
+}
