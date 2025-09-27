@@ -10,7 +10,7 @@
 
 .top-fv__swiper {
   width: 100%;
-  // height: 100vh; // FVは画面いっぱいに
+  height: 100vh; // FVは画面いっぱいに
   overflow: hidden;
   // aspect-ratio: 375 / 667;
   position: absolute;
@@ -21,6 +21,16 @@
   // @include mq(md) {
   //   aspect-ratio: 1440 / 823;
   // }
+}
+
+// aspect-ratioを使うとSafariで表示されないため、beforeを使う
+.top-fv__swiper::before {
+  content: '';
+  display: block;
+  padding-top: 177.87%; // 375/667 = 0.5621... → 177.87%
+  @include mq(md) {
+    padding-top: 57.15%; // 823/1440 = 0.5715... → 57.15%
+  }
 }
 
 .swiper.top-fv__swiper {

@@ -652,6 +652,7 @@ select:invalid:focus {
 }
 
 .top-fv__swiper {
+	height: 100vh;
 	left: 0;
 	overflow: hidden;
 	position: absolute;
@@ -659,6 +660,12 @@ select:invalid:focus {
 	top: 0;
 	width: 100%;
 	z-index: 1;
+}
+
+.top-fv__swiper::before {
+	content: "";
+	display: block;
+	padding-top: 177.87%;
 }
 
 .swiper.top-fv__swiper {
@@ -3879,6 +3886,10 @@ html {
 
 .top-blog__items {
 	margin-top: 3.8125rem;
+}
+
+.top-fv__swiper::before {
+	padding-top: 57.15%;
 }
 
 .top-fv__content {
