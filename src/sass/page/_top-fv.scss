@@ -43,6 +43,8 @@
   width: 100%;
   padding-top: rem(415);
   padding-bottom: rem(10);
+  position: relative; // 追加
+  z-index: 2; // 追加
   @include mq(md) {
   padding-top: rem(286);
   padding-bottom: rem(38);

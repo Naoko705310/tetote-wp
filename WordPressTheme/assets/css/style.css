@@ -683,7 +683,9 @@ select:invalid:focus {
 .top-fv__content {
 	padding-bottom: 0.625rem;
 	padding-top: 25.9375rem;
+	position: relative;
 	width: 100%;
+	z-index: 2;
 }
 
 .top-fv__title {
