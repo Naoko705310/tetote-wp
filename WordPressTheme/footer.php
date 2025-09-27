@@ -26,15 +26,15 @@
             <!-- footer-nav -->
             <nav class="footer__nav footer-nav">
               <ul class="footer-nav__items">
-                <li class="footer-nav__item"><a href="index.html">ホーム</a></li>
-                <li class="footer-nav__item"><a href="about.html">TETOTEについて</a></li>
-                <li class="footer-nav__item"><a href="staff.html">人を知る</a></li>
-                <li class="footer-nav__item"><a href="career.html">研修制度とキャリアパス</a></li>
-                <li class="footer-nav__item"><a href="benefits.html">福利厚生</a></li>
-                <li class="footer-nav__item"><a href="blog.html">採用ブログ</a></li>
-                <li class="footer-nav__item"><a href="details.html">募集要項</a></li>
-                <li class="footer-nav__item"><a href="faq.html">よくある質問</a></li>
-                <li class="footer-nav__item"><a href="about.html">会社概要</a></li>
+                <li class="footer-nav__item"><a href="<?php echo esc_url(home_url()); ?>">ホーム</a></li>
+                <li class="footer-nav__item"><a href="<?php echo esc_url(home_url('/about/')); ?>">TETOTEについて</a></li>
+                <li class="footer-nav__item"><a href="<?php echo esc_url(home_url('/staff/')); ?>">人を知る</a></li>
+                <li class="footer-nav__item"><a href="<?php echo esc_url(home_url('/career/')); ?>">研修制度とキャリアパス</a></li>
+                <li class="footer-nav__item"><a href="<?php echo esc_url(home_url('/benefits/')); ?>">福利厚生</a></li>
+                <li class="footer-nav__item"><a href="<?php echo esc_url(home_url('/blog/')); ?>">採用ブログ</a></li>
+                <li class="footer-nav__item"><a href="<?php echo esc_url(home_url('/details/')); ?>">募集要項</a></li>
+                <li class="footer-nav__item"><a href="<?php echo esc_url(home_url('/faq/')); ?>">よくある質問</a></li>
+                <li class="footer-nav__item"><a href="<?php echo esc_url(home_url('/about/')); ?>">会社概要</a></li>
               </ul>
             </nav>
             <!-- footer__sns -->
@@ -60,13 +60,13 @@
           <div class="footer__logo-wrapper">
             <!-- footer ロゴ -->
             <div class="footer__logo footer-logo">
-              <a href="index.html">
+              <a href="<?php echo esc_url(home_url()); ?>">
                 <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/footer-logo.png" alt="TETOTEロゴ" width="250" height="61">
               </a>
             </div>
             <!-- footer コピーライト -->
             <div class="footer__copyright copyright">
-              <p>&copy;2024 TETOTE All Right Reserved.</p>
+              <p>&copy;<?php echo date('Y'); ?> TETOTE All Right Reserved.</p>
             </div>
           </div>
         </div>

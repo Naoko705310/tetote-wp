@@ -30,7 +30,7 @@ function add_custom_scripts()
 
     // 外部ライブラリ Swiper のCSSを読み込む
     wp_enqueue_style('swiper', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css');
-    
+
     // メインのテーマCSS (style.css) を読み込む
     wp_enqueue_style(
         'theme-style', // ハンドル名：このCSSを識別するための名前
@@ -43,13 +43,13 @@ function add_custom_scripts()
     // 3. JavaScriptファイルをWordPressの標準機能で読み込む
     // ==============================================
     // wp_enqueue_script( 'ハンドル名', 'ファイルのURL', '依存関係', 'バージョン', 'footerで読み込むか' );
-    
+
     // jQuery本体をCDNから読み込む (多くのJSが依存するため、まずこれを読み込む)
     wp_enqueue_script('jquery', 'https://code.jquery.com/jquery-3.6.0.js', array(), null, true);
-    
+
     // Swiper のJavaScript本体を読み込む
     wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js', array(), null, true);
-    
+
     // メインのテーマJS (script.js) を読み込む
     wp_enqueue_script(
         'theme-script', // ハンドル名：このJSを識別するための名前
@@ -63,7 +63,7 @@ function add_custom_scripts()
     // 4. PHPの情報をJavaScriptに渡す（ローカライズ）
     // ==============================================
     // wp_localize_script( 'ターゲットのハンドル名', 'JS変数名', '渡したいデータ配列' );
-    
+
     // 'theme-script' に対して、テーマURLを 'themeUrl' というオブジェクト名で渡す
     // JavaScript内では 'themeUrl.url' としてテーマパスにアクセスできるようになる
     wp_localize_script(
@@ -210,7 +210,7 @@ add_filter('bcn_breadcrumb_title', function ($title, $type, $id) {
         '福利厚生について' => 'BENEFITS',
         'スタッフ' => 'STAFF',
         // 修正点: カスタム投稿タイプの現在の日本語ラベルを追加
-        'スタッフ情報' => 'STAFF', 
+        'スタッフ情報' => 'STAFF',
     ];
 
     if (array_key_exists($title, $replace)) {
@@ -236,16 +236,17 @@ add_filter('bcn_breadcrumb_title', function ($title, $type, $id) {
 /* -------------------------------------------- */
 add_filter('bcn_breadcrumb_title', 'convert_staff_title_to_slug', 9, 3);
 
-function convert_staff_title_to_slug($title, $type, $id) {
+function convert_staff_title_to_slug($title, $type, $id)
+{
     // カスタム投稿タイプ 'staff' の個別記事ページの場合のみ実行
     if (get_post_type($id) === 'staff' && in_array('post', $type)) {
         // 投稿スラッグを取得
         $slug = get_post_field('post_name', $id);
-        
+
         // 大文字に変換して返す (例: nishimura -> NISHIMURA)
         return strtoupper($slug);
     }
-    
+
     return $title;
 }
 
@@ -261,46 +262,49 @@ function wpcf7_autop_return_false()
 /* --------------------------------------------
 /* 「投稿」メニュー名を「採用ブログ」に変更
 /* -------------------------------------------- */
-function change_post_menu_label() {
+function change_post_menu_label()
+{
     global $menu;
     global $submenu;
-    
+
     // メインメニューの変更
     $menu[5][0] = '採用ブログ';
-    
+
     // サブメニュー（投稿一覧、新規追加など）の変更
     $submenu['edit.php'][5][0]  = '採用ブログ一覧';
     $submenu['edit.php'][10][0] = '採用ブログを追加';
     $submenu['edit.php'][16][0] = 'タグ'; // タグ名も変更が必要な場合はここで
 }
-add_action( 'admin_menu', 'change_post_menu_label' );
+add_action('admin_menu', 'change_post_menu_label');
 
 /* 投稿（Post Type）のラベル名も変更 */
-function change_post_object_label() {
+function change_post_object_label()
+{
     global $wp_post_types;
     $name = '採用ブログ';
     $singular_name = '採用ブログ';
-    
+
     $labels = &$wp_post_types['post']->labels;
     $labels->name = $name;
     $labels->singular_name = $singular_name;
     $labels->add_new = _x('追加', $singular_name);
-    $labels->add_new_item = $singular_name.'の追加';
-    $labels->edit_item = $singular_name.'の編集';
-    $labels->new_item = '新規'.$singular_name;
-    $labels->view_item = $singular_name.'を表示';
-    $labels->search_items = $singular_name.'を検索';
+    $labels->add_new_item = $singular_name . 'の追加';
+    $labels->edit_item = $singular_name . 'の編集';
+    $labels->new_item = '新規' . $singular_name;
+    $labels->view_item = $singular_name . 'を表示';
+    $labels->search_items = $singular_name . 'を検索';
     $labels->not_found = '採用ブログが見つかりませんでした';
-    $labels->not_found_in_trash = 'ゴミ箱に'.$singular_name.'は見つかりませんでした';
+    $labels->not_found_in_trash = 'ゴミ箱に' . $singular_name . 'は見つかりませんでした';
 }
-add_action( 'init', 'change_post_object_label' );
+add_action('init', 'change_post_object_label');
 
 /* --------------------------------------------
 /* Contact Form 7の管理メニュー名を変更
 /* -------------------------------------------- */
 add_action('admin_menu', 'rename_cf7_menu');
 
-function rename_cf7_menu() {
+function rename_cf7_menu()
+{
     // Contact Form 7 のメニューをフックし、ラベル名を変更
     global $menu;
 
@@ -308,7 +312,7 @@ function rename_cf7_menu() {
         // メニューのスラッグが 'wpcf7' で始まる項目を探す
         if (strpos($value[2], 'wpcf7') !== false) {
             // ラベル名を 'エントリーフォーム' に変更
-            $menu[$key][0] = 'エントリーフォーム'; 
+            $menu[$key][0] = 'エントリーフォーム';
         }
     }
 }
@@ -316,7 +320,7 @@ function rename_cf7_menu() {
 /* --------------------------------------------
 /* All-in-One WP Migration のインポートサイズ制限を緩和
 /* -------------------------------------------- */
-@ini_set( 'upload_max_filesize', '128M' ); // 最大アップロードサイズを128MBに設定
-@ini_set( 'post_max_size', '128M' );     // POSTの最大サイズを128MBに設定
-@ini_set( 'memory_limit', '256M' );      // メモリ制限を256MBに設定
-@ini_set( 'max_execution_time', '300' ); // 実行時間を300秒に延長
+@ini_set('upload_max_filesize', '128M'); // 最大アップロードサイズを128MBに設定
+@ini_set('post_max_size', '128M');     // POSTの最大サイズを128MBに設定
+@ini_set('memory_limit', '256M');      // メモリ制限を256MBに設定
+@ini_set('max_execution_time', '300'); // 実行時間を300秒に延長
