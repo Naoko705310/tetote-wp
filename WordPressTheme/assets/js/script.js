@@ -87,10 +87,12 @@ jQuery(function ($) {
     if ($('#top-fv').length) {
       var topFvSwiper = new Swiper('.js-top-fv-swiper', {
         loop: true,
-        autoplay: { delay: 3000, disableOnInteraction: false },
+        autoplay: { delay: 4000, disableOnInteraction: false }, // 例: 4秒待機
+        // autoplay: { delay: 3000, disableOnInteraction: false },
         effect: 'fade',
         fadeEffect: { crossFade: true },
-        speed: 5000,
+        speed: 800, // 修正：トランジション速度を標準的な値に短縮
+        // speed: 5000,
         pagination: { el: '.swiper-pagination', clickable: true },
         navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
       });
