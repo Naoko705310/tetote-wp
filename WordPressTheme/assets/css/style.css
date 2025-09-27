@@ -652,8 +652,6 @@ select:invalid:focus {
 }
 
 .top-fv__swiper {
-	aspect-ratio: 375/667;
-	height: 100vh;
 	left: 0;
 	overflow: hidden;
 	position: absolute;
@@ -3881,10 +3879,6 @@ html {
 
 .top-blog__items {
 	margin-top: 3.8125rem;
-}
-
-.top-fv__swiper {
-	aspect-ratio: 1440/823;
 }
 
 .top-fv__content {

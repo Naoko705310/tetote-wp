@@ -10,17 +10,17 @@
 
 .top-fv__swiper {
   width: 100%;
-  height: 100vh; // FVは画面いっぱいに
+  // height: 100vh; // FVは画面いっぱいに
   overflow: hidden;
-  aspect-ratio: 375 / 667;
+  // aspect-ratio: 375 / 667;
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
   z-index: 1; // 背景にまわす
-  @include mq(md) {
-    aspect-ratio: 1440 / 823;
-  }
+  // @include mq(md) {
+  //   aspect-ratio: 1440 / 823;
+  // }
 }
 
 .swiper.top-fv__swiper {
