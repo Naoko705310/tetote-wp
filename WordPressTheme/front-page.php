@@ -6,13 +6,11 @@
     <div class="top-fv__inner">
       <div class="swiper top-fv__swiper js-top-fv-swiper">
         <div class="swiper-wrapper">
+          <!-- 1枚目（SP・PC共通） -->
           <div class="swiper-slide top-fv__slide">
-            <picture>
-              <source media="(max-width: 767px)" srcset="<?php echo get_theme_file_uri('/assets/images/top/fv01.jpg'); ?>">
-              <source media="(min-width: 768px)" srcset="<?php echo get_theme_file_uri('/assets/images/top/fv01.jpg'); ?>">
-              <img src="<?php echo get_theme_file_uri('/assets/images/top/fv01.jpg'); ?>" alt="メインビジュアル1" class="top-fv__slide--01" width="1280" height="720">
-            </picture>
+            <img src="<?php echo get_theme_file_uri('/assets/images/top/fv01.jpg'); ?>" alt="メインビジュアル1" class="top-fv__slide--01" width="1280" height="720">
           </div>
+          <!-- 2枚目（SP・PCで切り替え） -->
           <div class="swiper-slide top-fv__slide">
             <picture>
               <source media="(max-width: 767px)" srcset="<?php echo get_theme_file_uri('/assets/images/top/fv02-sp.jpg'); ?>">
@@ -20,13 +18,6 @@
               <img src="<?php echo get_theme_file_uri('/assets/images/top/fv02.jpg'); ?>" alt="メインビジュアル2" width="1280" height="720">
             </picture>
           </div>
-          <!-- <div class="swiper-slide top-fv__slide">
-            <picture>
-              <source media="(max-width: 767px)" srcset="<?php echo get_theme_file_uri('/assets/images/top/fv02-sp.jpg'); ?>">
-              <source media="(min-width: 768px)" srcset="<?php echo get_theme_file_uri('/assets/images/top/fv02.jpg'); ?>">
-              <img src="<?php echo get_theme_file_uri('/assets/images/top/fv02.jpg'); ?>" alt="メインビジュアル2" width="1280" height="720">
-            </picture>
-          </div> -->
         </div>
       </div>
 
@@ -43,13 +34,13 @@
             <?php
             $news_query = new WP_Query(array(
               'post_type'      => 'post',
-              'posts_per_page' => 1, // 最新記事を1件だけ取得
+              'posts_per_page' => 1,
             ));
             if ($news_query->have_posts()) :
               while ($news_query->have_posts()) : $news_query->the_post();
             ?>
-                <p><?php the_title(); ?></p>
-                <a href="<?php the_permalink(); ?>" class="news-bar__link">VIEW MORE</a>
+              <p><?php the_title(); ?></p>
+              <a href="<?php the_permalink(); ?>" class="news-bar__link">VIEW MORE</a>
             <?php
               endwhile;
             endif;
@@ -57,7 +48,6 @@
             ?>
           </div>
         </div>
-
       </div>
     </div>
   </section>
