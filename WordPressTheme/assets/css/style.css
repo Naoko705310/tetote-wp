@@ -3295,6 +3295,8 @@ body.is-fixed {
 	color: inherit;
 	display: block;
 	height: 100%;
+	margin: 0 auto;
+	max-width: 18.75rem;
 	text-decoration: none;
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
 	width: 100%;
@@ -3339,7 +3341,7 @@ body.is-fixed {
 	color: #222222;
 	display: inline-block;
 	font-family: "Noto Sans JP", sans-serif;
-	font-size: 1rem;
+	font-size: 1.25rem;
 	font-weight: 700;
 	line-height: 1;
 	padding: 0.4375rem;
@@ -4711,12 +4713,9 @@ html {
 
 .staff-card__image {
 	aspect-ratio: 300/379;
-	height: 23.6875rem;
-	width: 18.75rem;
 }
 
 .staff-card__message p {
-	font-size: 1.25rem;
 	padding: 0.3125rem 0.4375rem;
 }
 
@@ -4730,7 +4729,7 @@ html {
 
 .staff-cards {
 	gap: 3rem 2.6875rem;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(2, 1fr);
 }
 
 .staff-details-fv__contents-wrapper {
@@ -4781,6 +4780,15 @@ html {
 
 html {
 	font-size: 16px;
+}
+
+}
+
+@media screen and (min-width: 1024px) {
+
+.staff-cards {
+	gap: 3rem 2.6875rem;
+	grid-template-columns: repeat(3, 1fr);
 }
 
 }
