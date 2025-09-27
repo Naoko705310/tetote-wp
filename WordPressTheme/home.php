@@ -1,8 +1,5 @@
-<!-- ブログ一覧 -->
-
 <?php get_header(); ?>
 <main>
-  <!-- 下層ページFV -->
   <section class="page-fv">
     <div class="page-fv__inner inner">
       <div class="page-fv__contents">
@@ -15,31 +12,19 @@
     </div>
   </section>
 
-  <!-- パンくずリスト -->
   <?php get_template_part('parts/breadcrumb'); ?>
 
-  <!-- ブログ一覧 -->
   <section class="page-blog">
     <div class="page-blog__inner inner">
-      <!-- blog-cards ブログカード群 -->
       <ul class="top-blog__items page-blog__items blog-cards blog-list">
 
         <?php
-        // ★ 1ページ8件ずつの記事を取得
-        $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-        $args = array(
-          'post_type' => 'post',
-          'posts_per_page' => 8,
-          'paged' => $paged
-        );
-        $the_query = new WP_Query($args);
-
-        if ($the_query->have_posts()) :
-          while ($the_query->have_posts()) : $the_query->the_post();
+        // ★ 修正点: カスタムクエリ（$the_query）を削除し、メインクエリを使用
+        if (have_posts()) :
+          while (have_posts()) : the_post();
         ?>
             <li class="top-blog__item page-blog__item">
               <article class="blog-card">
-                <!-- アイキャッチ -->
                 <figure class="blog-card__image">
                   <a href="<?php the_permalink(); ?>">
                     <?php if (has_post_thumbnail()) : ?>
@@ -50,7 +35,6 @@
                   </a>
                 </figure>
                 <div class="blog-card__body">
-                  <!-- カテゴリー -->
                   <div class="blog-card__category">
                     <img src="<?php echo get_theme_file_uri('/assets/images/common/icon-note.png'); ?>" alt="" class="blog-card__icon" width="121" height="121">
                     <span>
@@ -63,12 +47,10 @@
                     </span>
                   </div>
 
-                  <!-- タイトル -->
                   <h3 class="blog-card__title">
                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                   </h3>
 
-                  <!-- 日付 -->
                   <time class="blog-card__date" datetime="<?php echo get_the_date('Y-m-d'); ?>">
                     <?php echo get_the_date('Y.m.d'); ?>
                   </time>
@@ -76,22 +58,25 @@
               </article>
             </li>
         <?php endwhile;
+        // wp_reset_postdata() はメインクエリでは不要なので削除
         endif;
-        wp_reset_postdata(); ?>
+        ?>
 
       </ul>
 
-      <!-- ページネーション -->
       <nav class="page-blog__pagination blog-pagination">
         <ul class="blog-pagination__list">
           <?php
-          $big = 999999999; // 置換用の仮ID
+          // ★ 修正点: global $wp_query; をここで再度宣言し、ページネーション関数にメインクエリの情報を渡す
+          global $wp_query; 
 
+          $big = 999999999; // 置換用の仮ID
+          
           $links = paginate_links(array(
             'base'      => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-            'format'    => '/page/%#%/',   // ← ここを修正
-            'current'   => max(1, $paged),
-            'total'     => $the_query->max_num_pages,
+            'format'    => '?paged=%#%',   
+            'current'   => max(1, get_query_var('paged')),
+            'total'     => $wp_query->max_num_pages, // ★ 修正点: $wp_queryのmax_num_pagesを使用
             'mid_size'  => 1,
             'prev_text' => '&lt;',
             'next_text' => '&gt;',
@@ -108,8 +93,6 @@
           ?>
         </ul>
       </nav>
-
-
     </div>
   </section>
 </main>
