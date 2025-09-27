@@ -3090,6 +3090,7 @@ body.is-fixed {
 	background-color: #ffffff;
 	border-radius: 0 3.125rem 3.125rem 0;
 	display: flex;
+	gap: 1.25rem;
 	justify-content: space-between;
 	padding: 0.625rem;
 	width: 100%;
@@ -3097,6 +3098,8 @@ body.is-fixed {
 
 .news-bar__body p {
 	color: #222222;
+	flex-basis: 0;
+	flex-grow: 1;
 	font-family: "Noto Sans JP", sans-serif;
 	font-size: 0.75rem;
 	font-weight: 400;
