@@ -1,40 +1,30 @@
 @use "global" as *;
 
-.top-fv {
-
-}
-
 .top-fv__inner {
-  position: relative; // contentの基準になる
+  position: relative; // 基準位置
+  width: 100%;
+  
+  // aspect-ratioの代替（Safari対応）
+  &::before {
+    content: '';
+    display: block;
+    padding-top: 177.87%; // 375/667 = 0.5621... → 177.87%
+    @include mq(md) {
+      padding-top: 57.15%; // 823/1440 = 0.5715... → 57.15%
+    }
+  }
 }
 
 .top-fv__swiper {
   width: 100%;
-  height: 100vh; // FVは画面いっぱいに
-  overflow: hidden;
-  // aspect-ratio: 375 / 667;
-  position: absolute;
+  height: 100%;
+  position: absolute; // innerの上に重ねる
   top: 0;
-  right: 0;
   left: 0;
-  z-index: 1; // 背景にまわす
-  // @include mq(md) {
-  //   aspect-ratio: 1440 / 823;
-  // }
+  z-index: 1;
 }
 
-// aspect-ratioを使うとSafariで表示されないため、beforeを使う
-.top-fv__swiper::before {
-  content: '';
-  display: block;
-  padding-top: 177.87%; // 375/667 = 0.5621... → 177.87%
-  @include mq(md) {
-    padding-top: 57.15%; // 823/1440 = 0.5715... → 57.15%
-  }
-}
-
-.swiper.top-fv__swiper {
-  width: 100%;
+.top-fv__swiper .swiper-slide {
   height: 100%;
 }
 

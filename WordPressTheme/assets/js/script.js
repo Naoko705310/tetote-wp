@@ -84,22 +84,22 @@ jQuery(function ($) {
 
   // FVスライダー(12.0.2に変更)
   // FVスライダー
-  $(function () {
-    if ($('#top-fv').length) {
-      var topFvSwiper = new Swiper('.js-top-fv-swiper', {
-        loop: false, // ループ無効
-        autoplay: { 
-          delay: 4000, 
-          disableOnInteraction: false 
-        },
-        effect: 'fade',
-        fadeEffect: { 
-          crossFade: true 
-        },
-        speed: 800
-      });
-    }
-  });
+  // $(function () {
+  //   if ($('#top-fv').length) {
+  //     var topFvSwiper = new Swiper('.js-top-fv-swiper', {
+  //       loop: false, // ループ無効
+  //       autoplay: { 
+  //         delay: 4000, 
+  //         disableOnInteraction: false 
+  //       },
+  //       effect: 'fade',
+  //       fadeEffect: { 
+  //         crossFade: true 
+  //       },
+  //       speed: 800
+  //     });
+  //   }
+  // });
 
 
 

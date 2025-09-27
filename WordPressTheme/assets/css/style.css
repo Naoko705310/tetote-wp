@@ -649,28 +649,26 @@ select:invalid:focus {
 
 .top-fv__inner {
 	position: relative;
-}
-
-.top-fv__swiper {
-	height: 100vh;
-	left: 0;
-	overflow: hidden;
-	position: absolute;
-	right: 0;
-	top: 0;
 	width: 100%;
-	z-index: 1;
 }
 
-.top-fv__swiper::before {
+.top-fv__inner::before {
 	content: "";
 	display: block;
 	padding-top: 177.87%;
 }
 
-.swiper.top-fv__swiper {
+.top-fv__swiper {
 	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
 	width: 100%;
+	z-index: 1;
+}
+
+.top-fv__swiper .swiper-slide {
+	height: 100%;
 }
 
 .top-fv__swiper .swiper-slide img {
@@ -3888,7 +3886,7 @@ html {
 	margin-top: 3.8125rem;
 }
 
-.top-fv__swiper::before {
+.top-fv__inner::before {
 	padding-top: 57.15%;
 }
 
