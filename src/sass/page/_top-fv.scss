@@ -34,6 +34,11 @@
   object-fit: cover;
 }
 
+// 1枚目の画像だけを左に20%ずらす
+.top-fv__slide--01 {
+  object-position: 60% center; 
+}
+
 .top-fv__content {
   width: 100%;
   padding-top: rem(415);

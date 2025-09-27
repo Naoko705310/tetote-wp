@@ -9,11 +9,19 @@
         <div class="swiper-wrapper">
           <!-- 1枚目 -->
           <div class="swiper-slide top-fv__slide">
-            <img src="<?php echo get_theme_file_uri(); ?>/assets/images/top/fv01.jpg" alt="メインビジュアル1" width="1280" height="720">
+            <picture>
+              <source media="(max-width: 767px)" srcset="<?php echo get_theme_file_uri(); ?>/assets/images/top/fv01.jpg">
+              <source media="(min-width: 768px)" srcset="<?php echo get_theme_file_uri(); ?>/assets/images/top/fv01.jpg">
+              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/top/fv01.jpg" alt="メインビジュアル1" class="top-fv__slide--01" width="1280" height="720">
+            </picture>
           </div>
           <!-- 2枚目 -->
           <div class="swiper-slide top-fv__slide">
-            <img src="<?php echo get_theme_file_uri(); ?>/assets/images/top/fv02.jpg" alt="メインビジュアル2" width="1280" height="720">
+            <picture>
+              <source media="(max-width: 767px)" srcset="<?php echo get_theme_file_uri(); ?>/assets/images/top/fv02-sp.jpg">
+              <source media="(min-width: 768px)" srcset="<?php echo get_theme_file_uri(); ?>/assets/images/top/fv02.jpg">
+              <img src="<?php echo get_theme_file_uri(); ?>/assets/images/top/fv02.jpg" alt="メインビジュアル2" width="1280" height="720">
+            </picture>
           </div>
         </div>
       </div>
@@ -140,30 +148,30 @@
           if ($staff_query->have_posts()) :
             while ($staff_query->have_posts()) : $staff_query->the_post();
           ?>
-          <div class="swiper-slide top-member__slide staff-card">
-            <!-- 写真 -->
-            <div class="staff-card__image">
-              <?php 
-              $staff_photo = get_field('staff_photo');
-              if ($staff_photo): ?>
-                <img src="<?php echo esc_url($staff_photo['url']); ?>" alt="<?php the_title(); ?>" width="300" height="379">
-              <?php else: ?>
-                <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/common/syain01-1.jpg')); ?>" alt="<?php the_title(); ?>" width="300" height="379">
-              <?php endif; ?>
-              <div class="staff-card__message">
-                <p class="staff-card__message-line1"><?php the_field('message_line1'); ?></p>
-                <p class="staff-card__message-line2"><?php the_field('message_line2'); ?></p>
+              <div class="swiper-slide top-member__slide staff-card">
+                <!-- 写真 -->
+                <div class="staff-card__image">
+                  <?php
+                  $staff_photo = get_field('staff_photo');
+                  if ($staff_photo): ?>
+                    <img src="<?php echo esc_url($staff_photo['url']); ?>" alt="<?php the_title(); ?>" width="300" height="379">
+                  <?php else: ?>
+                    <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/common/syain01-1.jpg')); ?>" alt="<?php the_title(); ?>" width="300" height="379">
+                  <?php endif; ?>
+                  <div class="staff-card__message">
+                    <p class="staff-card__message-line1"><?php the_field('message_line1'); ?></p>
+                    <p class="staff-card__message-line2"><?php the_field('message_line2'); ?></p>
+                  </div>
+                </div>
+                <!-- 本文 -->
+                <div class="staff-card__body">
+                  <div class="staff-card__meta">
+                    <p class="staff-card__job"><?php the_field('job_title'); ?></p>
+                    <p class="staff-card__year"><?php the_field('entry_year'); ?></p>
+                  </div>
+                  <h3 class="staff-card__name"><?php the_title(); ?></h3>
+                </div>
               </div>
-            </div>
-            <!-- 本文 -->
-            <div class="staff-card__body">
-              <div class="staff-card__meta">
-                <p class="staff-card__job"><?php the_field('job_title'); ?></p>
-                <p class="staff-card__year"><?php the_field('entry_year'); ?></p>
-              </div>
-              <h3 class="staff-card__name"><?php the_title(); ?></h3>
-            </div>
-          </div>
           <?php
             endwhile;
           endif;
@@ -173,7 +181,7 @@
       </div>
       <!-- VIEW MORE ボタンとナビ -->
       <div class="top-member__button-wrapper">
-        <a href="<?php echo esc_url( get_post_type_archive_link( 'staff' ) ); ?>" class="top-member__button button">VIEW MORE</a>
+        <a href="<?php echo esc_url(get_post_type_archive_link('staff')); ?>" class="top-member__button button">VIEW MORE</a>
         <div class="top-member__navigation swiper-navigation">
           <a href="#" class="circle-button circle-button--white top-member__prev" aria-label="前へ"></a>
           <a href="#" class="circle-button circle-button--white top-member__next" aria-label="次へ"></a>
@@ -200,7 +208,7 @@
       <ul class="top-benefits__items benefits-cards">
         <li class="top-benefits__item">
           <!-- benefits-card -->
-          <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'career' ) ) ); ?>" class="benefits-card" aria-label="研修制度とキャリアパスの詳細を見る">
+          <a href="<?php echo esc_url(get_permalink(get_page_by_path('career'))); ?>" class="benefits-card" aria-label="研修制度とキャリアパスの詳細を見る">
             <div class="benefits-card__heading">
               <div class="benefits-card__contents-wrapper">
                 <h3 class="benefits-card__titile benefits-card__title--en">
@@ -225,7 +233,7 @@
         </li>
         <li class="top-benefits__item">
           <!-- benefits-card -->
-          <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'benefits' ) ) ); ?>" class="benefits-card" aria-label="福利厚生の詳細を見る">
+          <a href="<?php echo esc_url(get_permalink(get_page_by_path('benefits'))); ?>" class="benefits-card" aria-label="福利厚生の詳細を見る">
             <div class="benefits-card__heading">
               <div class="benefits-card__contents-wrapper">
                 <h3 class="benefits-card__titile benefits-card__title--en">
@@ -265,8 +273,8 @@
         </h2>
         <!-- ボタン群 PCだけ表示 -->
         <div class="top-blog__button-wrapper top-blog__button-wrapper--pc">
-          <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'blog' ) ) ); ?>" class="circle-button circle-button--white" aria-label="次へ"></a>
-          <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'blog' ) ) ); ?>" class="top-blog__view-more">VIEW MORE</a>
+          <a href="<?php echo esc_url(get_permalink(get_page_by_path('blog'))); ?>" class="circle-button circle-button--white" aria-label="次へ"></a>
+          <a href="<?php echo esc_url(get_permalink(get_page_by_path('blog'))); ?>" class="top-blog__view-more">VIEW MORE</a>
         </div>
 
       </div>
@@ -277,68 +285,68 @@
         </div>
         <!-- blog-cards ブログカード群 -->
         <ul class="top-blog__items blog-cards">
-        <?php
-        // ▼ 最新の投稿を4件取得
-        $blog_query = new WP_Query( array(
+          <?php
+          // ▼ 最新の投稿を4件取得
+          $blog_query = new WP_Query(array(
             'post_type'      => 'post',      // 投稿タイプ：通常の投稿
             'posts_per_page' => 4,           // 最新4件
             'orderby'        => 'date',      // 日付順
             'order'          => 'DESC'       // 新しい順
-        ) );
+          ));
 
-        // ▼ 投稿があればループ
-        if ( $blog_query->have_posts() ) :
-          while ( $blog_query->have_posts() ) : $blog_query->the_post();
-        ?>
-          <li class="top-blog__item">
-            <article class="blog-card">
-              <figure class="blog-card__image">
-                <?php if ( has_post_thumbnail() ) : ?>
-                  <!-- 投稿のアイキャッチ画像 -->
-                  <?php the_post_thumbnail( 'medium', array(
-                    'alt'   => esc_attr( get_the_title() ),
-                    'class' => 'blog-card__thumb',
-                    'width' => 300,
-                    'height'=> 200
-                  ) ); ?>
-                <?php else: ?>
-                  <!-- アイキャッチがない場合の代替画像 -->
-                  <img src="<?php echo esc_url( get_theme_file_uri('/assets/images/common/no-image.png') ); ?>" alt="<?php the_title(); ?>" width="300" height="200">
-                <?php endif; ?>
-              </figure>
+          // ▼ 投稿があればループ
+          if ($blog_query->have_posts()) :
+            while ($blog_query->have_posts()) : $blog_query->the_post();
+          ?>
+              <li class="top-blog__item">
+                <article class="blog-card">
+                  <figure class="blog-card__image">
+                    <?php if (has_post_thumbnail()) : ?>
+                      <!-- 投稿のアイキャッチ画像 -->
+                      <?php the_post_thumbnail('medium', array(
+                        'alt'   => esc_attr(get_the_title()),
+                        'class' => 'blog-card__thumb',
+                        'width' => 300,
+                        'height' => 200
+                      )); ?>
+                    <?php else: ?>
+                      <!-- アイキャッチがない場合の代替画像 -->
+                      <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/common/no-image.png')); ?>" alt="<?php the_title(); ?>" width="300" height="200">
+                    <?php endif; ?>
+                  </figure>
 
-              <div class="blog-card__body">
-                <div class="blog-card__category">
-                  <!-- カテゴリーの1つ目を表示 -->
-                  <?php
-                  $category = get_the_category();
-                  if ( $category ) :
-                    // カテゴリーに対応するアイコン画像を任意で設定
-                    // アイコン固定の場合は下記を編集
-                  ?>
-                    <img src="<?php echo esc_url( get_theme_file_uri('/assets/images/common/icon-note.png') ); ?>" alt="" class="blog-card__icon" width="121" height="121">
-                    <span><?php echo esc_html( $category[0]->name ); ?></span>
-                  <?php endif; ?>
-                </div>
+                  <div class="blog-card__body">
+                    <div class="blog-card__category">
+                      <!-- カテゴリーの1つ目を表示 -->
+                      <?php
+                      $category = get_the_category();
+                      if ($category) :
+                        // カテゴリーに対応するアイコン画像を任意で設定
+                        // アイコン固定の場合は下記を編集
+                      ?>
+                        <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/common/icon-note.png')); ?>" alt="" class="blog-card__icon" width="121" height="121">
+                        <span><?php echo esc_html($category[0]->name); ?></span>
+                      <?php endif; ?>
+                    </div>
 
-                <!-- タイトル -->
-                <h3 class="blog-card__title">
-                  <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                </h3>
+                    <!-- タイトル -->
+                    <h3 class="blog-card__title">
+                      <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                    </h3>
 
-                <!-- 日付 -->
-                <time class="blog-card__date" datetime="<?php echo get_the_date('c'); ?>">
-                  <?php echo get_the_date('Y.m.d'); ?>
-                </time>
-              </div>
-            </article>
-          </li>
-        <?php
-          endwhile;
-        endif;
-        // ▼ ループ後にクエリをリセット
-        wp_reset_postdata();
-        ?>
+                    <!-- 日付 -->
+                    <time class="blog-card__date" datetime="<?php echo get_the_date('c'); ?>">
+                      <?php echo get_the_date('Y.m.d'); ?>
+                    </time>
+                  </div>
+                </article>
+              </li>
+          <?php
+            endwhile;
+          endif;
+          // ▼ ループ後にクエリをリセット
+          wp_reset_postdata();
+          ?>
         </ul>
 
         <!-- ボタン群 SPだけ表示 -->
@@ -365,17 +373,17 @@
       <!-- リクルート関連リンク -->
       <ul class="top-recruitment__items recruitment-links">
         <li class="top-recruitment__item">
-          <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'details' ) ) ); ?>" class="recruitment-link">
+          <a href="<?php echo esc_url(get_permalink(get_page_by_path('details'))); ?>" class="recruitment-link">
             募集要項
           </a>
         </li>
         <li class="top-recruitment__item">
-          <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'faq' ) ) ); ?>" class="recruitment-link">
+          <a href="<?php echo esc_url(get_permalink(get_page_by_path('faq'))); ?>" class="recruitment-link">
             よくある質問
           </a>
         </li>
         <li class="top-recruitment__item">
-          <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'about-us' ) ) ); ?>" class="recruitment-link">
+          <a href="<?php echo esc_url(get_permalink(get_page_by_path('about-us'))); ?>" class="recruitment-link">
             会社概要
           </a>
         </li>
