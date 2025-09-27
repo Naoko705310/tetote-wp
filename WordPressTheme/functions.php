@@ -29,10 +29,16 @@ function add_custom_scripts()
     // 外部ライブラリ Swiper のCSSを読み込む
     wp_enqueue_style(
         'swiper',
-        get_theme_file_uri('/assets/css/swiper-bundle.min.css'), // 【修正】/dist/ を削除し、/assets/css/ へ
+        'https://cdn.jsdelivr.net/npm/swiper@12.0.2/swiper-bundle.min.css',
         array(),
-        '8.4.7'
+        '12.0.2'
     );
+    // wp_enqueue_style(
+    //     'swiper',
+    //     get_theme_file_uri('/assets/css/swiper-bundle.min.css'), // 【修正】/dist/ を削除し、/assets/css/ へ
+    //     array(),
+    //     '8.4.7'
+    // );
 
     // メインのテーマCSS (style.css) を読み込む
     wp_enqueue_style(
@@ -52,7 +58,8 @@ function add_custom_scripts()
 
 
     // Swiper のJavaScript本体を読み込む
-    wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@8.4.7/swiper-bundle.min.js', array(), '8.4.7', true);
+    wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@12.0.2/swiper-bundle.min.js', array(), '12.0.2', true);
+    // wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@8.4.7/swiper-bundle.min.js', array(), '8.4.7', true);
     // wp_enqueue_script('swiper-js', get_theme_file_uri('/assets/js/swiper-bundle.min.js'), array(), '8.4.7', true);
 
     // メインのテーマJS (script.js) を読み込む
