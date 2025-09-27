@@ -1,80 +1,90 @@
-
 <?php
 /* --------------------------------------------
 /* スクリプトとCSSを読み込む
 /* -------------------------------------------- */
 function add_custom_scripts()
 {
-    // ファビコン
+    // ==============================================
+    // 1. <head>タグ内に直接出力する要素
+    // ==============================================
+
+    // ファビコン（サイトのアイコン）
+    // get_theme_file_uri()でテーマフォルダ直下からの絶対パスを取得しています
     echo '<link rel="icon" href="' . get_theme_file_uri('/assets/images/common/tetote-favicon.ico') . '">';
 
-    // Google Fonts Preconnect
+    // Google Fontsを高速に読み込むためのPreconnect（事前接続）設定
     echo '<link rel="preconnect" href="https://fonts.googleapis.com">';
     echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>';
 
-    // Google Fonts: Noto Sans JP
+    // Google Fonts: Noto Sans JP の読み込み
     echo '<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">';
-    // Google Fonts: Viga
+    // Google Fonts: Viga の読み込み
     echo '<link href="https://fonts.googleapis.com/css2?family=Viga&display=swap" rel="stylesheet">';
-    // Google Fonts: Poppins
+    // Google Fonts: Poppins の読み込み
     echo '<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">';
 
-    // CSS
+    // ==============================================
+    // 2. CSSファイルをWordPressの標準機能で読み込む
+    // ==============================================
+    // wp_enqueue_style( 'ハンドル名', 'ファイルのURL', '依存関係', 'バージョン' );
+
+    // 外部ライブラリ Swiper のCSSを読み込む
     wp_enqueue_style('swiper', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css');
+    
+    // メインのテーマCSS (style.css) を読み込む
     wp_enqueue_style(
-        'theme-style',
-        get_theme_file_uri('/assets/css/style.css'),
-        array('swiper'),
-        '250923_1253'
+        'theme-style', // ハンドル名：このCSSを識別するための名前
+        get_theme_file_uri('/assets/css/style.css'), // テーマフォルダからのパスを取得
+        array('swiper'), // 依存関係：SwiperのCSSの後に読み込まれるように指定
+        '250923_1253' // バージョン：ブラウザのキャッシュ対策
     );
 
-    // JavaScript
+    // ==============================================
+    // 3. JavaScriptファイルをWordPressの標準機能で読み込む
+    // ==============================================
+    // wp_enqueue_script( 'ハンドル名', 'ファイルのURL', '依存関係', 'バージョン', 'footerで読み込むか' );
+    
+    // jQuery本体をCDNから読み込む (多くのJSが依存するため、まずこれを読み込む)
     wp_enqueue_script('jquery', 'https://code.jquery.com/jquery-3.6.0.js', array(), null, true);
+    
+    // Swiper のJavaScript本体を読み込む
     wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js', array(), null, true);
+    
+    // メインのテーマJS (script.js) を読み込む
     wp_enqueue_script(
-        'theme-script',
-        get_theme_file_uri('/assets/js/script.js'),
-        array('jquery', 'swiper-js'),
-        '250923_1253',
-        true
+        'theme-script', // ハンドル名：このJSを識別するための名前
+        get_theme_file_uri('/assets/js/script.js'), // テーマフォルダからのパスを取得
+        array('jquery', 'swiper-js'), // 依存関係：jQueryとSwiperの後に読み込まれるように指定
+        '250923_1253', // バージョン：ブラウザのキャッシュ対策
+        true // </body>直前（フッター）で読み込む設定
+    );
+
+    // ==============================================
+    // 4. PHPの情報をJavaScriptに渡す（ローカライズ）
+    // ==============================================
+    // wp_localize_script( 'ターゲットのハンドル名', 'JS変数名', '渡したいデータ配列' );
+    
+    // 'theme-script' に対して、テーマURLを 'themeUrl' というオブジェクト名で渡す
+    // JavaScript内では 'themeUrl.url' としてテーマパスにアクセスできるようになる
+    wp_localize_script(
+        'theme-script', // ターゲットのJS：テーマのスクリプトに対して変数を定義
+        'themeUrl',     // JSでアクセスするオブジェクト名
+        array(
+            'url' => get_theme_file_uri() // 渡したいデータ。キー 'url' の値としてテーマの基本URLを設定
+        )
     );
 }
+// WordPressに「wp_enqueue_scripts」というアクション（処理のタイミング）で実行するよう登録
 add_action('wp_enqueue_scripts', 'add_custom_scripts');
 
 /* --------------------------------------------
 /* 管理画面の黒いバーが邪魔なので消す
 /* -------------------------------------------- */
-// function remove_admin_bar() {
-//     return false;
-// }
-// add_filter('show_admin_bar', 'remove_admin_bar');
-
-// // 投稿を「ブログ」に変更
-// function change_post_menu_label() {
-//     global $menu, $submenu;
-//     $menu[5][0] = 'ブログ'; // 投稿のメニュー名
-//     $submenu['edit.php'][5][0] = 'ブログ一覧'; // 投稿一覧
-//     $submenu['edit.php'][10][0] = '新規追加'; // 新規追加
-//     $submenu['edit.php'][15][0] = 'カテゴリー'; // カテゴリー
-//     $submenu['edit.php'][16][0] = 'タグ'; // タグ
-// }
-// add_action( 'admin_menu', 'change_post_menu_label' );
-
-// function change_post_object_label() {
-//     global $wp_post_types;
-//     $labels = &$wp_post_types['post']->labels;
-//     $labels->name = 'ブログ';
-//     $labels->singular_name = 'ブログ';
-//     $labels->add_new = '新規追加';
-//     $labels->add_new_item = '新規ブログを追加';
-//     $labels->edit_item = 'ブログを編集';
-//     $labels->new_item = '新規ブログ';
-//     $labels->view_item = 'ブログを表示';
-//     $labels->search_items = 'ブログを検索';
-//     $labels->not_found = 'ブログが見つかりません';
-//     $labels->not_found_in_trash = 'ゴミ箱にブログはありません';
-// }
-// add_action( 'init', 'change_post_object_label' );
+function remove_admin_bar()
+{
+    return false;
+}
+add_filter('show_admin_bar', 'remove_admin_bar');
 
 /* --------------------------------------------
 /* ブログ投稿画面に「アイキャッチ画像」を追加
@@ -184,11 +194,9 @@ function my_breadcrumb()
     }
 }
 
-
 /* --------------------------------------------
-/* // パンくずのラベルを英語に変換
+/* パンくずのラベルを英語に変換
 /* -------------------------------------------- */
-
 add_filter('bcn_breadcrumb_title', function ($title, $type, $id) {
     $replace = [
         'TETOTEについて' => 'ABOUT US',
@@ -222,7 +230,7 @@ add_filter('bcn_breadcrumb_title', function ($title, $type, $id) {
 }, 10, 3);
 
 /* --------------------------------------------
-/* // Contact Form 7で自動挿入されるPタグ、brタグを削除
+/* Contact Form 7で自動挿入されるPタグ、brタグを削除
 /* -------------------------------------------- */
 add_filter('wpcf7_autop_or_not', 'wpcf7_autop_return_false');
 function wpcf7_autop_return_false()
