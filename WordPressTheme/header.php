@@ -6,23 +6,29 @@
   <meta name="format-detection" content="telephone=no" />
   <meta name="robots" content="noindex" />
 
-  <!-- meta情報 -->
   <title>
     <?php
       if ( is_front_page() ) {
+        // TOPページ: サイト名 | キャッチフレーズ（例: 株式会社TETOTE | 採用特設サイト）
         bloginfo('name');
         echo ' | ';
         bloginfo('description');
       } else {
+        // 下層ページ: ページ名 | サイト名
         wp_title('|', true, 'right');
         bloginfo('name');
       }
     ?>
   </title>
-  <meta name="description" content="テクノロジーで社会課題を解決する。AIやビッグデータ分析などの技術を活用した社会課題解決サービスを提供するTETOTEの採用サイト。" />
-  <meta name="keywords" content="TETOTE,採用,テクノロジー,AI,ビッグデータ,社会課題解決" />
+  
+  <?php if ( is_front_page() ) : // TOPページの場合のディスクリプションとキーワード ?>
+    <meta name="description" content="テクノロジーで社会課題を解決する。AIやビッグデータ分析などの技術を活用した社会課題解決サービスを提供するTETOTEの採用サイト。" />
+    <meta name="keywords" content="TETOTE,採用,テクノロジー,AI,ビッグデータ,社会課題解決" />
+  <?php else : // 下層ページの場合のディスクリプションとキーワード ?>
+    <meta name="description" content="テクノロジーで社会課題を解決する。AIやビッグデータ分析などの技術を活用した社会課題解決サービスを提供するTETOTEの採用サイト。このページでは、<?php the_title(); ?>について解説しています。" />
+    <meta name="keywords" content="TETOTE,採用,テクノロジー,AI,ビッグデータ,社会課題解決" />
+  <?php endif; ?>
 
-  <!-- OGP -->
   <meta property="og:title" content="採用特設サイト | 株式会社TETOTE" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="<?php echo esc_url(home_url('/')); ?>" />

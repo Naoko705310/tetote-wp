@@ -237,3 +237,40 @@ function wpcf7_autop_return_false()
 {
     return false;
 }
+
+/* --------------------------------------------
+/* 「投稿」メニュー名を「採用ブログ」に変更
+/* -------------------------------------------- */
+function change_post_menu_label() {
+    global $menu;
+    global $submenu;
+    
+    // メインメニューの変更
+    $menu[5][0] = '採用ブログ';
+    
+    // サブメニュー（投稿一覧、新規追加など）の変更
+    $submenu['edit.php'][5][0]  = '採用ブログ一覧';
+    $submenu['edit.php'][10][0] = '採用ブログを追加';
+    $submenu['edit.php'][16][0] = 'タグ'; // タグ名も変更が必要な場合はここで
+}
+add_action( 'admin_menu', 'change_post_menu_label' );
+
+/* 投稿（Post Type）のラベル名も変更 */
+function change_post_object_label() {
+    global $wp_post_types;
+    $name = '採用ブログ';
+    $singular_name = '採用ブログ';
+    
+    $labels = &$wp_post_types['post']->labels;
+    $labels->name = $name;
+    $labels->singular_name = $singular_name;
+    $labels->add_new = _x('追加', $singular_name);
+    $labels->add_new_item = $singular_name.'の追加';
+    $labels->edit_item = $singular_name.'の編集';
+    $labels->new_item = '新規'.$singular_name;
+    $labels->view_item = $singular_name.'を表示';
+    $labels->search_items = $singular_name.'を検索';
+    $labels->not_found = '採用ブログが見つかりませんでした';
+    $labels->not_found_in_trash = 'ゴミ箱に'.$singular_name.'は見つかりませんでした';
+}
+add_action( 'init', 'change_post_object_label' );
