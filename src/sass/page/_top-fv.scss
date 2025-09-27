@@ -43,8 +43,8 @@
   width: 100%;
   padding-top: rem(415);
   padding-bottom: rem(10);
-  position: relative; // 追加
-  z-index: 2; // 追加
+  position: relative; //swiperより上に表示
+  z-index: 2; //swiperより上に表示
   @include mq(md) {
   padding-top: rem(286);
   padding-bottom: rem(38);
