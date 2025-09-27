@@ -82,6 +82,9 @@ function add_custom_scripts()
 // WordPressに「wp_enqueue_scripts」というアクション（処理のタイミング）で実行するよう登録
 add_action('wp_enqueue_scripts', 'add_custom_scripts');
 
+
+
+
 /* --------------------------------------------
 /* 管理画面の黒いバーが邪魔なので消す
 /* -------------------------------------------- */

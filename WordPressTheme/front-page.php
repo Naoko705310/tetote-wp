@@ -4,17 +4,7 @@
   <!-- トップFV -->
   <section class="top-fv" id="top-fv">
     <div class="top-fv__inner">
-    <div class="swiper top-fv__swiper js-top-fv-swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide top-fv__slide">
-            <img src="<?php echo get_theme_file_uri('/assets/images/top/fv01.jpg'); ?>" alt="メインビジュアル1" class="top-fv__slide--01" width="1280" height="720">
-          </div>
-          <div class="swiper-slide top-fv__slide">
-            <img src="<?php echo get_theme_file_uri('/assets/images/top/fv02-sp.jpg'); ?>" alt="メインビジュアル2" width="1280" height="720">
-          </div>
-        </div>
-      </div>
-      <!-- <div class="swiper top-fv__swiper js-top-fv-swiper">
+      <div class="swiper top-fv__swiper js-top-fv-swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide top-fv__slide">
             <picture>
@@ -30,8 +20,15 @@
               <img src="<?php echo get_theme_file_uri('/assets/images/top/fv02.jpg'); ?>" alt="メインビジュアル2" width="1280" height="720">
             </picture>
           </div>
+          <!-- <div class="swiper-slide top-fv__slide">
+            <picture>
+              <source media="(max-width: 767px)" srcset="<?php echo get_theme_file_uri('/assets/images/top/fv02-sp.jpg'); ?>">
+              <source media="(min-width: 768px)" srcset="<?php echo get_theme_file_uri('/assets/images/top/fv02.jpg'); ?>">
+              <img src="<?php echo get_theme_file_uri('/assets/images/top/fv02.jpg'); ?>" alt="メインビジュアル2" width="1280" height="720">
+            </picture>
+          </div> -->
         </div>
-      </div> -->
+      </div>
 
       <!-- トップFV テキスト -->
       <div class="top-fv__content">

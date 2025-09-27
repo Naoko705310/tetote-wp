@@ -83,21 +83,81 @@ jQuery(function ($) {
   });
 
   // FVスライダー
-  $(function () {
-    if ($('#top-fv').length) {
-      var topFvSwiper = new Swiper('.js-top-fv-swiper', {
-        loop: true,
-        autoplay: { delay: 4000, disableOnInteraction: false }, // 例: 4秒待機
-        // autoplay: { delay: 3000, disableOnInteraction: false },
-        effect: 'fade',
-        fadeEffect: { crossFade: true },
-        speed: 800, // 修正：トランジション速度を標準的な値に短縮
-        // speed: 5000,
-        pagination: { el: '.swiper-pagination', clickable: true },
-        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
-      });
-    }
-  });
+  // FVスライダー
+// $(window).on('load', function () { 
+//   if ($('#top-fv').length) {
+//     var topFvSwiper = new Swiper('.js-top-fv-swiper', {
+//       loop: true,
+//       autoplay: { delay: 4000, disableOnInteraction: false },
+//       effect: 'fade',
+//       fadeEffect: { crossFade: true },
+//       speed: 800,
+//       pagination: { el: '.swiper-pagination', clickable: true },
+//       navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
+//     });
+    
+//     // -----------------------------------------------------------------
+//     // 【修正・追加】初期化後にオートプレイを強制的にリスタート
+//     // -----------------------------------------------------------------
+//     // Swiperインスタンスが正しく作成されたことを確認（念のため）
+//     if (topFvSwiper.autoplay) {
+//       topFvSwiper.autoplay.stop(); // 一度停止
+      
+//       // わずかな遅延後に強制的に開始
+//       setTimeout(function() {
+//         topFvSwiper.autoplay.start(); 
+//         console.log('Swiper Autoplayを強制開始');
+//       }, 50); // 50ミリ秒程度のわずかな遅延
+//     }
+
+//     // 以前提案した強制アップデートも残しておくことを推奨します
+//     setTimeout(function() {
+//       topFvSwiper.update();
+//       $(window).trigger('resize');
+//     }, 100); 
+//     // -----------------------------------------------------------------
+//   }
+// });
+
+  // 1枚目だけ表示されたが動かないコード
+  // 【変更点】DOM Ready ( $(function()) ) から Window Load ( $(window).on('load', ...) ) に変更
+  // $(window).on('load', function () { 
+  //   if ($('#top-fv').length) {
+  //     var topFvSwiper = new Swiper('.js-top-fv-swiper', {
+  //       loop: true,
+  //       autoplay: { delay: 4000, disableOnInteraction: false },
+  //       effect: 'fade',
+  //       fadeEffect: { crossFade: true },
+  //       speed: 800,
+  //       pagination: { el: '.swiper-pagination', clickable: true },
+  //       navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
+  //     });
+      
+  //     // 解決しない場合に備えて、念のため強制アップデートを100ms後に実行する
+  //     setTimeout(function() {
+  //       topFvSwiper.update();
+  //       // window.resizeも同時にトリガー
+  //       $(window).trigger('resize');
+  //     }, 100); 
+  //   }
+  // });
+
+  // 最初のコード
+  // $(function () {
+  //   if ($('#top-fv').length) {
+  //     var topFvSwiper = new Swiper('.js-top-fv-swiper', {
+  //       loop: true,
+  //       autoplay: { delay: 4000, disableOnInteraction: false }, // 例: 4秒待機
+  //       // autoplay: { delay: 3000, disableOnInteraction: false },
+  //       effect: 'fade',
+  //       fadeEffect: { crossFade: true },
+  //       speed: 800, // 修正：トランジション速度を標準的な値に短縮
+  //       // speed: 5000,
+  //       pagination: { el: '.swiper-pagination', clickable: true },
+  //       navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
+  //     });
+  //   }
+  // });
 
   // メッセージスワイパー
   $(function () {
