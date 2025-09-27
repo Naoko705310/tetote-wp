@@ -33,6 +33,9 @@
   margin-top: rem(23);
 }
 
+/* =======================================
+  .staff-interview__text スタイル
+========================================*/
 .staff-interview__text {
   max-width: rem(696);
   font-family: $base-font-family;
@@ -42,6 +45,42 @@
   line-height: 1.8;
   margin-top: rem(50);
 }
+
+/* 段落（<p>）のスタイル */
+.staff-interview__text p {
+  margin-bottom: rem(20); // 段落とリストの間に適切な間隔を設定
+}
+
+.staff-interview__text p:last-child {
+  margin-bottom: 0;
+}
+
+/* リスト（<ul>, <ol>）共通のスタイル */
+.staff-interview__text ul,
+.staff-interview__text ol {
+  margin-left: rem(20); // リストをインデント
+  margin-bottom: rem(20);
+  list-style-position: outside; // マーカー位置を外側にする
+  padding: 0;
+}
+
+/* 順序なしリスト（<ul>、黒丸）のスタイル */
+.staff-interview__text ul {
+  list-style: disc; 
+}
+
+/* 順序付きリスト（<ol>、数字）のスタイル */
+.staff-interview__text ol {
+  list-style: decimal; // 修正点: 数字（1, 2, 3...）を表示
+}
+
+/* リスト項目（<li>）のスタイル */
+.staff-interview__text li {
+  list-style: inherit; // 親のリストスタイルを継承
+  margin-bottom: rem(10); // 各項目間の間隔
+  padding-left: rem(5); 
+}
+
 
 .staff-interview__job-details {
   margin-top: rem(23);

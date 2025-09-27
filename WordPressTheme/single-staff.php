@@ -54,42 +54,42 @@
       <article class="staff-interview__section" id="section1">
         <h2 class="staff-interview__title">普段の業務内容について</h2>
         <div class="staff-interview__text">
-          <?php the_field('work_details'); // 普段の業務内容 ?>
+          <?php echo apply_filters('the_content', get_field('work_details')); // 普段の業務内容 ?>
         </div>
       </article>
 
       <article class="staff-interview__section" id="section2">
         <h2 class="staff-interview__title">学生時代に力を入れたことは？</h2>
         <div class="staff-interview__text">
-          <?php the_field('student_experience'); // 学生時代に力を入れたこと ?>
+          <?php echo apply_filters('the_content', get_field('student_experience')); // 学生時代に力を入れたこと ?>
         </div>
       </article>
 
       <article class="staff-interview__section" id="section3">
         <h2 class="staff-interview__title">TETOTEを志望した理由は？</h2>
         <div class="staff-interview__text">
-          <?php the_field('reason_to_join'); // 志望理由 ?>
+          <?php echo apply_filters('the_content', get_field('reason_to_join')); // 志望理由 ?>
         </div>
       </article>
 
       <article class="staff-interview__section" id="section4">
         <h2 class="staff-interview__title">やりがいを感じる瞬間は？</h2>
         <div class="staff-interview__text">
-          <?php the_field('motivation'); // やりがい ?>
+          <?php echo apply_filters('the_content', get_field('motivation')); // やりがい ?>
         </div>
       </article>
 
       <article class="staff-interview__section" id="section5">
         <h2 class="staff-interview__title">どんな人と一緒に働きたい？</h2>
         <div class="staff-interview__text">
-          <?php the_field('ideal_colleague'); // 理想の同僚像 ?>
+          <?php echo apply_filters('the_content', get_field('ideal_colleague')); // 理想の同僚像 ?>
         </div>
       </article>
 
       <article class="staff-interview__section" id="section6">
         <h2 class="staff-interview__title">応募者へのメッセージ</h2>
         <div class="staff-interview__text">
-          <?php the_field('message_for_applicants'); // 応募者へのメッセージ ?>
+          <?php echo apply_filters('the_content', get_field('message_for_applicants')); // 応募者へのメッセージ ?>
         </div>
       </article>
     </section>
@@ -125,7 +125,6 @@
     <div class="other-members__innter inner">
       <!-- セクションタイトル -->
       <h2 class="other-members__title">その他のメンバー</h2>
-
       <!-- メンバーリスト -->
       <ul class="other-members__items">
         <?php
@@ -160,19 +159,15 @@
                 <?php endif; ?>
 
                 <div class="staff-card__message">
-                  <!-- ▼ ACFで入力したメッセージを表示 -->
                   <p class="staff-card__message-line1"><?php the_field('message_line1'); ?></p>
                   <p class="staff-card__message-line2"><?php the_field('message_line2'); ?></p>
                 </div>
               </div>
-              <!-- 本文 -->
               <div class="staff-card__body">
                 <div class="staff-card__meta">
-                  <!-- ▼ ACFで入力した職種と入社年を表示 -->
                   <p class="staff-card__job"><?php the_field('job_title'); ?></p>
                   <p class="staff-card__year"><?php the_field('entry_year'); ?></p>
                 </div>
-                <!-- ▼ 投稿タイトル（スタッフ名）を表示 -->
                 <h3 class="staff-card__name"><?php the_title(); ?></h3>
               </div>
             </a>
@@ -187,6 +182,4 @@
     </div>
   </section>
 
-
 <?php get_footer(); ?>
-

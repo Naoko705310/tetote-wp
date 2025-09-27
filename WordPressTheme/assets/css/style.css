@@ -3505,6 +3505,10 @@ body.is-fixed {
 	margin-top: 1.4375rem;
 }
 
+/* =======================================
+  .staff-interview__text スタイル
+========================================*/
+
 .staff-interview__text {
 	color: #222222;
 	font-family: "Noto Sans JP", sans-serif;
@@ -3513,6 +3517,46 @@ body.is-fixed {
 	line-height: 1.8;
 	margin-top: 3.125rem;
 	max-width: 43.5rem;
+}
+
+/* 段落（<p>）のスタイル */
+
+.staff-interview__text p {
+	margin-bottom: 1.25rem;
+}
+
+.staff-interview__text p:last-child {
+	margin-bottom: 0;
+}
+
+/* リスト（<ul>, <ol>）共通のスタイル */
+
+.staff-interview__text ul,
+.staff-interview__text ol {
+	list-style-position: outside;
+	margin-bottom: 1.25rem;
+	margin-left: 1.25rem;
+	padding: 0;
+}
+
+/* 順序なしリスト（<ul>、黒丸）のスタイル */
+
+.staff-interview__text ul {
+	list-style: disc;
+}
+
+/* 順序付きリスト（<ol>、数字）のスタイル */
+
+.staff-interview__text ol {
+	list-style: decimal;
+}
+
+/* リスト項目（<li>）のスタイル */
+
+.staff-interview__text li {
+	list-style: inherit;
+	margin-bottom: 0.625rem;
+	padding-left: 0.3125rem;
 }
 
 .staff-interview__job-details {
