@@ -15,14 +15,6 @@
     </section>
     <!-- パンくずリスト -->
     <?php get_template_part('parts/breadcrumb'); ?>
-
-    <!-- <nav class="page-fv__breadcrumb breadcrumb" aria-label="パンくずリスト">
-      <div class="breadcrumb__inner">
-        <a href="./index.html">TOP</a>
-        <span class="page-fv__breadcrumb-separator">&gt;</span>
-        <span class="page-fv__breadcrumb-current">募集要項</span>
-      </div>
-    </nav> -->
     <div class="page-datails">
       <div class="page-datails__inner inner">
         <!-- あなたが輝ける場所が、ここにはある -->

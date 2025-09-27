@@ -47,16 +47,6 @@
   </section>
   <!-- パンくずリスト -->
   <?php get_template_part('parts/breadcrumb'); ?>
-
-  <!-- <nav class="breadcrumb" aria-label="パンくずリスト">
-    <div class="breadcrumb__inner">
-      <a href="./index.html">TOP</a>
-      <span class="breadcrumb__separator">&gt;</span>
-      <a href="./staff.html">STAFF</a>
-      <span class="breadcrumb__separator">&gt;</span>
-      <span class="breadcrumb__current">NISHIMURA</span>
-    </div>
-  </nav> -->
   <!-- スタッフインタビュー本文＆目次 -->
   <div class="page-staff-details__contents-wrapper">
     <!-- スタッフインタビュー本文 -->
