@@ -42,26 +42,17 @@
   object-position: 60% center; 
 }
 
-
+// swiperに重なっているタイトルなどの要素
 .top-fv__content {
   position: absolute;
-  top: 0;
+  top: auto;
   left: 0;
-  width: 100%;
-  height: 100%;
+  bottom: rem(10);
+  width: 100%; /* swiper全体に広げる */
+  // height: 100%; /* swiper全体に広げる */
   z-index: 2;
-  
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; // 上から開始
-  
-  // 上からの距離を調整
-  padding-top: rem(415); // SP
-  padding-bottom: rem(10);
-  
   @include mq(md) {
-    padding-top: rem(286); // PC
-    padding-bottom: rem(38);
+    bottom: rem(38);
   }
 }
 
