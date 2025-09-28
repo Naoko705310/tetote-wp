@@ -648,19 +648,48 @@ select:invalid:focus {
 }
 
 .top-fv__inner {
-	width: 100%; /* 幅は100% */
+	position: relative;
 }
 
-/* アスペクト比維持ハックを復活させる */
+.top-fv__swiper {
+	position: relative;
+	width: 100%;
+}
 
-.top-fv__swiper,
-.top-fv__content {
+.top-fv__swiper::before {
+	content: "";
+	display: block;
+	padding-top: 177.8666666667%;
+}
+
+.top-fv__swiper .swiper-wrapper {
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.top-fv__swiper .swiper-slide {
 	height: 100%;
 	width: 100%;
 }
 
-.top-fv__swiper {
+.top-fv__swiper img {
+	-o-object-fit: cover;
+	height: 100%;
+	object-fit: cover;
 	width: 100%;
+}
+
+.top-fv__slide--01 {
+	-o-object-position: 60% center;
+	object-position: 60% center;
+}
+
+.top-fv__content {
+	background-color: pink;
+	opacity: 0.5;
 }
 
 .top-fv__title {
@@ -3856,6 +3885,10 @@ html {
 
 .top-blog__items {
 	margin-top: 3.8125rem;
+}
+
+.top-fv__swiper::before {
+	padding-top: 57.1527777778%;
 }
 
 .top-fv__title {

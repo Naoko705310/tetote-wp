@@ -1,92 +1,51 @@
 @use "global" as *;
 
 .top-fv__inner {
-  // position: relative; /* 子要素を絶対配置する基準 */
-  width: 100%; /* 幅は100% */
-}
-
-/* アスペクト比維持ハックを復活させる */
-.top-fv__inner::before {
-  // content: '';
-  // display: block;
-  // /* padding-top: calc(高さ / 幅 * 100%) でアスペクト比を維持 */
-  // padding-top: calc(667 / 375 * 100%); /* SP比率 */
-  // @include mq(md) {
-  //   padding-top: calc(823 / 1440 * 100%); /* PC比率 */
-  // }
-}
-
-.top-fv__swiper,
-.top-fv__content {
-  width: 100%;
-  height: 100%;
-  // position: absolute; /* .top-fv__inner の内部で絶対配置 */
-  // top: 0;
-  // left: 0;
-  // width: 100%;
-  // height: 100%;
+  position: relative; // 子要素の絶対配置の基準
 }
 
 .top-fv__swiper {
   width: 100%;
-  // z-index: 1; /* Swiperを下に */
+  position: relative;
 }
 
-.top-fv__content {
-  // z-index: 2; /* コンテンツをSwiperの上に重ねる */
+.top-fv__swiper::before {
+  content: '';
+  display: block;
+  padding-top: calc(667 / 375 * 100%); // SP比率
+  @include mq(md) {
+    padding-top: calc(823 / 1440 * 100%); // PC比率
+  }
 }
 
-  // アスペクト比維持（Safari対応）
-// .top-fv__inner::before {
-//   content: '';
-//   display: block;
-//   padding-top: calc(667 / 375 * 100%); // SP比率
-//   @include mq(md) {
-//     padding-top: calc(823 / 1440 * 100%); // PC比率
-//   }
-// }
-
-
+.top-fv__swiper .swiper-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
 .top-fv__swiper .swiper-slide {
-
+  width: 100%;
+  height: 100%;
 }
 
-
-.top-fv__swiper .swiper-slide::before {
-  // content: "";
-  // display: block;
-  // padding-top: calc(667 / 375 * 100%);
-  // @include mq(md) {
-  //   padding-top: calc(823 / 1440 * 100%);
-  // }
+.top-fv__swiper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; // 縦横比を保ちながら領域を埋める
 }
-
-
-
-.top-fv__swiper .swiper-slide img {
-  // width: 100%;
-  // height: 100%;
-  // object-fit: cover;
-}
-
-
-// .top-fv__swiper .swiper-slide {
-//   height: 100%;
-// }
-
-// .top-fv__swiper .swiper-slide img {
-//   width: 100%;
-//   height: 100%;
-//   object-fit: cover;
-// }
 
 // 1枚目の画像だけを左に20%ずらす
 .top-fv__slide--01 {
-  // object-position: 60% center; 
+  object-position: 60% center; 
 }
 
+
 .top-fv__content {
+  background-color: pink;
+  opacity: 0.5;
   // display: flex;
   // flex-direction: column;
   // align-items: flex-start;
@@ -112,23 +71,6 @@
     // align-items: flex-start;
   }
 }
-
-
-
-// .top-fv__content {
-//   width: 100%;
-//   padding-top: rem(415);
-//   padding-bottom: rem(10);
-//   // position: relative; //swiperより上に表示
-//   // z-index: 2; //swiperより上に表示
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   @include mq(md) {
-//   padding-top: rem(286);
-//   padding-bottom: rem(38);
-//   }
-// }
 
 .top-fv__title {
   font-family: $second-font-family;

@@ -7,9 +7,9 @@
       <div class="swiper top-fv__swiper js-top-fv-swiper">
         <div class="swiper-wrapper">
           <!-- 1枚目（SP・PC共通） -->
-          <!-- <div class="swiper-slide top-fv__slide">
+          <div class="swiper-slide top-fv__slide">
             <img src="<?php echo get_theme_file_uri('/assets/images/top/fv01.jpg'); ?>" alt="メインビジュアル1" class="top-fv__slide--01" width="1280" height="720">
-          </div> -->
+          </div>
           <!-- 2枚目（SP・PCで切り替え） -->
           <!-- <div class="swiper-slide top-fv__slide">
             <picture>
@@ -22,7 +22,7 @@
       </div>
 
       <!-- トップFV テキスト -->
-      <!-- <div class="top-fv__content">
+      <div class="top-fv__content">
         <h2 class="top-fv__title">BECOME A<br>CHALLENGER.</h2>
         <p class="top-fv__subtitle">君の挑戦が、意思が、未来を変える</p>
         <div class="top-fv__news-bar news-bar">
@@ -47,7 +47,7 @@
             ?>
           </div>
         </div>
-      </div> -->
+      </div>
     </div>
   </section>
   <!-- トップページのメッセージスライダー -->
