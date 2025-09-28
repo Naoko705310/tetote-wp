@@ -33,7 +33,7 @@ jQuery(function ($) {
       $('body').removeClass('is-fixed'); // スクロール制御解除
 
       // ロゴを白に戻す（SP・PC共通）
-      $('.header__logo img').attr('src', './assets/images/common/tetote-logo-white.svg');
+      // $('.header__logo img').attr('src', './assets/images/common/tetote-logo-white.svg');
     });
   });
   // /* --------------------------------------------
@@ -74,28 +74,33 @@ jQuery(function ($) {
   $(function () {
     // トップページのみで実行
     if ($('#top-fv').length) {
+      console.log('FVセクションが見つかりました');
       var $header = $('.js-header');
       var $topFv = $('#top-fv');
-      var $logoImg = $('.header__logo img');
 
       // FVセクションの高さを取得
       var fvHeight = $topFv.outerHeight();
+      console.log('FVの高さ:', fvHeight);
 
       // スクロールイベント
       $(window).on('scroll', function () {
         var scrollTop = $(window).scrollTop();
+        console.log('スクロール位置:', scrollTop, 'FV高さ:', fvHeight);
+        
         if (scrollTop > fvHeight) {
           // FVを過ぎたらヘッダーにクラスを追加
           $header.addClass('is-scrolled');
-          // ロゴを黒に変更
-          $logoImg.attr('src', './assets/images/common/tetote-logo.svg');
+          console.log('スクロール状態: is-scrolledクラスを追加');
+          // ロゴ切り替えはCSSで制御されるため、JavaScriptでのsrc変更は不要
         } else {
           // FV内にいる場合はクラスを削除
           $header.removeClass('is-scrolled');
-          // ロゴを白に戻す
-          $logoImg.attr('src', './assets/images/common/tetote-logo-white.svg');
+          console.log('FV内: is-scrolledクラスを削除');
+          // ロゴ切り替えはCSSで制御されるため、JavaScriptでのsrc変更は不要
         }
       });
+    } else {
+      console.log('FVセクションが見つかりませんでした');
     }
   });
 
