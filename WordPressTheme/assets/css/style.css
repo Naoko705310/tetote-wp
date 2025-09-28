@@ -688,8 +688,17 @@ select:invalid:focus {
 }
 
 .top-fv__content {
-	background-color: pink;
-	opacity: 0.5;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	justify-content: flex-start;
+	left: 0;
+	padding-bottom: 0.625rem;
+	padding-top: 25.9375rem;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 2;
 }
 
 .top-fv__title {
@@ -3889,6 +3898,11 @@ html {
 
 .top-fv__swiper::before {
 	padding-top: 57.1527777778%;
+}
+
+.top-fv__content {
+	padding-bottom: 2.375rem;
+	padding-top: 17.875rem;
 }
 
 .top-fv__title {

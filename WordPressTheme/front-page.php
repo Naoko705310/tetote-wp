@@ -19,32 +19,31 @@
             </picture>
           </div> -->
         </div>
-      </div>
-
-      <!-- トップFV テキスト -->
-      <div class="top-fv__content">
-        <h2 class="top-fv__title">BECOME A<br>CHALLENGER.</h2>
-        <p class="top-fv__subtitle">君の挑戦が、意思が、未来を変える</p>
-        <div class="top-fv__news-bar news-bar">
-          <div class="news-bar__label">
-            <p>NEWS</p>
-          </div>
-          <div class="news-bar__body">
-            <?php
-            $news_query = new WP_Query(array(
-              'post_type'      => 'post',
-              'posts_per_page' => 1,
-            ));
-            if ($news_query->have_posts()) :
-              while ($news_query->have_posts()) : $news_query->the_post();
-            ?>
-              <p><?php the_title(); ?></p>
-              <a href="<?php the_permalink(); ?>" class="news-bar__link">VIEW MORE</a>
-            <?php
-              endwhile;
-            endif;
-            wp_reset_postdata();
-            ?>
+        <!-- トップFV テキスト -->
+        <div class="top-fv__content">
+          <h2 class="top-fv__title">BECOME A<br>CHALLENGER.</h2>
+          <p class="top-fv__subtitle">君の挑戦が、意思が、未来を変える</p>
+          <div class="top-fv__news-bar news-bar">
+            <div class="news-bar__label">
+              <p>NEWS</p>
+            </div>
+            <div class="news-bar__body">
+              <?php
+              $news_query = new WP_Query(array(
+                'post_type'      => 'post',
+                'posts_per_page' => 1,
+              ));
+              if ($news_query->have_posts()) :
+                while ($news_query->have_posts()) : $news_query->the_post();
+              ?>
+                <p><?php the_title(); ?></p>
+                <a href="<?php the_permalink(); ?>" class="news-bar__link">VIEW MORE</a>
+              <?php
+                endwhile;
+              endif;
+              wp_reset_postdata();
+              ?>
+            </div>
           </div>
         </div>
       </div>
