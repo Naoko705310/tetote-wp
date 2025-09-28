@@ -15,13 +15,14 @@ jQuery(function ($) {
       $('.js-header').toggleClass('is-active'); // ヘッダー全体
       $('body').toggleClass('is-fixed'); // スクロール制御
 
+      // ロゴ差し替えはCSSで制御されるため、JavaScriptでのsrc変更は不要
       // ロゴ差し替え（SP・PC共通）
-      var $logoImg = $('.header__logo img');
-      if ($('.js-header').hasClass('is-active')) {
-        $logoImg.attr('src', './assets/images/common/tetote-logo.svg'); // 黒ロゴ
-      } else {
-        $logoImg.attr('src', './assets/images/common/tetote-logo-white.svg'); // 白ロゴ
-      }
+      // var $logoImg = $('.header__logo img');
+      // if ($('.js-header').hasClass('is-active')) {
+      //   $logoImg.attr('src', './assets/images/common/tetote-logo.svg'); // 黒ロゴ
+      // } else {
+      //   $logoImg.attr('src', './assets/images/common/tetote-logo-white.svg'); // 白ロゴ
+      // }
     });
 
     // ナビ内のリンクをクリックしたら閉じる
