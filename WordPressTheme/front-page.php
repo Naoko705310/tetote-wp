@@ -22,10 +22,9 @@
       </div>
 
       <!-- トップFV テキスト -->
-      <div class="top-fv__content">
+      <!-- <div class="top-fv__content">
         <h2 class="top-fv__title">BECOME A<br>CHALLENGER.</h2>
         <p class="top-fv__subtitle">君の挑戦が、意思が、未来を変える</p>
-        <!-- news-bar -->
         <div class="top-fv__news-bar news-bar">
           <div class="news-bar__label">
             <p>NEWS</p>
@@ -48,7 +47,7 @@
             ?>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
   <!-- トップページのメッセージスライダー -->

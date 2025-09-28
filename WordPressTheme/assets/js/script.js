@@ -1,323 +1,424 @@
 "use strict";
 
 jQuery(function ($) {
+  /* --------------------------------------------
+  /* 共通機能（全ページで使用）
+  /* -------------------------------------------- */
+  /* --------------------------------------------
+  /* ハンバーガーメニュー(topページ)
+  /* -------------------------------------------- */
+  $(function () {
+    // ハンバーガーメニューのクリック
+    $('.js-hamburger').on('click', function () {
+      $(this).toggleClass('is-active'); // ハンバーガー自身に is-active
+      $('.js-header-nav').toggleClass('is-active'); // ナビを開閉
+      $('.js-header').toggleClass('is-active'); // ヘッダー全体
+      $('body').toggleClass('is-fixed'); // スクロール制御
+
+      // ロゴ差し替え（SP・PC共通）
+      var $logoImg = $('.header__logo img');
+      if ($('.js-header').hasClass('is-active')) {
+        $logoImg.attr('src', './assets/images/common/tetote-logo.svg'); // 黒ロゴ
+      } else {
+        $logoImg.attr('src', './assets/images/common/tetote-logo-white.svg'); // 白ロゴ
+      }
+    });
+
+    // ナビ内のリンクをクリックしたら閉じる
+    $('.js-header-link').on('click', function () {
+      $('.js-hamburger').removeClass('is-active');
+      $('.js-header-nav').removeClass('is-active');
+      $('.js-header').removeClass('is-active');
+      $('body').removeClass('is-fixed'); // スクロール制御解除
+
+      // ロゴを白に戻す（SP・PC共通）
+      $('.header__logo img').attr('src', './assets/images/common/tetote-logo-white.svg');
+    });
+  });
+  // /* --------------------------------------------
+  // /* ハンバーガーメニュー(topページ)
+  // /* -------------------------------------------- */
+  // $(function () {
+  //   // ハンバーガーメニューのクリック
+  //   $('.js-hamburger').on('click', function () {
+  //     $(this).toggleClass('is-active');             // ハンバーガー自身に is-active
+  //     $('.js-header-nav').toggleClass('is-active'); // ナビを開閉
+  //     $('.js-header').toggleClass('is-active');     // ヘッダー全体
+  //     $('body').toggleClass('is-fixed');            // 背景スクロール制御
+
+  //     // ロゴ差し替え（SP・PC共通）
+  //     const $logoImg = $('.header__logo img');
+  //     if ($('.js-header').hasClass('is-active')) {
+  //       $logoImg.attr('src', './assets/images/common/tetote-logo.svg'); // 黒ロゴ
+  //     } else {
+  //       $logoImg.attr('src', './assets/images/common/tetote-logo-white.svg'); // 白ロゴ
+  //     }
+  //   });
+
+  //   // ナビ内のリンクをクリックしたら閉じる
+  //   $('.js-header-link').on('click', function () {
+  //     $('.js-hamburger').removeClass('is-active');
+  //     $('.js-header-nav').removeClass('is-active');
+  //     $('.js-header').removeClass('is-active');
+  //     $('body').removeClass('is-fixed');
+
+  //     // ロゴを白に戻す（SP・PC共通）
+  //     $('.header__logo img').attr('src', './assets/images/common/tetote-logo-white.svg');
+  //   });
+  // });
 
   /* --------------------------------------------
-     共通機能（全ページ共通）
-  -------------------------------------------- */
+  /* headerをFVの下までスクロールした時に、page-headerと同じデザインに変える
+  /* -------------------------------------------- */
+  $(function () {
+    // トップページのみで実行
+    if ($('#top-fv').length) {
+      var $header = $('.js-header');
+      var $topFv = $('#top-fv');
+      var $logoImg = $('.header__logo img');
 
-  /* --------------------------------------------
-     ハンバーガーメニュー（トップ・下層共通）
-  -------------------------------------------- */
-  $('.js-hamburger').on('click', function () {
-    $(this).toggleClass('is-active');           // ハンバーガー自身のON/OFF
-    $('.js-header-nav').toggleClass('is-active'); // ナビ開閉
-    $('.js-header').toggleClass('is-active');     // ヘッダー全体の状態
-    $('body').toggleClass('is-fixed');            // 背景スクロール制御
+      // FVセクションの高さを取得
+      var fvHeight = $topFv.outerHeight();
 
-    // ロゴ差し替え（SP・PC共通）
-    var $logoImg = $('.header__logo img');
-    if ($('.js-header').hasClass('is-active')) {
-      $logoImg.attr('src', themeUrl.url + '/assets/images/common/tetote-logo.svg'); // 黒ロゴ **<= 修正**
-    } else {
-      $logoImg.attr('src', themeUrl.url + '/assets/images/common/tetote-logo-white.svg'); // 白ロゴ **<= 修正**
+      // スクロールイベント
+      $(window).on('scroll', function () {
+        var scrollTop = $(window).scrollTop();
+        if (scrollTop > fvHeight) {
+          // FVを過ぎたらヘッダーにクラスを追加
+          $header.addClass('is-scrolled');
+          // ロゴを黒に変更
+          $logoImg.attr('src', './assets/images/common/tetote-logo.svg');
+        } else {
+          // FV内にいる場合はクラスを削除
+          $header.removeClass('is-scrolled');
+          // ロゴを白に戻す
+          $logoImg.attr('src', './assets/images/common/tetote-logo-white.svg');
+        }
+      });
     }
   });
 
-  // ナビ内のリンクをクリックしたらメニューを閉じる
-  $('.js-header-link').on('click', function () {
-    $('.js-hamburger').removeClass('is-active');
-    $('.js-header-nav').removeClass('is-active');
-    $('.js-header').removeClass('is-active');
-    $('body').removeClass('is-fixed'); // 背景スクロール解除
-
-    // ロゴを白に戻す（SP・PC共通）
-    $('.header__logo img').attr('src', themeUrl.url + '/assets/images/common/tetote-logo-white.svg'); // 白ロゴ **<= 修正**
-  });
+  /* --------------------------------------------
+  /* index.html(topページ)専用機能
+  /* -------------------------------------------- */
 
   /* --------------------------------------------
-     トップページ専用
-     FVを過ぎたらpage-header風デザインに切替
-  -------------------------------------------- */
-  if ($('#top-fv').length) {
-    var $header   = $('.js-header');
-    var $topFv    = $('#top-fv');
-    var $logoImg  = $('.header__logo img');
-    var fvHeight  = $topFv.outerHeight(); // FVセクションの高さを取得
-
-    $(window).on('scroll', function () {
-      var scrollTop = $(window).scrollTop();
-      if (scrollTop > fvHeight) {
-        $header.addClass('is-scrolled');
-        $logoImg.attr('src', themeUrl.url + '/assets/images/common/tetote-logo.svg'); // 黒ロゴ **<= 修正**
-      } else {
-        $header.removeClass('is-scrolled');
-        $logoImg.attr('src', themeUrl.url + '/assets/images/common/tetote-logo-white.svg'); // 白ロゴ **<= 修正**
-      }
-    });
-  }
-
-  /* --------------------------------------------
-     index.html(topページ)専用機能
-  -------------------------------------------- */
-
-  // 各セクションの要素をふわっと表示
+  /* index.html(topページ)
+  //各セクションの要素をふわっと表示させる（topページ）
+  //スクロールしてセクションまで来たら、ふわっと表示
+  /* -------------------------------------------- */
   $(function () {
+    // トップページのみで実行
     if ($('#top-fv').length) {
-      var $fadeElements = $('.js-fade-in');
-      var checkFadeIn = function () {
+      // 要素が画面に入ったかチェックする関数
+      var checkFadeIn = function checkFadeIn() {
         $fadeElements.each(function () {
           var $element = $(this);
           var elementTop = $element.offset().top;
           var elementBottom = elementTop + $element.outerHeight();
           var windowTop = $(window).scrollTop();
           var windowBottom = windowTop + $(window).height();
+
+          // 要素が画面に入ったらクラスを追加
           if (elementBottom > windowTop && elementTop < windowBottom) {
             $element.addClass('is-animated');
           }
         });
-      };
+      }; // 初期状態で既に画面内にある要素をチェック
+      // アニメーション対象の要素を取得
+      var $fadeElements = $('.js-fade-in');
       checkFadeIn();
+
+      // スクロール時にチェック
       $(window).on('scroll', checkFadeIn);
     }
   });
 
-  // FVスライダー(12.0.2に変更)
-  // FVスライダー
-  // $(function () {
-  //   if ($('#top-fv').length) {
-  //     var topFvSwiper = new Swiper('.js-top-fv-swiper', {
-  //       loop: false, // ループ無効
-  //       autoplay: { 
-  //         delay: 4000, 
-  //         disableOnInteraction: false 
-  //       },
-  //       effect: 'fade',
-  //       fadeEffect: { 
-  //         crossFade: true 
-  //       },
-  //       speed: 800
-  //     });
-  //   }
-  // });
-
-
-
-
-
-
-
-  // FVスライダー
-// $(window).on('load', function () { 
-//   if ($('#top-fv').length) {
-//     var topFvSwiper = new Swiper('.js-top-fv-swiper', {
-//       loop: true,
-//       autoplay: { delay: 4000, disableOnInteraction: false },
-//       effect: 'fade',
-//       fadeEffect: { crossFade: true },
-//       speed: 800,
-//       pagination: { el: '.swiper-pagination', clickable: true },
-//       navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
-//     });
-    
-//     // -----------------------------------------------------------------
-//     // 【修正・追加】初期化後にオートプレイを強制的にリスタート
-//     // -----------------------------------------------------------------
-//     // Swiperインスタンスが正しく作成されたことを確認（念のため）
-//     if (topFvSwiper.autoplay) {
-//       topFvSwiper.autoplay.stop(); // 一度停止
-      
-//       // わずかな遅延後に強制的に開始
-//       setTimeout(function() {
-//         topFvSwiper.autoplay.start(); 
-//         console.log('Swiper Autoplayを強制開始');
-//       }, 50); // 50ミリ秒程度のわずかな遅延
-//     }
-
-//     // 以前提案した強制アップデートも残しておくことを推奨します
-//     setTimeout(function() {
-//       topFvSwiper.update();
-//       $(window).trigger('resize');
-//     }, 100); 
-//     // -----------------------------------------------------------------
-//   }
-// });
-
-  // 1枚目だけ表示されたが動かないコード
-  // 【変更点】DOM Ready ( $(function()) ) から Window Load ( $(window).on('load', ...) ) に変更
-  // $(window).on('load', function () { 
-  //   if ($('#top-fv').length) {
-  //     var topFvSwiper = new Swiper('.js-top-fv-swiper', {
-  //       loop: true,
-  //       autoplay: { delay: 4000, disableOnInteraction: false },
-  //       effect: 'fade',
-  //       fadeEffect: { crossFade: true },
-  //       speed: 800,
-  //       pagination: { el: '.swiper-pagination', clickable: true },
-  //       navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
-  //     });
-      
-  //     // 解決しない場合に備えて、念のため強制アップデートを100ms後に実行する
-  //     setTimeout(function() {
-  //       topFvSwiper.update();
-  //       // window.resizeも同時にトリガー
-  //       $(window).trigger('resize');
-  //     }, 100); 
-  //   }
-  // });
-
-  // 最初のコード
-  // $(function () {
-  //   if ($('#top-fv').length) {
-  //     var topFvSwiper = new Swiper('.js-top-fv-swiper', {
-  //       loop: true,
-  //       autoplay: { delay: 4000, disableOnInteraction: false }, // 例: 4秒待機
-  //       // autoplay: { delay: 3000, disableOnInteraction: false },
-  //       effect: 'fade',
-  //       fadeEffect: { crossFade: true },
-  //       speed: 800, // 修正：トランジション速度を標準的な値に短縮
-  //       // speed: 5000,
-  //       pagination: { el: '.swiper-pagination', clickable: true },
-  //       navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
-  //     });
-  //   }
-  // });
-
-  // メッセージスワイパー
+  /* --------------------------------------------
+  /* index.html(topページ)
+  // js-top-fv-swiper (topページFVのスワイパー)
+  //2枚の画像をふわっと表示で切り替える
+  /* -------------------------------------------- */
   $(function () {
+    // トップページのみで実行
     if ($('#top-fv').length) {
-      var topMessageSwiper = new Swiper('.js-top-message-swiper', {
+      var topFvSwiper = new Swiper('.js-top-fv-swiper', {
+        // 基本設定
         loop: true,
-        autoplay: { delay: 0, disableOnInteraction: false, reverseDirection: false },
-        speed: 8000,
-        freeMode: { enabled: true, momentum: false },
-        slidesPerView: 'auto',
-        spaceBetween: 34,
-        pagination: { el: '.top-message__pagination', clickable: true },
-        allowTouchMove: false
-      });
-    }
-  });
+        // ループ再生
+        autoplay: {
+          delay: 3000,
+          // 3秒間隔で自動切り替え
+          disableOnInteraction: false // ユーザー操作後も自動再生を継続
+        },
 
-  // スタッフカードスワイパー
-  $(function () {
-    if ($('#top-fv').length) {
-      var $swiperWrapper = $('.js-top-member-swiper .swiper-wrapper');
-      var $slides = $swiperWrapper.children('.swiper-slide');
-      var shuffledSlides = $slides.toArray().sort(function () {
-        return Math.random() - 0.5;
-      });
-      $swiperWrapper.empty().append(shuffledSlides);
+        effect: 'fade',
+        // フェード効果
+        fadeEffect: {
+          crossFade: true // クロスフェード
+        },
 
-      var topMemberSwiper = new Swiper('.js-top-member-swiper', {
-        loop: true,
-        loopAdditionalSlides: 2,
-        autoplay: { delay: 4000, disableOnInteraction: false },
-        speed: 1000,
-        slidesPerView: 'auto',
-        spaceBetween: 23,
-        centeredSlides: false,
-        freeMode: { enabled: true },
-        navigation: { nextEl: '.top-member__next', prevEl: '.top-member__prev' },
-        breakpoints: {
-          768: { slidesPerView: 2.5, spaceBetween: 30 },
-          1024: { slidesPerView: 2.5, spaceBetween: 35 },
-          1440: { slidesPerView: 3.5, spaceBetween: 43 }
+        speed: 5000,
+        // 切り替え速度（5秒）
+
+        // ページネーション（必要に応じて）
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        },
+        // ナビゲーション（必要に応じて）
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
         }
       });
     }
   });
 
   /* --------------------------------------------
-     staff-details.html(スタッフ紹介ページ)専用機能
-  -------------------------------------------- */
-
-  // サイドバー目次のハイライト
+  /* index.html(topページ)
+  // js-top-message-swiper (topページのメッセージスワイパー)
+  //自動で止まらずに延々と横スライドし続けるスライダーにする
+  /* -------------------------------------------- */
   $(function () {
+    // トップページのみで実行
+    if ($('#top-fv').length) {
+      var topMessageSwiper = new Swiper('.js-top-message-swiper', {
+        // 基本設定
+        loop: true,
+        // ループ再生
+        autoplay: {
+          delay: 0,
+          // 遅延なし
+          disableOnInteraction: false,
+          // ユーザー操作後も自動再生を継続
+          reverseDirection: false // 通常方向
+        },
+
+        speed: 8000,
+        // 8秒かけてスライド
+        freeMode: {
+          enabled: true,
+          // フリーモード
+          momentum: false // 慣性を無効
+        },
+
+        slidesPerView: 'auto',
+        // スライド幅を自動調整
+        spaceBetween: 34,
+        // スライド間の余白34px
+
+        // ページネーション
+        pagination: {
+          el: '.top-message__pagination',
+          clickable: true
+        },
+        // 無限ループ用の設定
+        allowTouchMove: false // タッチ操作を無効
+      });
+    }
+  });
+
+  /* --------------------------------------------
+  /* index.html(topページ)
+  // js-top-member-swiper (topページのスタッフカードのスワイパー)
+  //WordPressのACFから入力したカードがランダムで表示される
+  /* -------------------------------------------- */
+  $(function () {
+    // トップページのみで実行
+    if ($('#top-fv').length) {
+      // スタッフカードをランダムに並び替え
+      var $swiperWrapper = $('.js-top-member-swiper .swiper-wrapper');
+      var $slides = $swiperWrapper.children('.swiper-slide');
+
+      // ランダムに並び替え
+      var shuffledSlides = $slides.toArray().sort(function () {
+        return Math.random() - 0.5;
+      });
+
+      // 並び替えたスライドを再配置
+      $swiperWrapper.empty().append(shuffledSlides);
+
+      // Swiperを初期化
+      var topMemberSwiper = new Swiper('.js-top-member-swiper', {
+        // 基本設定
+        loop: true,
+        // ループ再生
+        loopAdditionalSlides: 2,
+        // ループ用の追加スライド数
+        autoplay: {
+          delay: 4000,
+          // 4秒間隔で自動切り替え
+          disableOnInteraction: false // ユーザー操作後も自動再生を継続
+        },
+
+        speed: 1000,
+        // 切り替え速度
+        slidesPerView: 'auto',
+        // 自動幅調整
+        spaceBetween: 23,
+        // スライド間の余白
+
+        // 左端から開始、右端まで余白なく表示
+        centeredSlides: false,
+        // 中央寄せを無効
+        freeMode: {
+          enabled: true // フリーモードでスムーズなスクロール
+        },
+
+        // ナビゲーション
+        navigation: {
+          nextEl: '.top-member__next',
+          prevEl: '.top-member__prev'
+        },
+        // レスポンシブ設定
+        breakpoints: {
+          768: {
+            slidesPerView: 3.5,
+            // PC時は3.5枚表示
+            spaceBetween: 43 // PC時の余白も43px
+          }
+        }
+      });
+    }
+  });
+
+  /* --------------------------------------------
+  /* staff-details.html(スタッフ紹介のページ）専用機能
+  /* -------------------------------------------- */
+
+  /* --------------------------------------------
+  /* staff-details.html(スタッフ紹介のページ）
+  //セクションをスクロールした時に、該当する記事まできたら、
+  // sidebarの該当目次の色を$blackに変える(is-activeのつけはずし)
+  // (interview-slider-bar__list)
+  /* -------------------------------------------- */
+  $(function () {
+    // スタッフ詳細ページのみで実行
     if ($('.staff-interview__section').length) {
       var $sidebarLinks = $('.interview-sidebar__link');
       var $sections = $('.staff-interview__section');
 
+      // 目次リンクのクリックイベント
       $sidebarLinks.on('click', function (e) {
         e.preventDefault();
         var targetId = $(this).attr('href');
         var $targetSection = $(targetId);
         if ($targetSection.length) {
+          // 既存のマージンをリセット
           $sections.removeClass('has-scroll-margin');
+
+          // クリックされたセクションにマージンを追加
           $targetSection.addClass('has-scroll-margin');
-          $('html, body').animate({ scrollTop: $targetSection.offset().top - 121 }, 800);
+
+          // スムーズスクロール
+          $('html, body').animate({
+            scrollTop: $targetSection.offset().top - 121 // ヘッダー高さ分を引く
+          }, 800);
         }
       });
 
+      // スクロールイベント
       $(window).on('scroll', function () {
         var scrollTop = $(window).scrollTop();
         var windowHeight = $(window).height();
-        var offset = windowHeight / 3;
+        var offset = windowHeight / 3; // 画面の1/3の位置で判定
+
         var currentSection = '';
+
+        // 各セクションをチェック
         $sections.each(function () {
           var $section = $(this);
           var sectionTop = $section.offset().top;
           var sectionHeight = $section.outerHeight();
+
+          // セクションが画面の1/3の位置を過ぎた場合
           if (scrollTop + offset >= sectionTop && scrollTop + offset < sectionTop + sectionHeight) {
             currentSection = $section.attr('id');
           }
         });
+
+        // サイドバーのリンクのアクティブ状態を更新
         $sidebarLinks.removeClass('is-active');
         if (currentSection) {
-          $sidebarLinks.filter('[href="#' + currentSection + '"]').addClass('is-active');
+          $sidebarLinks.filter("[href=\"#".concat(currentSection, "\"]")).addClass('is-active');
         }
       });
 
+      // 初期状態で最初のセクションをアクティブにする
       $(window).trigger('scroll');
     }
   });
 
-  // other-members__list をランダム表示
+  /* --------------------------------------------
+  /* staff-details.html(スタッフ紹介のページ)
+  // other-members__listは、ランダム表示
+  /* -------------------------------------------- */
   $(function () {
+    // スタッフ詳細ページのみで実行
     if ($('.other-members__items').length) {
       var $otherMembersList = $('.other-members__items');
       var $memberItems = $otherMembersList.children('.other-members__item');
+
+      // ランダムに並び替え
       var shuffledItems = $memberItems.toArray().sort(function () {
         return Math.random() - 0.5;
       });
+
+      // 並び替えたアイテムを再配置
       $otherMembersList.empty().append(shuffledItems);
     }
   });
 
   /* --------------------------------------------
-     details.html, faq.html (募集要項とFAQ)専用機能
-  -------------------------------------------- */
+  /* details.html, faq.html (募集要項とFAQページ)専用機能
+  /* -------------------------------------------- */
 
-  // カテゴリータグクリックでスクロール
+  /* --------------------------------------------
+  /* details.html, faq.html (募集要項とFAQページ)
+  // category-tag__itemをクリックしたら、該当のセクションまでスクロールする
+  /* -------------------------------------------- */
   $(function () {
+    // details.html, faq.htmlページのみで実行
     if ($('.category-tag__link').length) {
       var $categoryLinks = $('.category-tag__link');
-      var headerHeight = $('.js-header').outerHeight() || 100;
+      var headerHeight = $('.js-header').outerHeight() || 100; // ヘッダーの高さを取得
+
+      // カテゴリータグのクリックイベント
       $categoryLinks.on('click', function (e) {
         e.preventDefault();
         var targetId = $(this).attr('href');
         var $targetSection = $(targetId);
         if ($targetSection.length) {
+          // スムーズスクロール（ヘッダー高さ分を引く）
           $('html, body').animate({
-            scrollTop: $targetSection.offset().top - headerHeight - 20
+            scrollTop: $targetSection.offset().top - headerHeight - 20 // ヘッダー高さ + 余白20px
           }, 800);
         }
       });
     }
   });
 
-  // FAQアコーディオン
+  /* --------------------------------------------
+  /* faq.html (FAQページ）
+  // FAQアコーディオンの開閉機能
+  /* -------------------------------------------- */
   $(function () {
+    // FAQページのみで実行
     if ($('.faq-list__question').length) {
       var $faqQuestions = $('.faq-list__question');
+
+      // FAQ質問のクリックイベント
       $faqQuestions.on('click', function () {
         var $question = $(this);
         var $answer = $question.next('.faq-list__answer');
         var isExpanded = $question.attr('aria-expanded') === 'true';
         if (isExpanded) {
+          // 閉じる処理
           $question.attr('aria-expanded', 'false');
           $answer.slideUp(300);
         } else {
+          // 開く処理
           $question.attr('aria-expanded', 'true');
           $answer.slideDown(300);
         }
@@ -326,18 +427,20 @@ jQuery(function ($) {
   });
 
   /* --------------------------------------------
-     entry.html (エントリーページ)専用機能
-  -------------------------------------------- */
+  /* entry.html (エントリーページ）専用機能
+  /* -------------------------------------------- */
 
+  /* --------------------------------------------
+  /* entry.html (エントリーページ）
   // フォームのバリデーション
-  $(function () {
-    if ($('.entry-form').length) {
-      var $form = $('.entry-form');
-      var $submitBtn = $('.entry-form__submit');
-      var $requiredFields = $form.find('[required]');
-      var $errorMessage = $('.entry-form__error-message');
+  //入力がない場合送信ボタンを押せない様にする
+  /* -------------------------------------------- */
 
-      var checkRequiredFields = function () {
+  $(function () {
+    // エントリーページのみで実行
+    if ($('.entry-form').length) {
+      // 必須項目の入力チェック関数
+      var checkRequiredFields = function checkRequiredFields() {
         var isValid = true;
         $requiredFields.each(function () {
           var $field = $(this);
@@ -361,28 +464,113 @@ jQuery(function ($) {
           }
         });
 
+        // 送信ボタンの状態を更新
         $submitBtn.prop('disabled', !isValid);
+
+        // エラーメッセージの表示/非表示
         if (isValid) {
           $errorMessage.hide();
         } else {
           $errorMessage.show();
         }
-      };
+      }; // 入力時のイベント
+      var $form = $('.entry-form');
+      var $submitBtn = $('.entry-form__submit');
+      var $requiredFields = $form.find('[required]');
+      var $errorMessage = $('.entry-form__error-message'); // HTMLから取得
 
+      // 初期状態で送信ボタンを無効化
       $submitBtn.prop('disabled', true);
-      $requiredFields.on('input change', checkRequiredFields);
-      $form.find('input[type="radio"], input[type="checkbox"]').on('change', checkRequiredFields);
+      $requiredFields.on('input change', function () {
+        checkRequiredFields();
+      });
+
+      // ラジオボタン・チェックボックスのイベント
+      $form.find('input[type="radio"], input[type="checkbox"]').on('change', function () {
+        checkRequiredFields();
+      });
+
+      // 初期チェック
       checkRequiredFields();
 
+      // 送信時の処理を追加
       $form.on('submit', function (e) {
-        e.preventDefault();
+        e.preventDefault(); // 本来の送信を止める（サーバー送信不要の場合）
         if (!$submitBtn.prop('disabled')) {
-          window.location.href = 'entry-thanks.html';
+          window.location.href = 'entry-thanks.html'; // サンクスページに遷移
         } else {
-          $errorMessage.show();
+          $errorMessage.show(); // 念のためバリデーションNGならエラーを表示
         }
       });
     }
   });
 
-}); // ←これで全体のjQuery(function($){ ... }); を閉じる
+  // $(function () {
+  //   // エントリーページのみで実行
+  //   if ($('.entry-form').length) {
+  //     const $form = $('.entry-form');
+  //     const $submitBtn = $('.entry-form__submit');
+  //     const $requiredFields = $form.find('[required]');
+  //     const $errorMessage = $('.entry-form__error-message'); // HTMLから取得
+
+  //     // 初期状態で送信ボタンを無効化
+  //     $submitBtn.prop('disabled', true);
+
+  //     // 必須項目の入力チェック関数
+  //     function checkRequiredFields() {
+  //       let isValid = true;
+
+  //       $requiredFields.each(function () {
+  //         const $field = $(this);
+  //         const value = $field.val().trim();
+
+  //         // 値が空の場合は無効
+  //         if (value === '') {
+  //           isValid = false;
+  //           return false; // ループを抜ける
+  //         }
+
+  //         // ラジオボタンの場合
+  //         if ($field.attr('type') === 'radio') {
+  //           const $radioGroup = $field.closest('.entry-form__radio-group');
+  //           if ($radioGroup.find('input[type="radio"]:checked').length === 0) {
+  //             isValid = false;
+  //             return false;
+  //           }
+  //         }
+
+  //         // チェックボックスの場合
+  //         if ($field.attr('type') === 'checkbox') {
+  //           if (!$field.is(':checked')) {
+  //             isValid = false;
+  //             return false;
+  //           }
+  //         }
+  //       });
+
+  //       // 送信ボタンの状態を更新
+  //       $submitBtn.prop('disabled', !isValid);
+
+  //       // エラーメッセージの表示/非表示
+  //       if (isValid) {
+  //         $errorMessage.hide();
+  //       } else {
+  //         $errorMessage.show();
+  //       }
+  //     }
+
+  //     // 入力時のイベント
+  //     $requiredFields.on('input change', function () {
+  //       checkRequiredFields();
+  //     });
+
+  //     // ラジオボタン・チェックボックスのイベント
+  //     $form.find('input[type="radio"], input[type="checkbox"]').on('change', function () {
+  //       checkRequiredFields();
+  //     });
+
+  //     // 初期チェック
+  //     checkRequiredFields();
+  //   }
+  // });
+});
