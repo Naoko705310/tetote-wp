@@ -1886,24 +1886,17 @@ select:invalid:focus {
 }
 
 .cta__image {
+	aspect-ratio: 375/250;
+	height: auto;
 	position: relative;
-}
-
-.cta__image::before {
-	content: "";
-	display: block;
-	padding-top: 66.6666666667%;
+	width: 100%;
 }
 
 .cta__image img {
 	-o-object-fit: cover;
 	height: 100%;
-	left: 50%;
 	max-width: 100%;
 	object-fit: cover;
-	position: absolute;
-	top: 50%;
-	transform: translate(-50%, -50%);
 	width: 100%;
 }
 
@@ -4278,8 +4271,8 @@ html {
 	padding-bottom: 0;
 }
 
-.cta__image::before {
-	padding-top: 33.8888888889%;
+.cta__image {
+	aspect-ratio: 1440/488;
 }
 
 .cta__box {

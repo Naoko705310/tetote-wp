@@ -2,8 +2,8 @@
     <section class="cta <?php echo is_front_page() ? 'top-cta' : 'page-cta'; ?>">
       <div class="cta__inner">
         <picture class="cta__image">
-          <source media="(min-width: 768px)" srcset="<?php echo get_theme_file_uri(); ?>/assets/images/common/cta-pc.jpg">
-          <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/cta-sp.jpg" alt="ビルを上ビジネスマンたち" width="375" height="250">
+          <source media="(min-width: 768px)" srcset="<?php echo esc_url(get_theme_file_uri('/assets/images/common/cta-pc.jpg')); ?>">
+          <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/common/cta-sp.jpg')); ?>" alt="ビルを上ビジネスマンたち" width="375" height="250">
         </picture>
         <!-- entry-box -->
         <div class="cta__box entry-box">
