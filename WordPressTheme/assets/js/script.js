@@ -99,6 +99,47 @@ jQuery(function ($) {
 
   /* --------------------------------------------
   /* index.html(topページ)
+  // js-top-fv-swiper (topページFVのスワイパー)
+  //2枚の画像をふわっと表示で切り替える
+  /* -------------------------------------------- */
+  $(function () {
+    // トップページのみで実行
+    if ($('#top-fv').length) {
+      var topFvSwiper = new Swiper('.js-top-fv-swiper', {
+        // 基本設定
+        loop: false,
+        // ループ再生
+        autoplay: {
+          delay: 3000,
+          // 3秒間隔で自動切り替え
+          disableOnInteraction: false // ユーザー操作後も自動再生を継続
+        },
+
+        effect: 'fade',
+        // フェード効果
+        fadeEffect: {
+          crossFade: true // クロスフェード
+        },
+
+        speed: 5000,
+        // 切り替え速度（5秒）
+
+        // ページネーション（必要に応じて）
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        },
+        // ナビゲーション（必要に応じて）
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        }
+      });
+    }
+  });
+
+  /* --------------------------------------------
+  /* index.html(topページ)
   // js-top-message-swiper (topページのメッセージスワイパー)
   //自動で止まらずに延々と横スライドし続けるスライダーにする
   /* -------------------------------------------- */
