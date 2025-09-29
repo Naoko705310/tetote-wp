@@ -14,15 +14,6 @@ jQuery(function ($) {
       $('.js-header-nav').toggleClass('is-active'); // ナビを開閉
       $('.js-header').toggleClass('is-active'); // ヘッダー全体
       $('body').toggleClass('is-fixed'); // スクロール制御
-
-      // ロゴ差し替えはCSSで制御されるため、JavaScriptでのsrc変更は不要
-      // ロゴ差し替え（SP・PC共通）
-      // var $logoImg = $('.header__logo img');
-      // if ($('.js-header').hasClass('is-active')) {
-      //   $logoImg.attr('src', './assets/images/common/tetote-logo.svg'); // 黒ロゴ
-      // } else {
-      //   $logoImg.attr('src', './assets/images/common/tetote-logo-white.svg'); // 白ロゴ
-      // }
     });
 
     // ナビ内のリンクをクリックしたら閉じる
@@ -31,42 +22,8 @@ jQuery(function ($) {
       $('.js-header-nav').removeClass('is-active');
       $('.js-header').removeClass('is-active');
       $('body').removeClass('is-fixed'); // スクロール制御解除
-
-      // ロゴを白に戻す（SP・PC共通）
-      // $('.header__logo img').attr('src', './assets/images/common/tetote-logo-white.svg');
     });
   });
-  // /* --------------------------------------------
-  // /* ハンバーガーメニュー(topページ)
-  // /* -------------------------------------------- */
-  // $(function () {
-  //   // ハンバーガーメニューのクリック
-  //   $('.js-hamburger').on('click', function () {
-  //     $(this).toggleClass('is-active');             // ハンバーガー自身に is-active
-  //     $('.js-header-nav').toggleClass('is-active'); // ナビを開閉
-  //     $('.js-header').toggleClass('is-active');     // ヘッダー全体
-  //     $('body').toggleClass('is-fixed');            // 背景スクロール制御
-
-  //     // ロゴ差し替え（SP・PC共通）
-  //     const $logoImg = $('.header__logo img');
-  //     if ($('.js-header').hasClass('is-active')) {
-  //       $logoImg.attr('src', './assets/images/common/tetote-logo.svg'); // 黒ロゴ
-  //     } else {
-  //       $logoImg.attr('src', './assets/images/common/tetote-logo-white.svg'); // 白ロゴ
-  //     }
-  //   });
-
-  //   // ナビ内のリンクをクリックしたら閉じる
-  //   $('.js-header-link').on('click', function () {
-  //     $('.js-hamburger').removeClass('is-active');
-  //     $('.js-header-nav').removeClass('is-active');
-  //     $('.js-header').removeClass('is-active');
-  //     $('body').removeClass('is-fixed');
-
-  //     // ロゴを白に戻す（SP・PC共通）
-  //     $('.header__logo img').attr('src', './assets/images/common/tetote-logo-white.svg');
-  //   });
-  // });
 
   /* --------------------------------------------
   /* headerをFVの下までスクロールした時に、page-headerと同じデザインに変える
@@ -139,47 +96,6 @@ jQuery(function ($) {
       $(window).on('scroll', checkFadeIn);
     }
   });
-
-  /* --------------------------------------------
-  /* index.html(topページ)
-  // js-top-fv-swiper (topページFVのスワイパー)
-  //2枚の画像をふわっと表示で切り替える
-  /* -------------------------------------------- */
-  // $(function () {
-  //   // トップページのみで実行
-  //   if ($('#top-fv').length) {
-  //     var topFvSwiper = new Swiper('.js-top-fv-swiper', {
-  //       // 基本設定
-  //       loop: true,
-  //       // ループ再生
-  //       autoplay: {
-  //         delay: 3000,
-  //         // 3秒間隔で自動切り替え
-  //         disableOnInteraction: false // ユーザー操作後も自動再生を継続
-  //       },
-
-  //       effect: 'fade',
-  //       // フェード効果
-  //       fadeEffect: {
-  //         crossFade: true // クロスフェード
-  //       },
-
-  //       speed: 5000,
-  //       // 切り替え速度（5秒）
-
-  //       // ページネーション（必要に応じて）
-  //       pagination: {
-  //         el: '.swiper-pagination',
-  //         clickable: true
-  //       },
-  //       // ナビゲーション（必要に応じて）
-  //       navigation: {
-  //         nextEl: '.swiper-button-next',
-  //         prevEl: '.swiper-button-prev'
-  //       }
-  //     });
-  //   }
-  // });
 
   /* --------------------------------------------
   /* index.html(topページ)

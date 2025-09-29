@@ -6,9 +6,9 @@
 
 .top-fv__swiper {
   width: 100%;
-  position: relative;
 }
 
+// 比率管理（＊aspect-ratioはSafariでバグが出たので使用しない！）
 .top-fv__swiper::before {
   content: '';
   display: block;
@@ -34,22 +34,26 @@
 .top-fv__swiper img {
   width: 100%;
   height: 100%;
-  object-fit: cover; // 縦横比を保ちながら領域を埋める
+  object-fit: cover;
 }
 
-// 1枚目の画像だけを左に20%ずらす
+// 1枚目の画像だけを左に20%ずらす（男性の顔が見えるように）
 .top-fv__slide--01 {
   object-position: 60% center; 
 }
 
-// swiperに重なっているタイトルなどの要素
-.top-fv__content {
+// contents & swiper
+.top-fv__container {
+  width: 100%; 
+  z-index: -1;
+}
+
+// タイトルとnews-bar
+.top-fv__contents {
+  width: 100%;
   position: absolute;
-  top: auto;
   left: 0;
   bottom: rem(10);
-  width: 100%; /* swiper全体に広げる */
-  // height: 100%; /* swiper全体に広げる */
   z-index: 2;
   @include mq(md) {
     bottom: rem(38);
@@ -58,14 +62,13 @@
 
 .top-fv__title {
   font-family: $second-font-family;
-  font-size: rem(48);
+  font-size: clamp(3rem, 1.944rem + 4.507vw, 6rem);//48~96
   color: $white;
   font-weight: $normal;
   line-height: 1.2;
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
   padding: 0 rem(12);
   @include mq(md) {
-    font-size: rem(96);
     padding: 0 rem(66);
   }
 }
@@ -82,23 +85,21 @@
   display: inline-block; // clip-pathが効くようにする
   clip-path: polygon(0 0, 100% 0, calc(100% - 20px) 100%, 0 100%);
   // ↑ 左上→右上→右下を20pxカット→左下
-  margin-top: rem(18);
+  margin-top: clamp(1.063rem, -0.456rem + 6.479vw, 5.375rem);//18~86
   @include mq(md) {
     font-size: rem(24);
     padding: rem(17) rem(66);
-    clip-path: polygon(0 0, 100% 0, calc(100% - 40px) 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, calc(100% - 30px) 100%, 0 100%);
     // PCでは切り込みを深く
-    margin-top: rem(86);
   }
 }
 
 .top-fv__news-bar {
   width: calc(351 / 375 * 100%);
   margin: 0 auto;
-  margin-top: rem(31);
+  margin-top: clamp(1.938rem, 1.233rem + 3.005vw, 3.938rem);//31~63
   @include mq(md) {
     width: calc(1263 / 1440 * 100%);
-    margin-top: rem(63);
     margin-left: rem(71);
   }
 }
