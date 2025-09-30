@@ -3054,7 +3054,7 @@ body.is-fixed {
 	font-family: "Noto Sans JP", sans-serif;
 	font-size: 1rem;
 	font-weight: 400;
-	line-height: 1;
+	line-height: 1.5;
 }
 
 .job-list {
@@ -4626,6 +4626,10 @@ html {
 .job-item__row {
 	gap: 1.25rem;
 	grid-template-columns: 21.753% 1fr;
+}
+
+.job-item__desc {
+	line-height: 1;
 }
 
 .jobs__inner {
