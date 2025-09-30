@@ -3223,7 +3223,7 @@ body.is-fixed {
 	font-family: "Noto Sans JP", sans-serif;
 	font-size: 1rem;
 	font-weight: 400;
-	line-height: 1;
+	line-height: 1.5;
 	margin-top: 0.625rem;
 }
 
@@ -4699,7 +4699,6 @@ html {
 }
 
 .our-value__body p {
-	line-height: 1.5;
 	margin-top: 1.3125rem;
 }
 

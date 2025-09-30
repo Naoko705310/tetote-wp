@@ -79,10 +79,9 @@
   font-size: rem(16);
   color: $black;
   font-weight: $normal;
-  line-height: 1;
+  line-height: 1.5;
   margin-top: rem(10);
   @include mq(md) {
-    line-height: 1.5;
     margin-top: rem(21);
   }
 }
