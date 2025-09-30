@@ -339,7 +339,7 @@ jQuery(function ($) {
 /* -------------------------------------------- */
 /* --------------------------------------------
 /* details.html, faq.html 共通処理
-   category-tag__itemをクリックしたら、該当のセクションまでスクロールする
+  category-tag__itemをクリックしたら、該当のセクションまでスクロールする
 /* -------------------------------------------- */
 $(function () {
   if ($('.category-tag__link').length) {
@@ -360,57 +360,6 @@ $(function () {
     });
   }
 });
-
-
-
-
-
-// ↓エラーが出ないコード
-  // $(function () {
-  //   // details.html, faq.htmlページのみで実行
-  //   if ($('.category-tag__link').length) {
-  //     var $categoryLinks = $('.category-tag__link');
-  //     var headerHeight = $('.js-header').outerHeight() || 100; // ヘッダーの高さを取得
-
-  //     // カテゴリータグのクリックイベント
-  //     $categoryLinks.on('click', function (e) {
-  //       e.preventDefault();
-  //       var targetId = $(this).attr('href');
-  //       var $targetSection = $(targetId);
-  //       if ($targetSection.length) {
-  //         // スムーズスクロール（ヘッダー高さ分を引く）
-  //         $('html, body').animate({
-  //           scrollTop: $targetSection.offset().top - headerHeight - 20 // ヘッダー高さ + 余白20px
-  //         }, 800);
-  //       }
-  //     });
-  //   }
-  // });
-
-
-
-
-
-
-// $(function () {
-//   var $categoryLinks = $('.category-tag__link');
-
-//   if ($categoryLinks.length) {
-//     $categoryLinks.on('click', function (e) {
-//       e.preventDefault();
-//       var targetId = $(this).attr('href');
-//       var $targetSection = $(targetId);
-
-//       if ($targetSection.length) {
-//         var headerHeight = $('.js-header').outerHeight() || 0;
-//         $('html, body').animate({
-//           scrollTop: $targetSection.offset().top - headerHeight - 20
-//         }, 400, 'easeInOutCubic');
-//       }
-//     });
-//   }
-// });
-
 
   /* --------------------------------------------
   /* faq.html (FAQページ）
