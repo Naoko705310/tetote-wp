@@ -2049,9 +2049,9 @@ select:invalid:focus {
 	background-size: contain;
 	content: "";
 	height: 0.5rem;
-	left: 8.875rem;
 	pointer-events: none;
 	position: absolute;
+	right: 2.5625rem;
 	top: 50%;
 	transform: translateY(-50%);
 	width: 0.75rem;

@@ -148,7 +148,8 @@
 .entry-form__birth-item:has(.entry-form__select)::after {
   content: "";
   position: absolute;
-  left: rem(142);//168-padding15-arrow11
+  // left: rem(142);//168-padding15-arrow11
+  right: rem(16 + 10 + 15);
   top: 50%;
   transform: translateY(-50%);
   width: rem(12);
