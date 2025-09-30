@@ -13,7 +13,7 @@
   margin: 0 auto;
 }
 
-.page-entry__breadcrumb {
+.breadcrumb.page-entry__breadcrumb {
   margin-top: rem(61);
   @include mq(md) {
     margin-top: rem(121);

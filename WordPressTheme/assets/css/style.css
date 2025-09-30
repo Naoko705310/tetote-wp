@@ -376,7 +376,7 @@ select:invalid:focus {
 	max-width: 58rem;
 }
 
-.page-entry__breadcrumb {
+.breadcrumb.page-entry__breadcrumb {
 	margin-top: 3.8125rem;
 }
 
@@ -3719,7 +3719,7 @@ html {
 	font-size: 2rem;
 }
 
-.page-entry__breadcrumb {
+.breadcrumb.page-entry__breadcrumb {
 	margin-top: 7.5625rem;
 }
 
