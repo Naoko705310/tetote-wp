@@ -393,10 +393,18 @@
 .entry-form__field--consent {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: rem(10);
+  margin-top: rem(40);
   @include mq(md) {
     margin-top: rem(98);
+  }
+}
+
+// 個人情報保護方針のラベルを左寄せ
+.entry-form__field.entry-form__field--consent {
+  justify-content: flex-start;
+  @include mq(md) {
+    justify-content: center;
   }
 }
 

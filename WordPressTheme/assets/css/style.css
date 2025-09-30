@@ -2261,7 +2261,11 @@ select:invalid:focus {
 	align-items: center;
 	display: flex;
 	gap: 0.625rem;
-	justify-content: center;
+	margin-top: 2.5rem;
+}
+
+.entry-form__field.entry-form__field--consent {
+	justify-content: flex-start;
 }
 
 .entry-form__field--consent label {
@@ -4352,6 +4356,10 @@ html {
 
 .entry-form__field--consent {
 	margin-top: 6.125rem;
+}
+
+.entry-form__field.entry-form__field--consent {
+	justify-content: center;
 }
 
 .entry-form__field--consent {
