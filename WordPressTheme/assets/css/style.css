@@ -336,7 +336,7 @@ select:invalid:focus {
 	padding-top: 2.0625rem;
 }
 
-.page-entry-thanks__breadcrumb {
+.breadcrumb.page-entry-thanks__breadcrumb {
 	margin-top: 3.8125rem;
 }
 
@@ -3705,7 +3705,7 @@ html {
 	margin-top: 9.0625rem;
 }
 
-.page-entry-thanks__breadcrumb {
+.breadcrumb.page-entry-thanks__breadcrumb {
 	margin-top: 7.5625rem;
 }
 

@@ -6,15 +6,7 @@
   padding-bottom: rem(57);
 }
 
-.page-entry-thanks__inner {
-
-}
-
-.inner {
-
-}
-
-.page-entry-thanks__breadcrumb {
+.breadcrumb.page-entry-thanks__breadcrumb {
   margin-top: rem(61);
   @include mq(md) {
     margin-top: rem(121);
