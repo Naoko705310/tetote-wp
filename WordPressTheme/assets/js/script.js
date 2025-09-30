@@ -378,41 +378,18 @@ jQuery(function ($) {
   /* details.html, faq.html (募集要項とFAQページ)
   // category-tag__itemをクリックしたら、該当のセクションまでスクロールする
   /* -------------------------------------------- */
-// カテゴリータグのクリックイベント
-$categoryLinks.on('click', function (e) {
-  e.preventDefault();
-  var targetId = $(this).attr('href');
-  var $targetSection = $(targetId);
-  if ($targetSection.length) {
-    // スムーズスクロール（ヘッダー高さ分を引く）
-    $('html, body').animate({
-      scrollTop: $targetSection.offset().top - headerHeight - 20 // ヘッダー高さ + 余白20px
-    }, 400, 'easeInOutCubic'); // 400ms + カスタムイージング
-  }
-});
-
-
-
-  // $(function () {
-  //   // details.html, faq.htmlページのみで実行
-  //   if ($('.category-tag__link').length) {
-  //     var $categoryLinks = $('.category-tag__link');
-  //     var headerHeight = $('.js-header').outerHeight() || 100; // ヘッダーの高さを取得
-
-  //     // カテゴリータグのクリックイベント
-  //     $categoryLinks.on('click', function (e) {
-  //       e.preventDefault();
-  //       var targetId = $(this).attr('href');
-  //       var $targetSection = $(targetId);
-  //       if ($targetSection.length) {
-  //         // スムーズスクロール（ヘッダー高さ分を引く）
-  //         $('html, body').animate({
-  //           scrollTop: $targetSection.offset().top - headerHeight - 20 // ヘッダー高さ + 余白20px
-  //         }, 800);
-  //       }
-  //     });
-  //   }
-  // });
+  // カテゴリータグのクリックイベント
+  $categoryLinks.on('click', function (e) {
+    e.preventDefault();
+    var targetId = $(this).attr('href');
+    var $targetSection = $(targetId);
+    if ($targetSection.length) {
+      // スムーズスクロール（ヘッダー高さ分を引く）
+      $('html, body').animate({
+        scrollTop: $targetSection.offset().top - headerHeight - 20 // ヘッダー高さ + 余白20px
+      }, 400, 'easeInOutCubic'); // 400ms + カスタムイージング
+    }
+  });
 
   /* --------------------------------------------
   /* faq.html (FAQページ）
