@@ -47,9 +47,9 @@
                     </span>
                   </div>
 
-                  <h3 class="blog-card__title">
+                  <h2 class="blog-card__title">
                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                  </h3>
+                  </h2>
 
                   <time class="blog-card__date" datetime="<?php echo get_the_date('Y-m-d'); ?>">
                     <?php echo get_the_date('Y.m.d'); ?>

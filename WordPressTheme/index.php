@@ -330,9 +330,9 @@
                     <span>社内研修</span>
                   </div>
                   <!-- タイトルだけリンク -->
-                  <h3 class="blog-card__title">
+                  <h2 class="blog-card__title">
                     <a href="blog-details.html">新入社員向けに、入社前研修を行いました。</a>
-                  </h3>
+                  </h2>
                   <time class="blog-card__date" datetime="2025-03-25">2025.03.25</time>
                 </div>
               </article>
