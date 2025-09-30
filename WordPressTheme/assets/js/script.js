@@ -252,62 +252,68 @@ jQuery(function ($) {
   // sidebarの該当目次の色を$blackに変える(is-activeのつけはずし)
   // (interview-slider-bar__list)
   /* -------------------------------------------- */
-  $(function () {
-    // スタッフ詳細ページのみで実行
-    if ($('.staff-interview__section').length) {
-      var $sidebarLinks = $('.interview-sidebar__link');
-      var $sections = $('.staff-interview__section');
 
-      // 目次リンクのクリックイベント
-      $sidebarLinks.on('click', function (e) {
-        e.preventDefault();
-        var targetId = $(this).attr('href');
-        var $targetSection = $(targetId);
-        if ($targetSection.length) {
-          // 既存のマージンをリセット
-          $sections.removeClass('has-scroll-margin');
+/* --------------------------------------------
+/* staff-details.html(スタッフ紹介のページ）
+   サイドバーの目次クリックでスクロール＆アクティブ更新
+/* -------------------------------------------- */
+$(function () {
+  if ($('.staff-interview__section').length) {
+    var $sidebarLinks = $('.interview-sidebar__link');
+    var $sections = $('.staff-interview__section');
 
-          // クリックされたセクションにマージンを追加
-          $targetSection.addClass('has-scroll-margin');
+    // 目次リンクのクリックイベント
+    $sidebarLinks.on('click', function (e) {
+      e.preventDefault();
+      var targetId = $(this).attr('href');
+      var $targetSection = $(targetId);
 
-          // スムーズスクロール
-          $('html, body').animate({
-            scrollTop: $targetSection.offset().top - 121 // ヘッダー高さ分を引く
-          }, 800);
+      if ($targetSection.length) {
+        // ヘッダーの高さをその時点で取得（レスポンシブ対応）
+        var headerHeight = $('.js-header').outerHeight() || 0;
+
+        // 既存のマージンをリセット
+        $sections.removeClass('has-scroll-margin');
+        // クリックされたセクションにマージンを追加
+        $targetSection.addClass('has-scroll-margin');
+
+        // スムーズスクロール
+        $('html, body').animate({
+          scrollTop: $targetSection.offset().top - headerHeight - 20
+        }, 300, 'linear'); // 軽快に動かす
+      }
+    });
+
+    // スクロールイベント（目次リンクのアクティブ切替）
+    $(window).on('scroll', function () {
+      var scrollTop = $(window).scrollTop();
+      var windowHeight = $(window).height();
+      var offset = windowHeight / 3; // 画面の1/3位置で判定
+
+      var currentSection = '';
+
+      // 各セクションをチェック
+      $sections.each(function () {
+        var $section = $(this);
+        var sectionTop = $section.offset().top;
+        var sectionHeight = $section.outerHeight();
+
+        if (scrollTop + offset >= sectionTop && scrollTop + offset < sectionTop + sectionHeight) {
+          currentSection = $section.attr('id');
         }
       });
 
-      // スクロールイベント
-      $(window).on('scroll', function () {
-        var scrollTop = $(window).scrollTop();
-        var windowHeight = $(window).height();
-        var offset = windowHeight / 3; // 画面の1/3の位置で判定
+      // サイドバーのリンク状態を更新
+      $sidebarLinks.removeClass('is-active');
+      if (currentSection) {
+        $sidebarLinks.filter('[href="#' + currentSection + '"]').addClass('is-active');
+      }
+    });
 
-        var currentSection = '';
-
-        // 各セクションをチェック
-        $sections.each(function () {
-          var $section = $(this);
-          var sectionTop = $section.offset().top;
-          var sectionHeight = $section.outerHeight();
-
-          // セクションが画面の1/3の位置を過ぎた場合
-          if (scrollTop + offset >= sectionTop && scrollTop + offset < sectionTop + sectionHeight) {
-            currentSection = $section.attr('id');
-          }
-        });
-
-        // サイドバーのリンクのアクティブ状態を更新
-        $sidebarLinks.removeClass('is-active');
-        if (currentSection) {
-          $sidebarLinks.filter("[href=\"#".concat(currentSection, "\"]")).addClass('is-active');
-        }
-      });
-
-      // 初期状態で最初のセクションをアクティブにする
-      $(window).trigger('scroll');
-    }
-  });
+    // 初期状態で最初のセクションをアクティブにする
+    $(window).trigger('scroll');
+  }
+});
 
   /* --------------------------------------------
   /* staff-details.html(スタッフ紹介のページ)
@@ -466,73 +472,4 @@ $(function () {
       });
     }
   });
-
-  // $(function () {
-  //   // エントリーページのみで実行
-  //   if ($('.entry-form').length) {
-  //     const $form = $('.entry-form');
-  //     const $submitBtn = $('.entry-form__submit');
-  //     const $requiredFields = $form.find('[required]');
-  //     const $errorMessage = $('.entry-form__error-message'); // HTMLから取得
-
-  //     // 初期状態で送信ボタンを無効化
-  //     $submitBtn.prop('disabled', true);
-
-  //     // 必須項目の入力チェック関数
-  //     function checkRequiredFields() {
-  //       let isValid = true;
-
-  //       $requiredFields.each(function () {
-  //         const $field = $(this);
-  //         const value = $field.val().trim();
-
-  //         // 値が空の場合は無効
-  //         if (value === '') {
-  //           isValid = false;
-  //           return false; // ループを抜ける
-  //         }
-
-  //         // ラジオボタンの場合
-  //         if ($field.attr('type') === 'radio') {
-  //           const $radioGroup = $field.closest('.entry-form__radio-group');
-  //           if ($radioGroup.find('input[type="radio"]:checked').length === 0) {
-  //             isValid = false;
-  //             return false;
-  //           }
-  //         }
-
-  //         // チェックボックスの場合
-  //         if ($field.attr('type') === 'checkbox') {
-  //           if (!$field.is(':checked')) {
-  //             isValid = false;
-  //             return false;
-  //           }
-  //         }
-  //       });
-
-  //       // 送信ボタンの状態を更新
-  //       $submitBtn.prop('disabled', !isValid);
-
-  //       // エラーメッセージの表示/非表示
-  //       if (isValid) {
-  //         $errorMessage.hide();
-  //       } else {
-  //         $errorMessage.show();
-  //       }
-  //     }
-
-  //     // 入力時のイベント
-  //     $requiredFields.on('input change', function () {
-  //       checkRequiredFields();
-  //     });
-
-  //     // ラジオボタン・チェックボックスのイベント
-  //     $form.find('input[type="radio"], input[type="checkbox"]').on('change', function () {
-  //       checkRequiredFields();
-  //     });
-
-  //     // 初期チェック
-  //     checkRequiredFields();
-  //   }
-  // });
 });
