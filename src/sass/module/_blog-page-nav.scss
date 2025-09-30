@@ -1,5 +1,12 @@
 @use "global" as *;
 
+.breadcrumb.page-blog-details__breadcrumb {
+  margin-top: rem(61);
+  @include mq(md) {
+    margin-top: rem(121);
+  }
+}
+
 
   //前後記事ナビゲーション
 
