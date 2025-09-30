@@ -50,39 +50,39 @@ $header_class = is_front_page() ? 'header top-header js-header' : 'header page-h
 <header class="<?php echo $header_class; ?>">
   <div class="header__inner">
 
-    <!-- =============================
-         ヘッダーロゴ
-    ============================== -->
-    <?php if ( is_front_page() ) : ?>
-      <h1 class="header__logo header-logo">
-        <a href="<?php echo esc_url(home_url('/')); ?>" class="header-logo__link">
-          <!-- 白ロゴ（初期表示） -->
-          <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/common/tetote-logo-white.svg')); ?>"
-               alt="TETOTEロゴ"
-               width="250"
-               height="61"
-               class="header-logo__img header-logo__img--white">
-          <!-- 黒ロゴ（スクロール後／ハンバーガー開時） -->
-          <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/common/tetote-logo.svg')); ?>"
-               alt="TETOTEロゴ"
-               width="250"
-               height="61"
-               class="header-logo__img header-logo__img--black">
-        </a>
-      </h1>
-    <?php else : ?>
-      <div class="header__logo header-logo">
-        <a href="<?php echo esc_url(home_url('/')); ?>" class="header-logo__link">
-          <!-- 下層ページは黒ロゴ固定 -->
-          <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/common/tetote-logo.svg')); ?>"
-               alt="TETOTEロゴ"
-               width="250"
-               height="61"
-               class="header-logo__img">
-        </a>
-      </div>
-    <?php endif; ?>
-    <!-- /ヘッダーロゴ -->
+  <!-- =============================
+        ヘッダーロゴ
+  ============================== -->
+  <?php if ( is_front_page() ) : ?>
+    <h1 class="header__logo header-logo">
+      <a href="<?php echo esc_url(home_url('/')); ?>" class="header-logo__link">
+        <!-- 白ロゴ（初期表示） -->
+        <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/common/tetote-logo-white.svg')); ?>"
+              alt="TETOTEロゴ"
+              width="250"
+              height="61"
+              class="header-logo__img header-logo__img--white">
+        <!-- 黒ロゴ（スクロール後／ハンバーガー開時） -->
+        <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/common/tetote-logo.svg')); ?>"
+              alt="TETOTEロゴ"
+              width="250"
+              height="61"
+              class="header-logo__img header-logo__img--black">
+      </a>
+    </h1>
+  <?php else : ?>
+    <div class="header__logo header-logo">
+      <a href="<?php echo esc_url(home_url('/')); ?>" class="header-logo__link">
+        <!-- 下層ページは黒ロゴ固定 -->
+        <img src="<?php echo esc_url(get_theme_file_uri('/assets/images/common/tetote-logo.svg')); ?>"
+              alt="TETOTEロゴ"
+              width="250"
+              height="61"
+              class="header-logo__img">
+      </a>
+    </div>
+  <?php endif; ?>
+  <!-- /ヘッダーロゴ -->
 
     <!-- =============================
          ヘッダーボタン群（PC）
