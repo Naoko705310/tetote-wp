@@ -335,9 +335,9 @@
                     </div>
 
                     <!-- タイトル -->
-                    <h2 class="blog-card__title">
+                    <h3 class="blog-card__title">
                       <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                    </h2>
+                    </h3>
 
                     <!-- 日付 -->
                     <time class="blog-card__date" datetime="<?php echo get_the_date('c'); ?>">
