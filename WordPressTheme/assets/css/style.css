@@ -2439,8 +2439,9 @@ select:invalid:focus {
 	font-family: "Noto Sans JP", sans-serif;
 	font-size: 1rem;
 	font-weight: 400;
-	line-height: 1;
+	line-height: 1.5;
 	padding-left: 2.25rem;
+	padding-right: 2rem;
 	position: relative;
 	text-align: left;
 	width: 100%;
@@ -2460,6 +2461,12 @@ select:invalid:focus {
 	top: 50%;
 	transform: translateY(-50%); /* 上下中央に配置 */
 	width: 1rem;
+}
+
+.faq-list__question,
+.faq-list__answer {
+	word-wrap: break-word;
+	word-break: keep-all;
 }
 
 .faq-list__icon {
@@ -4364,6 +4371,10 @@ html {
 
 .entry-form__field--consent {
 	margin-top: 6.125rem;
+}
+
+.faq-list__question {
+	line-height: 1;
 }
 
 .faq-section__title {
