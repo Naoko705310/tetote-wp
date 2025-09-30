@@ -39,7 +39,7 @@ function add_custom_scripts()
         'theme-style', // ハンドル名：このCSSを識別するための名前
         get_theme_file_uri('/assets/css/style.css'), // テーマフォルダからのパスを取得
         array('swiper'), // 依存関係：SwiperのCSSの後に読み込まれるように指定
-        '251001_0040' // バージョン：ブラウザのキャッシュ対策
+        '251001_0047' // バージョン：ブラウザのキャッシュ対策
     );
 
     // ==============================================
@@ -57,7 +57,7 @@ function add_custom_scripts()
         'theme-script', // ハンドル名：このJSを識別するための名前
         get_theme_file_uri('/assets/js/script.js'), // テーマフォルダからのパスを取得
         array('jquery', 'swiper-js'), // 依存関係：jQueryとSwiperの後に読み込まれるように指定
-        '251001_0040', // バージョン：ブラウザのキャッシュ対策
+        '251001_0047', // バージョン：ブラウザのキャッシュ対策
         true // </body>直前（フッター）で読み込む設定
     );
 
